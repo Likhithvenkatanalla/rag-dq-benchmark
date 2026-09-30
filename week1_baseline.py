@@ -108,10 +108,8 @@ def recall_at_k(ranked, claims, k):
     return hits / total
 
 
-def retrieve(corpus_path=CLEAN_CORPUS, out=None, top_k=10):
-    import faiss
+def retrieve(corpus_path=CLEAN_CORPUS, out=None, top_k=10, sparse_only=False):
     from rank_bm25 import BM25Okapi
-    from sentence_transformers import SentenceTransformer
 
     corpus, claims, docs, doc_ids = load(corpus_path)
     parent = parent_of(corpus)
@@ -126,17 +124,11 @@ def retrieve(corpus_path=CLEAN_CORPUS, out=None, top_k=10):
         scores = bm25.get_scores(q.lower().split())
         bm25_ranked.append([doc_ids[i] for i in np.argsort(-scores)[:depth]])
 
-    # Dense baseline: BGE embeddings + FAISS inner product (cosine on normalised vectors)
-    model = SentenceTransformer(EMBED_MODEL)
-    doc_emb = model.encode(docs, batch_size=64, normalize_embeddings=True, show_progress_bar=True)
-    q_emb = model.encode([QUERY_PREFIX + q for q in queries], normalize_embeddings=True)
-    index = faiss.IndexFlatIP(doc_emb.shape[1])
-    index.add(np.asarray(doc_emb, dtype="float32"))
-    _, idx = index.search(np.asarray(q_emb, dtype="float32"), depth)
-    dense_ranked = [[doc_ids[i] for i in row] for row in idx]
-
+    rankings = {"bm25": bm25_ranked}
+    if not sparse_only:
+        rankings["dense_bge_small"] = dense_retrieve(docs, doc_ids, queries, depth)
     results = {}
-    for name, ranked in [("bm25", bm25_ranked), ("dense_bge_small", dense_ranked)]:
+    for name, ranked in rankings.items():
         doc_ranked = [to_docs(r, parent, top_k) for r in ranked]
         results[name] = {f"recall@{k}": round(recall_at_k(doc_ranked, claims, k), 4) for k in (1, 3, 5, 10)}
     print(json.dumps(results, indent=2))
@@ -145,9 +137,25 @@ def retrieve(corpus_path=CLEAN_CORPUS, out=None, top_k=10):
     os.makedirs(os.path.dirname(paths["retrieval"]), exist_ok=True)
     with open(paths["retrieval"], "w") as f:
         json.dump(results, f, indent=2)
+    if sparse_only:
+        return
     # Record ids (chunk ids for a chunked corpus): these are what verify puts in the LLM context.
     with open(paths["rankings"], "w") as f:
-        json.dump({str(c["id"]): r[:top_k] for c, r in zip(claims, dense_ranked)}, f)
+        json.dump({str(c["id"]): r[:top_k] for c, r in zip(claims, rankings["dense_bge_small"])}, f)
+
+
+def dense_retrieve(docs, doc_ids, queries, depth):
+    """BGE embeddings + FAISS inner product (cosine on normalised vectors)."""
+    import faiss
+    from sentence_transformers import SentenceTransformer
+
+    model = SentenceTransformer(EMBED_MODEL)
+    doc_emb = model.encode(docs, batch_size=64, normalize_embeddings=True, show_progress_bar=True)
+    q_emb = model.encode([QUERY_PREFIX + q for q in queries], normalize_embeddings=True)
+    index = faiss.IndexFlatIP(doc_emb.shape[1])
+    index.add(np.asarray(doc_emb, dtype="float32"))
+    _, idx = index.search(np.asarray(q_emb, dtype="float32"), depth)
+    return [[doc_ids[i] for i in row] for row in idx]
 
 
 def parse_label(text):
@@ -219,8 +227,12 @@ if __name__ == "__main__":
     parser.add_argument("--step", choices=["download", "retrieve", "verify"], required=True)
     parser.add_argument("--corpus", default=CLEAN_CORPUS, help="corpus.jsonl to retrieve from")
     parser.add_argument("--out", help="results subfolder name (default: the corpus folder name)")
+    parser.add_argument("--sparse-only", action="store_true",
+                        help="retrieve: BM25 only (no model download; verify then has no rankings to use)")
     args = parser.parse_args()
     if args.step == "download":
         download()
+    elif args.step == "retrieve":
+        retrieve(args.corpus, args.out, sparse_only=args.sparse_only)
     else:
-        {"retrieve": retrieve, "verify": verify}[args.step](args.corpus, args.out)
+        verify(args.corpus, args.out)
