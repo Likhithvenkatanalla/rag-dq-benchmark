@@ -1,0 +1,174 @@
+"""Week 1 baseline: retrieval + claim verification on SciFact.
+
+Research question of the project: how do data-quality defects in a document
+collection change the accuracy of retrieval-augmented answers?
+Week 1 builds the clean baseline that every later experiment is compared with.
+
+Usage (runs on CPU; a GPU such as a Colab/Kaggle T4 is faster):
+    python week1_baseline.py --step download
+    python week1_baseline.py --step retrieve
+    python week1_baseline.py --step verify
+"""
+import argparse
+import json
+import os
+import tarfile
+import urllib.request
+
+import numpy as np
+
+DATA_URL = "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz"
+DATA_DIR = "data"
+RESULTS_DIR = "results"
+EMBED_MODEL = "BAAI/bge-small-en-v1.5"
+QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
+LLM_MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
+LABELS = ["SUPPORT", "CONTRADICT", "NOT_ENOUGH_INFO"]
+
+
+def read_jsonl(path):
+    with open(path) as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def download():
+    os.makedirs(DATA_DIR, exist_ok=True)
+    archive = os.path.join(DATA_DIR, "data.tar.gz")
+    if not os.path.exists(archive):
+        urllib.request.urlretrieve(DATA_URL, archive)
+    with tarfile.open(archive) as tar:
+        tar.extractall(DATA_DIR)
+    print("Files:", os.listdir(os.path.join(DATA_DIR, "data")))
+
+
+def load():
+    root = os.path.join(DATA_DIR, "data")
+    corpus = read_jsonl(os.path.join(root, "corpus.jsonl"))
+    claims = read_jsonl(os.path.join(root, "claims_dev.jsonl"))
+    docs = [d["title"] + ". " + " ".join(d["abstract"]) for d in corpus]
+    doc_ids = [d["doc_id"] for d in corpus]
+    return corpus, claims, docs, doc_ids
+
+
+def gold_label(claim):
+    """SciFact dev claims: evidence maps doc_id -> list of {sentences, label}."""
+    for entries in claim.get("evidence", {}).values():
+        if entries:
+            return entries[0]["label"]
+    return "NOT_ENOUGH_INFO"
+
+
+def gold_docs(claim):
+    return {int(k) for k in claim.get("evidence", {}).keys()}
+
+
+def recall_at_k(ranked, claims, k):
+    hits, total = 0, 0
+    for claim, ranking in zip(claims, ranked):
+        gold = gold_docs(claim)
+        if not gold:
+            continue
+        total += 1
+        hits += len(gold & set(ranking[:k])) / len(gold)
+    return hits / total
+
+
+def retrieve(top_k=10):
+    import faiss
+    from rank_bm25 import BM25Okapi
+    from sentence_transformers import SentenceTransformer
+
+    _, claims, docs, doc_ids = load()
+    queries = [c["claim"] for c in claims]
+
+    # Sparse baseline: BM25
+    bm25 = BM25Okapi([d.lower().split() for d in docs])
+    bm25_ranked = []
+    for q in queries:
+        scores = bm25.get_scores(q.lower().split())
+        bm25_ranked.append([doc_ids[i] for i in np.argsort(-scores)[:top_k]])
+
+    # Dense baseline: BGE embeddings + FAISS inner product (cosine on normalised vectors)
+    model = SentenceTransformer(EMBED_MODEL)
+    doc_emb = model.encode(docs, batch_size=64, normalize_embeddings=True, show_progress_bar=True)
+    q_emb = model.encode([QUERY_PREFIX + q for q in queries], normalize_embeddings=True)
+    index = faiss.IndexFlatIP(doc_emb.shape[1])
+    index.add(np.asarray(doc_emb, dtype="float32"))
+    _, idx = index.search(np.asarray(q_emb, dtype="float32"), top_k)
+    dense_ranked = [[doc_ids[i] for i in row] for row in idx]
+
+    results = {}
+    for name, ranked in [("bm25", bm25_ranked), ("dense_bge_small", dense_ranked)]:
+        results[name] = {f"recall@{k}": round(recall_at_k(ranked, claims, k), 4) for k in (1, 3, 5, 10)}
+    print(json.dumps(results, indent=2))
+
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    with open(os.path.join(RESULTS_DIR, "week1_retrieval.json"), "w") as f:
+        json.dump(results, f, indent=2)
+    with open(os.path.join(RESULTS_DIR, "dense_rankings.json"), "w") as f:
+        json.dump({str(c["id"]): r for c, r in zip(claims, dense_ranked)}, f)
+
+
+def parse_label(text):
+    t = text.upper()
+    if "CONTRADICT" in t or "REFUTE" in t:
+        return "CONTRADICT"
+    if "SUPPORT" in t:
+        return "SUPPORT"
+    return "NOT_ENOUGH_INFO"
+
+
+def verify(n_docs=3):
+    import torch
+    from sklearn.metrics import accuracy_score, f1_score
+    from tqdm import tqdm
+    from transformers import pipeline
+
+    corpus, claims, _, _ = load()
+    by_id = {d["doc_id"]: d for d in corpus}
+    with open(os.path.join(RESULTS_DIR, "dense_rankings.json")) as f:
+        rankings = json.load(f)
+
+    # float16 on GPU; bfloat16 on CPU (fits in ~3 GB RAM; float32 needs >7 GB)
+    if torch.cuda.is_available():
+        generator = pipeline("text-generation", model=LLM_MODEL,
+                             dtype=torch.float16, device_map="auto")
+    else:
+        generator = pipeline("text-generation", model=LLM_MODEL, dtype=torch.bfloat16, device="cpu")
+
+    gold, pred, grounded, records = [], [], [], []
+    for claim in tqdm(claims):
+        top = rankings[str(claim["id"])][:n_docs]
+        context = "\n\n".join(
+            f"[{i + 1}] {by_id[d]['title']}. {' '.join(by_id[d]['abstract'])}" for i, d in enumerate(top))
+        messages = [
+            {"role": "system", "content": "You verify scientific claims against abstracts. "
+             "Answer with exactly one word: SUPPORT, CONTRADICT or NOT_ENOUGH_INFO."},
+            {"role": "user", "content": f"Abstracts:\n{context}\n\nClaim: {claim['claim']}\n\nAnswer:"},
+        ]
+        out = generator(messages, max_new_tokens=8, do_sample=False)
+        answer = out[0]["generated_text"][-1]["content"]
+        g, p = gold_label(claim), parse_label(answer)
+        gold.append(g)
+        pred.append(p)
+        if gold_docs(claim):
+            grounded.append(bool(gold_docs(claim) & set(top)))
+        records.append({"id": claim["id"], "gold": g, "pred": p, "raw": answer, "top_docs": top})
+
+    results = {
+        "llm": LLM_MODEL,
+        "n_claims": len(gold),
+        "accuracy": round(accuracy_score(gold, pred), 4),
+        "macro_f1": round(f1_score(gold, pred, labels=LABELS, average="macro"), 4),
+        "gold_doc_in_context_rate": round(float(np.mean(grounded)), 4),
+    }
+    print(json.dumps(results, indent=2))
+    with open(os.path.join(RESULTS_DIR, "week1_verification.json"), "w") as f:
+        json.dump({"summary": results, "predictions": records}, f, indent=2)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--step", choices=["download", "retrieve", "verify"], required=True)
+    args = parser.parse_args()
+    {"download": download, "retrieve": retrieve, "verify": verify}[args.step]()

@@ -1,0 +1,9 @@
+torch
+transformers>=4.43
+accelerate
+sentence-transformers>=3.0
+faiss-cpu
+rank-bm25
+numpy
+scikit-learn
+tqdm
