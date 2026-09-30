@@ -8,6 +8,11 @@ Usage (runs on CPU; a GPU such as a Colab/Kaggle T4 is faster):
     python week1_baseline.py --step download
     python week1_baseline.py --step retrieve
     python week1_baseline.py --step verify
+
+Week 2+: run the same pipeline on a corrupted corpus from corrupt_corpus.py. Results go to
+results/<name>/ (name defaults to the corpus folder), leaving the Week 1 files untouched:
+    python week1_baseline.py --step retrieve --corpus data/corrupted/<name>/corpus.jsonl
+    python week1_baseline.py --step verify --corpus data/corrupted/<name>/corpus.jsonl
 """
 import argparse
 import json
@@ -19,6 +24,7 @@ import numpy as np
 
 DATA_URL = "https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz"
 DATA_DIR = "data"
+CLEAN_CORPUS = os.path.join(DATA_DIR, "data", "corpus.jsonl")
 RESULTS_DIR = "results"
 EMBED_MODEL = "BAAI/bge-small-en-v1.5"
 QUERY_PREFIX = "Represent this sentence for searching relevant passages: "
@@ -41,13 +47,42 @@ def download():
     print("Files:", os.listdir(os.path.join(DATA_DIR, "data")))
 
 
-def load():
-    root = os.path.join(DATA_DIR, "data")
-    corpus = read_jsonl(os.path.join(root, "corpus.jsonl"))
-    claims = read_jsonl(os.path.join(root, "claims_dev.jsonl"))
+def output_paths(corpus_path, out):
+    """Week 1 file names for the clean corpus; results/<out>/ for anything else."""
+    if out is None and os.path.abspath(corpus_path) == os.path.abspath(CLEAN_CORPUS):
+        return {"retrieval": os.path.join(RESULTS_DIR, "week1_retrieval.json"),
+                "rankings": os.path.join(RESULTS_DIR, "dense_rankings.json"),
+                "verification": os.path.join(RESULTS_DIR, "week1_verification.json")}
+    folder = os.path.join(RESULTS_DIR, out or os.path.basename(os.path.dirname(os.path.abspath(corpus_path))))
+    return {"retrieval": os.path.join(folder, "retrieval.json"),
+            "rankings": os.path.join(folder, "dense_rankings.json"),
+            "verification": os.path.join(folder, "verification.json")}
+
+
+def load(corpus_path=CLEAN_CORPUS):
+    corpus = read_jsonl(corpus_path)
+    claims = read_jsonl(os.path.join(DATA_DIR, "data", "claims_dev.jsonl"))
     docs = [d["title"] + ". " + " ".join(d["abstract"]) for d in corpus]
     doc_ids = [d["doc_id"] for d in corpus]
     return corpus, claims, docs, doc_ids
+
+
+def parent_of(corpus):
+    """Chunks (corrupt_corpus.py --defect chunk) map to the document they were cut from;
+    every other record, including duplicate and stale copies, is its own document."""
+    return {d["doc_id"]: d.get("parent_doc_id", d["doc_id"]) for d in corpus}
+
+
+def to_docs(ranking, parent, k):
+    """First k distinct documents in a ranking of corpus records."""
+    seen = []
+    for rid in ranking:
+        p = parent[rid]
+        if p not in seen:
+            seen.append(p)
+            if len(seen) == k:
+                break
+    return seen
 
 
 def gold_label(claim):
@@ -73,12 +108,15 @@ def recall_at_k(ranked, claims, k):
     return hits / total
 
 
-def retrieve(top_k=10):
+def retrieve(corpus_path=CLEAN_CORPUS, out=None, top_k=10):
     import faiss
     from rank_bm25 import BM25Okapi
     from sentence_transformers import SentenceTransformer
 
-    _, claims, docs, doc_ids = load()
+    corpus, claims, docs, doc_ids = load(corpus_path)
+    parent = parent_of(corpus)
+    # Chunked corpora need a deeper record ranking to fill top_k distinct documents.
+    depth = top_k if all(p == r for r, p in parent.items()) else min(len(docs), top_k * 30)
     queries = [c["claim"] for c in claims]
 
     # Sparse baseline: BM25
@@ -86,7 +124,7 @@ def retrieve(top_k=10):
     bm25_ranked = []
     for q in queries:
         scores = bm25.get_scores(q.lower().split())
-        bm25_ranked.append([doc_ids[i] for i in np.argsort(-scores)[:top_k]])
+        bm25_ranked.append([doc_ids[i] for i in np.argsort(-scores)[:depth]])
 
     # Dense baseline: BGE embeddings + FAISS inner product (cosine on normalised vectors)
     model = SentenceTransformer(EMBED_MODEL)
@@ -94,19 +132,22 @@ def retrieve(top_k=10):
     q_emb = model.encode([QUERY_PREFIX + q for q in queries], normalize_embeddings=True)
     index = faiss.IndexFlatIP(doc_emb.shape[1])
     index.add(np.asarray(doc_emb, dtype="float32"))
-    _, idx = index.search(np.asarray(q_emb, dtype="float32"), top_k)
+    _, idx = index.search(np.asarray(q_emb, dtype="float32"), depth)
     dense_ranked = [[doc_ids[i] for i in row] for row in idx]
 
     results = {}
     for name, ranked in [("bm25", bm25_ranked), ("dense_bge_small", dense_ranked)]:
-        results[name] = {f"recall@{k}": round(recall_at_k(ranked, claims, k), 4) for k in (1, 3, 5, 10)}
+        doc_ranked = [to_docs(r, parent, top_k) for r in ranked]
+        results[name] = {f"recall@{k}": round(recall_at_k(doc_ranked, claims, k), 4) for k in (1, 3, 5, 10)}
     print(json.dumps(results, indent=2))
 
-    os.makedirs(RESULTS_DIR, exist_ok=True)
-    with open(os.path.join(RESULTS_DIR, "week1_retrieval.json"), "w") as f:
+    paths = output_paths(corpus_path, out)
+    os.makedirs(os.path.dirname(paths["retrieval"]), exist_ok=True)
+    with open(paths["retrieval"], "w") as f:
         json.dump(results, f, indent=2)
-    with open(os.path.join(RESULTS_DIR, "dense_rankings.json"), "w") as f:
-        json.dump({str(c["id"]): r for c, r in zip(claims, dense_ranked)}, f)
+    # Record ids (chunk ids for a chunked corpus): these are what verify puts in the LLM context.
+    with open(paths["rankings"], "w") as f:
+        json.dump({str(c["id"]): r[:top_k] for c, r in zip(claims, dense_ranked)}, f)
 
 
 def parse_label(text):
@@ -118,15 +159,17 @@ def parse_label(text):
     return "NOT_ENOUGH_INFO"
 
 
-def verify(n_docs=3):
+def verify(corpus_path=CLEAN_CORPUS, out=None, n_docs=3):
     import torch
     from sklearn.metrics import accuracy_score, f1_score
     from tqdm import tqdm
     from transformers import pipeline
 
-    corpus, claims, _, _ = load()
+    corpus, claims, _, _ = load(corpus_path)
     by_id = {d["doc_id"]: d for d in corpus}
-    with open(os.path.join(RESULTS_DIR, "dense_rankings.json")) as f:
+    parent = parent_of(corpus)
+    paths = output_paths(corpus_path, out)
+    with open(paths["rankings"]) as f:
         rankings = json.load(f)
 
     # float16 on GPU; bfloat16 on CPU (fits in ~3 GB RAM; float32 needs >7 GB)
@@ -151,9 +194,13 @@ def verify(n_docs=3):
         g, p = gold_label(claim), parse_label(answer)
         gold.append(g)
         pred.append(p)
+        top_parents = {parent[d] for d in top}
         if gold_docs(claim):
-            grounded.append(bool(gold_docs(claim) & set(top)))
-        records.append({"id": claim["id"], "gold": g, "pred": p, "raw": answer, "top_docs": top})
+            grounded.append(bool(gold_docs(claim) & top_parents))
+        record = {"id": claim["id"], "gold": g, "pred": p, "raw": answer, "top_docs": top}
+        if top_parents != set(top):
+            record["top_parent_docs"] = sorted(top_parents)
+        records.append(record)
 
     results = {
         "llm": LLM_MODEL,
@@ -163,12 +210,17 @@ def verify(n_docs=3):
         "gold_doc_in_context_rate": round(float(np.mean(grounded)), 4),
     }
     print(json.dumps(results, indent=2))
-    with open(os.path.join(RESULTS_DIR, "week1_verification.json"), "w") as f:
+    with open(paths["verification"], "w") as f:
         json.dump({"summary": results, "predictions": records}, f, indent=2)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--step", choices=["download", "retrieve", "verify"], required=True)
+    parser.add_argument("--corpus", default=CLEAN_CORPUS, help="corpus.jsonl to retrieve from")
+    parser.add_argument("--out", help="results subfolder name (default: the corpus folder name)")
     args = parser.parse_args()
-    {"download": download, "retrieve": retrieve, "verify": verify}[args.step]()
+    if args.step == "download":
+        download()
+    else:
+        {"retrieve": retrieve, "verify": verify}[args.step](args.corpus, args.out)

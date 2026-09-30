@@ -1,9 +1,11 @@
-torch
-transformers>=4.43
+# Versions that produced the reported Week 1 numbers (see README, "Environment").
+torch==2.14.0
+transformers==5.17.0
+sentence-transformers==6.1.0
+faiss-cpu==1.15.1
+scikit-learn==1.8.0
+# Versions of these were not recorded for the Week 1 run.
 accelerate
-sentence-transformers>=3.0
-faiss-cpu
 rank-bm25
 numpy
-scikit-learn
 tqdm

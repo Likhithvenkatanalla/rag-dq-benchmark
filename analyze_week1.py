@@ -3,7 +3,9 @@ verification accuracy split by whether the gold abstract reached the LLM context
 
 Usage (after week1_baseline.py --step verify):
     python analyze_week1.py
+    python analyze_week1.py --run <name>   # a corrupted-corpus run in results/<name>/
 """
+import argparse
 import json
 import os
 from collections import Counter
@@ -15,7 +17,17 @@ RESULTS_DIR = "results"
 
 
 def main():
-    with open(os.path.join(RESULTS_DIR, "week1_verification.json")) as f:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--run", help="results subfolder of a corrupted-corpus run (default: Week 1)")
+    args = parser.parse_args()
+    if args.run:
+        src = os.path.join(RESULTS_DIR, args.run, "verification.json")
+        dst = os.path.join(RESULTS_DIR, args.run, "analysis.json")
+    else:
+        src = os.path.join(RESULTS_DIR, "week1_verification.json")
+        dst = os.path.join(RESULTS_DIR, "week1_analysis.json")
+
+    with open(src) as f:
         preds = json.load(f)["predictions"]
     with open(os.path.join("data", "data", "claims_dev.jsonl")) as f:
         claims = {c["id"]: c for c in (json.loads(l) for l in f if l.strip())}
@@ -31,7 +43,9 @@ def main():
         gdocs = {int(k) for k in claims[rec["id"]].get("evidence", {})}
         if not gdocs:
             continue
-        (in_ctx if gdocs & set(rec["top_docs"]) else out_ctx).append(rec["gold"] == rec["pred"])
+        # top_parent_docs is present for chunked corpora (top_docs are then chunk ids)
+        top = set(rec.get("top_parent_docs", rec["top_docs"]))
+        (in_ctx if gdocs & top else out_ctx).append(rec["gold"] == rec["pred"])
 
     out = {
         "gold_distribution": dict(Counter(gold)),
@@ -51,7 +65,7 @@ def main():
         },
     }
     print(json.dumps(out, indent=2))
-    with open(os.path.join(RESULTS_DIR, "week1_analysis.json"), "w") as fh:
+    with open(dst, "w") as fh:
         json.dump(out, fh, indent=2)
 
 

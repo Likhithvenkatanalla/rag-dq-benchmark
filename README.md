@@ -48,6 +48,39 @@ transformers 5.17.0, sentence-transformers 6.1.0, faiss-cpu 1.15.1, scikit-learn
 The LLM runs in bfloat16 on CPU (float16 on GPU). Decoding is greedy, so results are deterministic
 up to numerical differences across hardware. Runtime: dense encoding about 11 min, verification about 21 min.
 
+## Week 2: corrupted corpora (tooling ready, experiments not yet run)
+
+`corrupt_corpus.py` writes a corrupted copy of the corpus to `data/corrupted/<name>/`, with a
+`manifest.json` listing every changed document. Claims and gold labels are never changed.
+
+| Defect | What it does | Options |
+|---|---|---|
+| `duplicate` | adds near-duplicate copies (one sentence dropped, ~5% of words deleted, one word pair swapped per sentence) | `--rate`, `--copies` |
+| `parse` | replaces documents in place with a broken parse: truncated mid-text, sentence order scrambled, or OCR-style character noise | `--rate` |
+| `stale` | adds a conflicting copy with directional findings flipped by rule (increased/decreased, higher/lower, "is associated" to "is not associated", ...) | `--rate` |
+| `chunk` | splits every abstract into chunks of N sentences | `--chunk-size` |
+
+`--target gold` (default) samples only from the 184 documents that are gold evidence for a dev
+claim, so the defects reach the evaluated claims; `--target all` samples from the whole corpus.
+`--seed` (default 0) makes every corruption reproducible.
+
+```bash
+python corrupt_corpus.py --defect stale --rate 0.25      # -> data/corrupted/stale_r0.25_gold_s0/
+python week1_baseline.py --step retrieve --corpus data/corrupted/stale_r0.25_gold_s0/corpus.jsonl
+python week1_baseline.py --step verify   --corpus data/corrupted/stale_r0.25_gold_s0/corpus.jsonl
+python analyze_week1.py --run stale_r0.25_gold_s0        # results in results/stale_r0.25_gold_s0/
+```
+
+Models, prompt and decoding are identical to Week 1, so any change comes from the corpus.
+Scoring rules: a duplicate or stale copy is a different document, so retrieving it does not
+count as retrieving the gold abstract. A chunk counts as its parent document, and recall@k is
+computed over the first k distinct parent documents. The LLM context is still the top-3
+retrieved records (chunks, for a chunked corpus).
+
+Known limitation: the `stale` flips are rule-based. At rate 0.5 with seed 0, 17 of 91 stale
+copies had no matching words and are identical to the original (reported as
+`stale_copies_without_edits` in the manifest).
+
 ## Roadmap
 
 - Week 2: inject controlled corpus defects (near-duplicates, truncated/garbled parsing, stale
