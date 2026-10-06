@@ -95,14 +95,30 @@
     "bm25_recall@1": 0.5301,
     "bm25_recall@3": 0.7544,
     "bm25_recall@5": 0.8121,
-    "bm25_recall@10": 0.8825
+    "bm25_recall@10": 0.8825,
+    "dense_bge_small_recall@1": 0.6219,
+    "dense_bge_small_recall@3": 0.8543,
+    "dense_bge_small_recall@5": 0.8971,
+    "dense_bge_small_recall@10": 0.9569,
+    "accuracy": 0.55,
+    "macro_f1": 0.4938,
+    "gold_doc_in_context_rate": 0.8723,
+    "stale_copies_without_edits": 13
   },
   {
     "run": "stale_r0.5_gold_s0",
     "bm25_recall@1": 0.4663,
     "bm25_recall@3": 0.7527,
     "bm25_recall@5": 0.8036,
-    "bm25_recall@10": 0.8825
+    "bm25_recall@10": 0.8825,
+    "dense_bge_small_recall@1": 0.5514,
+    "dense_bge_small_recall@3": 0.8459,
+    "dense_bge_small_recall@5": 0.8971,
+    "dense_bge_small_recall@10": 0.9569,
+    "accuracy": 0.56,
+    "macro_f1": 0.5027,
+    "gold_doc_in_context_rate": 0.867,
+    "stale_copies_without_edits": 17
   },
   {
     "run": "chunk_1",
@@ -130,6 +146,13 @@
     "bm25_recall@1": 0.5833,
     "bm25_recall@3": 0.7544,
     "bm25_recall@5": 0.8014,
-    "bm25_recall@10": 0.8506
+    "bm25_recall@10": 0.8506,
+    "dense_bge_small_recall@1": 0.7493,
+    "dense_bge_small_recall@3": 0.8824,
+    "dense_bge_small_recall@5": 0.9024,
+    "dense_bge_small_recall@10": 0.9596,
+    "accuracy": 0.5433,
+    "macro_f1": 0.4943,
+    "gold_doc_in_context_rate": 0.867
   }
 ]
