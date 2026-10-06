@@ -1,0 +1,19 @@
+{
+  "args": {
+    "defect": "chunk",
+    "rate": null,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": 3,
+    "seed": 0,
+    "name": null
+  },
+  "clean_docs": 5183,
+  "corrupted_docs": 17031,
+  "changes": [
+    {
+      "n_docs": 5183,
+      "n_chunks": 17031
+    }
+  ]
+}
