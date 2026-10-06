@@ -4,5 +4,11 @@
     "recall@3": 0.7704,
     "recall@5": 0.8187,
     "recall@10": 0.8825
+  },
+  "dense_bge_small": {
+    "recall@1": 0.7442,
+    "recall@3": 0.8574,
+    "recall@5": 0.8971,
+    "recall@10": 0.9569
   }
 }

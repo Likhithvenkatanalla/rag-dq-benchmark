@@ -1,0 +1,4402 @@
+{
+  "summary": {
+    "llm": "Qwen/Qwen2.5-1.5B-Instruct",
+    "n_claims": 300,
+    "accuracy": 0.5833,
+    "macro_f1": 0.538,
+    "gold_doc_in_context_rate": 0.8617
+  },
+  "predictions": [
+    {
+      "id": 1,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198315548,
+        198315546,
+        198332867
+      ],
+      "top_parent_docs": [
+        4346436,
+        17388232
+      ]
+    },
+    {
+      "id": 3,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198335614,
+        198325004,
+        198330249
+      ],
+      "top_parent_docs": [
+        10944947,
+        14717500,
+        20375264
+      ]
+    },
+    {
+      "id": 5,
+      "gold": "SUPPORT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198343880,
+        198335135,
+        198335129
+      ],
+      "top_parent_docs": [
+        19945096,
+        27063470
+      ]
+    },
+    {
+      "id": 13,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198320948,
+        198311005,
+        198311016
+      ],
+      "top_parent_docs": [
+        1263446,
+        7662395
+      ]
+    },
+    {
+      "id": 36,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198334027,
+        198337254,
+        198331187
+      ],
+      "top_parent_docs": [
+        15615957,
+        18557974,
+        21636085
+      ]
+    },
+    {
+      "id": 42,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198333645,
+        198333657,
+        198333650
+      ],
+      "top_parent_docs": [
+        18174210
+      ]
+    },
+    {
+      "id": 48,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325434,
+        198328587,
+        198318309
+      ],
+      "top_parent_docs": [
+        5850219,
+        11349166,
+        13734012
+      ]
+    },
+    {
+      "id": 49,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198318434,
+        198318433,
+        198318436
+      ],
+      "top_parent_docs": [
+        5953485
+      ]
+    },
+    {
+      "id": 50,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327113,
+        198327115,
+        198327114
+      ],
+      "top_parent_docs": [
+        12580014
+      ]
+    },
+    {
+      "id": 51,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198352813,
+        198352814,
+        198352810
+      ],
+      "top_parent_docs": [
+        45638119
+      ]
+    },
+    {
+      "id": 53,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198352813,
+        198352810,
+        198352814
+      ],
+      "top_parent_docs": [
+        45638119
+      ]
+    },
+    {
+      "id": 54,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198353186,
+        198353187,
+        198353185
+      ],
+      "top_parent_docs": [
+        49556906
+      ]
+    },
+    {
+      "id": 56,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198316821,
+        198316822,
+        198316824
+      ],
+      "top_parent_docs": [
+        4709641
+      ]
+    },
+    {
+      "id": 57,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198316821,
+        198316822,
+        198316824
+      ],
+      "top_parent_docs": [
+        4709641
+      ]
+    },
+    {
+      "id": 70,
+      "gold": "SUPPORT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198315953,
+        198346354,
+        198346357
+      ],
+      "top_parent_docs": [
+        4414547,
+        31624828
+      ]
+    },
+    {
+      "id": 72,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198318552,
+        198318554,
+        198318555
+      ],
+      "top_parent_docs": [
+        6076903
+      ]
+    },
+    {
+      "id": 75,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198315702,
+        198315703,
+        198349480
+      ],
+      "top_parent_docs": [
+        4387784,
+        37768883
+      ]
+    },
+    {
+      "id": 94,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198310919,
+        198344593,
+        198339687
+      ],
+      "top_parent_docs": [
+        1215116,
+        23848916,
+        27944135
+      ]
+    },
+    {
+      "id": 99,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198334202,
+        198352585,
+        198334201
+      ],
+      "top_parent_docs": [
+        18810195,
+        44947611
+      ]
+    },
+    {
+      "id": 100,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198315664,
+        198315669,
+        198315670
+      ],
+      "top_parent_docs": [
+        4381486
+      ]
+    },
+    {
+      "id": 113,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198318756,
+        198318751,
+        198318749
+      ],
+      "top_parent_docs": [
+        6157837
+      ]
+    },
+    {
+      "id": 115,
+      "gold": "CONTRADICT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198347332,
+        198347329,
+        198347335
+      ],
+      "top_parent_docs": [
+        33872649
+      ]
+    },
+    {
+      "id": 118,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198319093,
+        198319097,
+        198319094
+      ],
+      "top_parent_docs": [
+        6372244
+      ]
+    },
+    {
+      "id": 124,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198317004,
+        198317002,
+        198317003
+      ],
+      "top_parent_docs": [
+        4883040
+      ]
+    },
+    {
+      "id": 127,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198337188,
+        198337186,
+        198348025
+      ],
+      "top_parent_docs": [
+        21598000,
+        35231675
+      ]
+    },
+    {
+      "id": 128,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198339277,
+        198327086,
+        198310796
+      ],
+      "top_parent_docs": [
+        1122279,
+        12549585,
+        23513718
+      ]
+    },
+    {
+      "id": 129,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198344451,
+        198344462,
+        198344438
+      ],
+      "top_parent_docs": [
+        27768226
+      ]
+    },
+    {
+      "id": 130,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198344438,
+        198344441,
+        198344451
+      ],
+      "top_parent_docs": [
+        27768226
+      ]
+    },
+    {
+      "id": 132,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198312848,
+        198322686,
+        198314980
+      ],
+      "top_parent_docs": [
+        2443495,
+        3866315,
+        9159125
+      ]
+    },
+    {
+      "id": 133,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327179,
+        198333420,
+        198354540
+      ],
+      "top_parent_docs": [
+        12640810,
+        17934082,
+        86694016
+      ]
+    },
+    {
+      "id": 137,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198342994,
+        198342989,
+        198342996
+      ],
+      "top_parent_docs": [
+        26016929
+      ]
+    },
+    {
+      "id": 141,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198329859,
+        198329867,
+        198329858
+      ],
+      "top_parent_docs": [
+        14437255
+      ]
+    },
+    {
+      "id": 142,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198324531,
+        198324521,
+        198324524
+      ],
+      "top_parent_docs": [
+        10582939
+      ]
+    },
+    {
+      "id": 143,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198324531,
+        198324521,
+        198324524
+      ],
+      "top_parent_docs": [
+        10582939
+      ]
+    },
+    {
+      "id": 146,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198324531,
+        198324524,
+        198324528
+      ],
+      "top_parent_docs": [
+        10582939
+      ]
+    },
+    {
+      "id": 148,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198310764,
+        198310767,
+        198310765
+      ],
+      "top_parent_docs": [
+        1084345
+      ]
+    },
+    {
+      "id": 163,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198334258,
+        198334270,
+        198334268
+      ],
+      "top_parent_docs": [
+        18872233
+      ]
+    },
+    {
+      "id": 171,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198327250,
+        198327252,
+        198327251
+      ],
+      "top_parent_docs": [
+        12670680
+      ]
+    },
+    {
+      "id": 179,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198332957,
+        198343941,
+        198331933
+      ],
+      "top_parent_docs": [
+        16322674,
+        17450673,
+        27123743
+      ]
+    },
+    {
+      "id": 180,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198332513,
+        198332510,
+        198332512
+      ],
+      "top_parent_docs": [
+        16966326
+      ]
+    },
+    {
+      "id": 183,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327434,
+        198323965,
+        198323959
+      ],
+      "top_parent_docs": [
+        10078024,
+        12827098
+      ]
+    },
+    {
+      "id": 185,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198339315,
+        198338628,
+        198327654
+      ],
+      "top_parent_docs": [
+        13007205,
+        22975806,
+        23557241
+      ]
+    },
+    {
+      "id": 198,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198309203,
+        198312476,
+        198341422
+      ],
+      "top_parent_docs": [
+        92308,
+        2177022,
+        24995939
+      ]
+    },
+    {
+      "id": 208,
+      "gold": "SUPPORT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198328399,
+        198328398,
+        198328404
+      ],
+      "top_parent_docs": [
+        13519661
+      ]
+    },
+    {
+      "id": 212,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198322949,
+        198326083,
+        198321110
+      ],
+      "top_parent_docs": [
+        7808055,
+        9291668,
+        11935250
+      ]
+    },
+    {
+      "id": 213,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198343869,
+        198343865,
+        198343868
+      ],
+      "top_parent_docs": [
+        27054878
+      ]
+    },
+    {
+      "id": 216,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198336809,
+        198336810,
+        198336805
+      ],
+      "top_parent_docs": [
+        21366394
+      ]
+    },
+    {
+      "id": 217,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198336809,
+        198336810,
+        198336808
+      ],
+      "top_parent_docs": [
+        21366394
+      ]
+    },
+    {
+      "id": 218,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198336809,
+        198336810,
+        198336805
+      ],
+      "top_parent_docs": [
+        21366394
+      ]
+    },
+    {
+      "id": 219,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198336809,
+        198336810,
+        198336805
+      ],
+      "top_parent_docs": [
+        21366394
+      ]
+    },
+    {
+      "id": 230,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198313732,
+        198313733,
+        198313734
+      ],
+      "top_parent_docs": [
+        3067015
+      ]
+    },
+    {
+      "id": 232,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198320919,
+        198324420,
+        198324419
+      ],
+      "top_parent_docs": [
+        7655029,
+        10536636
+      ]
+    },
+    {
+      "id": 233,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198315726,
+        198315720,
+        198315722
+      ],
+      "top_parent_docs": [
+        4388470
+      ]
+    },
+    {
+      "id": 236,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198315726,
+        198315720,
+        198315719
+      ],
+      "top_parent_docs": [
+        4388470
+      ]
+    },
+    {
+      "id": 237,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327479,
+        198347692,
+        198327480
+      ],
+      "top_parent_docs": [
+        12881593,
+        34386619
+      ]
+    },
+    {
+      "id": 238,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198312559,
+        198338667,
+        198312183
+      ],
+      "top_parent_docs": [
+        2000038,
+        2251426,
+        23017040
+      ]
+    },
+    {
+      "id": 239,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198323263,
+        198342014,
+        198312888
+      ],
+      "top_parent_docs": [
+        2466614,
+        9559146,
+        25419778
+      ]
+    },
+    {
+      "id": 248,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198311504,
+        198311503,
+        198311506
+      ],
+      "top_parent_docs": [
+        1568684
+      ]
+    },
+    {
+      "id": 249,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198311504,
+        198311503,
+        198311502
+      ],
+      "top_parent_docs": [
+        1568684
+      ]
+    },
+    {
+      "id": 261,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198353084,
+        198353088,
+        198353093
+      ],
+      "top_parent_docs": [
+        46743299
+      ]
+    },
+    {
+      "id": 268,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198310594,
+        198310591,
+        198310592
+      ],
+      "top_parent_docs": [
+        970012
+      ]
+    },
+    {
+      "id": 269,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198310594,
+        198310591,
+        198310592
+      ],
+      "top_parent_docs": [
+        970012
+      ]
+    },
+    {
+      "id": 274,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325692,
+        198325689,
+        198325690
+      ],
+      "top_parent_docs": [
+        11614737
+      ]
+    },
+    {
+      "id": 275,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198317150,
+        198317151,
+        198317149
+      ],
+      "top_parent_docs": [
+        4961038
+      ]
+    },
+    {
+      "id": 279,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198329766,
+        198329763,
+        198329764
+      ],
+      "top_parent_docs": [
+        14376683
+      ]
+    },
+    {
+      "id": 294,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198342092,
+        198321638,
+        198310983
+      ],
+      "top_parent_docs": [
+        1256116,
+        8250852,
+        25462689
+      ]
+    },
+    {
+      "id": 295,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198345346,
+        198345345,
+        198335515
+      ],
+      "top_parent_docs": [
+        20310709,
+        29423324
+      ]
+    },
+    {
+      "id": 298,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198350254,
+        198342044,
+        198339171
+      ],
+      "top_parent_docs": [
+        23403754,
+        25439264,
+        39381118
+      ]
+    },
+    {
+      "id": 300,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198331763,
+        198331762,
+        198350925
+      ],
+      "top_parent_docs": [
+        16120395,
+        40721190
+      ]
+    },
+    {
+      "id": 303,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198315257,
+        198315254,
+        198315255
+      ],
+      "top_parent_docs": [
+        4085204
+      ]
+    },
+    {
+      "id": 312,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198329900,
+        198329902,
+        198329894
+      ],
+      "top_parent_docs": [
+        14464451
+      ]
+    },
+    {
+      "id": 314,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198310009,
+        198313229,
+        198313230
+      ],
+      "top_parent_docs": [
+        544971,
+        2638387
+      ]
+    },
+    {
+      "id": 324,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198337777,
+        198317487,
+        198342665
+      ],
+      "top_parent_docs": [
+        5260382,
+        22174015,
+        25827024
+      ]
+    },
+    {
+      "id": 327,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198333483,
+        198339802,
+        198339803
+      ],
+      "top_parent_docs": [
+        17997584,
+        23912923
+      ]
+    },
+    {
+      "id": 338,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198339093,
+        198339088,
+        198339091
+      ],
+      "top_parent_docs": [
+        23349986
+      ]
+    },
+    {
+      "id": 343,
+      "gold": "SUPPORT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198318361,
+        198318353,
+        198318359
+      ],
+      "top_parent_docs": [
+        5884524
+      ]
+    },
+    {
+      "id": 350,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198332467,
+        198332471,
+        198332469
+      ],
+      "top_parent_docs": [
+        16927286
+      ]
+    },
+    {
+      "id": 354,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198322373,
+        198322372,
+        198322370
+      ],
+      "top_parent_docs": [
+        8774475
+      ]
+    },
+    {
+      "id": 362,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198349796,
+        198349799,
+        198349797
+      ],
+      "top_parent_docs": [
+        38587347
+      ]
+    },
+    {
+      "id": 380,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198339254,
+        198343047,
+        198336809
+      ],
+      "top_parent_docs": [
+        21366394,
+        23509113,
+        26030079
+      ]
+    },
+    {
+      "id": 384,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198320397,
+        198314681,
+        198353260
+      ],
+      "top_parent_docs": [
+        3716075,
+        7285256,
+        51972698
+      ]
+    },
+    {
+      "id": 385,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198310700,
+        198310702,
+        198310701
+      ],
+      "top_parent_docs": [
+        1032372
+      ]
+    },
+    {
+      "id": 386,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198332064,
+        198332061,
+        198332063
+      ],
+      "top_parent_docs": [
+        16495649
+      ]
+    },
+    {
+      "id": 388,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198310831,
+        198310832,
+        198337202
+      ],
+      "top_parent_docs": [
+        1148122,
+        21602220
+      ]
+    },
+    {
+      "id": 399,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198310362,
+        198310360,
+        198310361
+      ],
+      "top_parent_docs": [
+        791050
+      ]
+    },
+    {
+      "id": 410,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198330535,
+        198330534,
+        198330537
+      ],
+      "top_parent_docs": [
+        14924526
+      ]
+    },
+    {
+      "id": 411,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198330535,
+        198330534,
+        198330537
+      ],
+      "top_parent_docs": [
+        14924526
+      ]
+    },
+    {
+      "id": 415,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198334240,
+        198353206,
+        198353207
+      ],
+      "top_parent_docs": [
+        18852643,
+        51386222
+      ]
+    },
+    {
+      "id": 421,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198310729,
+        198310727,
+        198332867
+      ],
+      "top_parent_docs": [
+        1065627,
+        17388232
+      ]
+    },
+    {
+      "id": 431,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198329969,
+        198335125,
+        198330440
+      ],
+      "top_parent_docs": [
+        14496749,
+        14848619,
+        19922508
+      ]
+    },
+    {
+      "id": 436,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198330108,
+        198330109,
+        198330110
+      ],
+      "top_parent_docs": [
+        14637235
+      ]
+    },
+    {
+      "id": 437,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198318146,
+        198318485,
+        198309089
+      ],
+      "top_parent_docs": [
+        5836,
+        5765455,
+        6000423
+      ]
+    },
+    {
+      "id": 439,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198316131,
+        198317102,
+        198317101
+      ],
+      "top_parent_docs": [
+        4423559,
+        4932668
+      ]
+    },
+    {
+      "id": 440,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198316131,
+        198317102,
+        198334049
+      ],
+      "top_parent_docs": [
+        4423559,
+        4932668,
+        18575183
+      ]
+    },
+    {
+      "id": 443,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198324009,
+        198324012,
+        198324006
+      ],
+      "top_parent_docs": [
+        10165258
+      ]
+    },
+    {
+      "id": 452,
+      "gold": "CONTRADICT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198322776,
+        198322680,
+        198353532
+      ],
+      "top_parent_docs": [
+        9154703,
+        9196472,
+        54561709
+      ]
+    },
+    {
+      "id": 475,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198354991,
+        198318538,
+        198339336
+      ],
+      "top_parent_docs": [
+        6061927,
+        23576165,
+        195689757
+      ]
+    },
+    {
+      "id": 478,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198330310,
+        198330307,
+        198330308
+      ],
+      "top_parent_docs": [
+        14767844
+      ]
+    },
+    {
+      "id": 491,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198353588,
+        198353586,
+        198353585
+      ],
+      "top_parent_docs": [
+        56893404
+      ]
+    },
+    {
+      "id": 501,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198333404,
+        198333401,
+        198333389
+      ],
+      "top_parent_docs": [
+        17930286
+      ]
+    },
+    {
+      "id": 502,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198336777,
+        198348437,
+        198348438
+      ],
+      "top_parent_docs": [
+        21323587,
+        36211049
+      ]
+    },
+    {
+      "id": 507,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198320524,
+        198320528,
+        198320529
+      ],
+      "top_parent_docs": [
+        7433668
+      ]
+    },
+    {
+      "id": 508,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198342195,
+        198342193,
+        198342194
+      ],
+      "top_parent_docs": [
+        25516011
+      ]
+    },
+    {
+      "id": 513,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198327329,
+        198327336,
+        198327957
+      ],
+      "top_parent_docs": [
+        12770738,
+        13230773
+      ]
+    },
+    {
+      "id": 514,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198331885,
+        198331882,
+        198331879
+      ],
+      "top_parent_docs": [
+        16256507
+      ]
+    },
+    {
+      "id": 516,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198345445,
+        198345436,
+        198345438
+      ],
+      "top_parent_docs": [
+        29564505
+      ]
+    },
+    {
+      "id": 517,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198319037,
+        198333142,
+        198334874
+      ],
+      "top_parent_docs": [
+        6327940,
+        17656445,
+        19658917
+      ]
+    },
+    {
+      "id": 521,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198347905,
+        198347903,
+        198347901
+      ],
+      "top_parent_docs": [
+        34873974
+      ]
+    },
+    {
+      "id": 525,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198328515,
+        198328516,
+        198328513
+      ],
+      "top_parent_docs": [
+        13639330
+      ]
+    },
+    {
+      "id": 527,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198314976,
+        198311582,
+        198311581
+      ],
+      "top_parent_docs": [
+        1617327,
+        3863543
+      ]
+    },
+    {
+      "id": 528,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198317769,
+        198317774,
+        198339045
+      ],
+      "top_parent_docs": [
+        5476778,
+        23326722
+      ]
+    },
+    {
+      "id": 532,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327607,
+        198327598,
+        198327609
+      ],
+      "top_parent_docs": [
+        12991445
+      ]
+    },
+    {
+      "id": 533,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327607,
+        198327598,
+        198327609
+      ],
+      "top_parent_docs": [
+        12991445
+      ]
+    },
+    {
+      "id": 535,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198326130,
+        198326138,
+        198326131
+      ],
+      "top_parent_docs": [
+        11953232
+      ]
+    },
+    {
+      "id": 536,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198331680,
+        198331678,
+        198331679
+      ],
+      "top_parent_docs": [
+        16056514
+      ]
+    },
+    {
+      "id": 539,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198328054,
+        198328042,
+        198328050
+      ],
+      "top_parent_docs": [
+        13282296
+      ]
+    },
+    {
+      "id": 540,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198330331,
+        198325994,
+        198325993
+      ],
+      "top_parent_docs": [
+        11886686,
+        14782049
+      ]
+    },
+    {
+      "id": 544,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198324596,
+        198314293,
+        198312116
+      ],
+      "top_parent_docs": [
+        1970884,
+        3493623,
+        10627801
+      ]
+    },
+    {
+      "id": 549,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198323076,
+        198323077,
+        198312602
+      ],
+      "top_parent_docs": [
+        2274272,
+        9433958
+      ]
+    },
+    {
+      "id": 551,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198322495,
+        198322490,
+        198322489
+      ],
+      "top_parent_docs": [
+        8903143
+      ]
+    },
+    {
+      "id": 552,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198311387,
+        198311385,
+        198311392
+      ],
+      "top_parent_docs": [
+        1471041
+      ]
+    },
+    {
+      "id": 554,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198317067,
+        198323689,
+        198352010
+      ],
+      "top_parent_docs": [
+        4911006,
+        9878167,
+        43054703
+      ]
+    },
+    {
+      "id": 560,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198342469,
+        198342478,
+        198336767
+      ],
+      "top_parent_docs": [
+        21320417,
+        25726838
+      ]
+    },
+    {
+      "id": 569,
+      "gold": "SUPPORT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198313924,
+        198339231,
+        198313923
+      ],
+      "top_parent_docs": [
+        3155731,
+        23460562
+      ]
+    },
+    {
+      "id": 575,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198324160,
+        198316054,
+        198316056
+      ],
+      "top_parent_docs": [
+        4421746,
+        10300888
+      ]
+    },
+    {
+      "id": 577,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198336910,
+        198315114,
+        198315108
+      ],
+      "top_parent_docs": [
+        3930020,
+        21392703
+      ]
+    },
+    {
+      "id": 578,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198322360,
+        198322359,
+        198322357
+      ],
+      "top_parent_docs": [
+        8764879
+      ]
+    },
+    {
+      "id": 587,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198320193,
+        198320197,
+        198320196
+      ],
+      "top_parent_docs": [
+        7142113
+      ]
+    },
+    {
+      "id": 589,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325052,
+        198325042,
+        198325041
+      ],
+      "top_parent_docs": [
+        10984005
+      ]
+    },
+    {
+      "id": 593,
+      "gold": "SUPPORT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198334903,
+        198334899,
+        198334907
+      ],
+      "top_parent_docs": [
+        19675911
+      ]
+    },
+    {
+      "id": 597,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198342515,
+        198348697,
+        198327337
+      ],
+      "top_parent_docs": [
+        12779444,
+        25742130,
+        36355784
+      ]
+    },
+    {
+      "id": 598,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198353921,
+        198342514,
+        198342520
+      ],
+      "top_parent_docs": [
+        25742130,
+        76415938
+      ]
+    },
+    {
+      "id": 613,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198323388,
+        198323383,
+        198323385
+      ],
+      "top_parent_docs": [
+        9638032
+      ]
+    },
+    {
+      "id": 619,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198351853,
+        198316351,
+        198346849
+      ],
+      "top_parent_docs": [
+        4460880,
+        32742683,
+        42601237
+      ]
+    },
+    {
+      "id": 623,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198342293,
+        198342286,
+        198342285
+      ],
+      "top_parent_docs": [
+        25599283
+      ]
+    },
+    {
+      "id": 628,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198345170,
+        198345171,
+        198340634
+      ],
+      "top_parent_docs": [
+        24512064,
+        29134911
+      ]
+    },
+    {
+      "id": 636,
+      "gold": "SUPPORT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198340348,
+        198340347,
+        198340344
+      ],
+      "top_parent_docs": [
+        24294572
+      ]
+    },
+    {
+      "id": 637,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198346109,
+        198318688,
+        198318694
+      ],
+      "top_parent_docs": [
+        6129301,
+        31019903
+      ]
+    },
+    {
+      "id": 641,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198318369,
+        198318379,
+        198318367
+      ],
+      "top_parent_docs": [
+        5912283
+      ]
+    },
+    {
+      "id": 644,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198328468,
+        198328477,
+        198328484
+      ],
+      "top_parent_docs": [
+        13619127
+      ]
+    },
+    {
+      "id": 649,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198327361,
+        198328995,
+        198328984
+      ],
+      "top_parent_docs": [
+        12789595,
+        13906581
+      ]
+    },
+    {
+      "id": 659,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198310919,
+        198333488,
+        198333489
+      ],
+      "top_parent_docs": [
+        1215116,
+        18025240
+      ]
+    },
+    {
+      "id": 660,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198336607,
+        198310919,
+        198329619
+      ],
+      "top_parent_docs": [
+        1215116,
+        14296612,
+        21239672
+      ]
+    },
+    {
+      "id": 674,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198312331,
+        198323638,
+        198320933
+      ],
+      "top_parent_docs": [
+        2095573,
+        7662206,
+        9814332
+      ]
+    },
+    {
+      "id": 684,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327480,
+        198347692,
+        198327479
+      ],
+      "top_parent_docs": [
+        12881593,
+        34386619
+      ]
+    },
+    {
+      "id": 690,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198339965,
+        198328431,
+        198343479
+      ],
+      "top_parent_docs": [
+        13580614,
+        24042919,
+        26409363
+      ]
+    },
+    {
+      "id": 691,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198347053,
+        198347057,
+        198347051
+      ],
+      "top_parent_docs": [
+        33076846
+      ]
+    },
+    {
+      "id": 692,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198340028,
+        198340029,
+        198340025
+      ],
+      "top_parent_docs": [
+        24088502
+      ]
+    },
+    {
+      "id": 693,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198340029,
+        198340028,
+        198340019
+      ],
+      "top_parent_docs": [
+        24088502
+      ]
+    },
+    {
+      "id": 700,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198315572,
+        198315566,
+        198315567
+      ],
+      "top_parent_docs": [
+        4350400
+      ]
+    },
+    {
+      "id": 702,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198315572,
+        198315566,
+        198315569
+      ],
+      "top_parent_docs": [
+        4350400
+      ]
+    },
+    {
+      "id": 715,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198312180,
+        198312183,
+        198312185
+      ],
+      "top_parent_docs": [
+        2000038
+      ]
+    },
+    {
+      "id": 716,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198312185,
+        198312183,
+        198312180
+      ],
+      "top_parent_docs": [
+        2000038
+      ]
+    },
+    {
+      "id": 718,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198333070,
+        198334298,
+        198333067
+      ],
+      "top_parent_docs": [
+        17587795,
+        18895793
+      ]
+    },
+    {
+      "id": 721,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198311904,
+        198311903,
+        198327252
+      ],
+      "top_parent_docs": [
+        1834762,
+        12670680
+      ]
+    },
+    {
+      "id": 723,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198317848,
+        198317847,
+        198317845
+      ],
+      "top_parent_docs": [
+        5531479
+      ]
+    },
+    {
+      "id": 727,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198348763,
+        198348765,
+        198348762
+      ],
+      "top_parent_docs": [
+        36444198
+      ]
+    },
+    {
+      "id": 728,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198348763,
+        198348765,
+        198348762
+      ],
+      "top_parent_docs": [
+        36444198
+      ]
+    },
+    {
+      "id": 729,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198343754,
+        198321488,
+        198321483
+      ],
+      "top_parent_docs": [
+        8133180,
+        26851674
+      ]
+    },
+    {
+      "id": 742,
+      "gold": "SUPPORT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198346532,
+        198346525,
+        198346526
+      ],
+      "top_parent_docs": [
+        32159283
+      ]
+    },
+    {
+      "id": 743,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198346532,
+        198346533,
+        198346526
+      ],
+      "top_parent_docs": [
+        32159283
+      ]
+    },
+    {
+      "id": 744,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198315265,
+        198315264,
+        198315262
+      ],
+      "top_parent_docs": [
+        4138659
+      ]
+    },
+    {
+      "id": 756,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198343972,
+        198313474,
+        198343970
+      ],
+      "top_parent_docs": [
+        2831620,
+        27134527
+      ]
+    },
+    {
+      "id": 759,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198311865,
+        198311863,
+        198311870
+      ],
+      "top_parent_docs": [
+        1805641
+      ]
+    },
+    {
+      "id": 768,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198311204,
+        198334733,
+        198334734
+      ],
+      "top_parent_docs": [
+        1373287,
+        19497526
+      ]
+    },
+    {
+      "id": 770,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198330974,
+        198330964,
+        198330971
+      ],
+      "top_parent_docs": [
+        15476777
+      ]
+    },
+    {
+      "id": 775,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198351982,
+        198351983,
+        198351981
+      ],
+      "top_parent_docs": [
+        43014661
+      ]
+    },
+    {
+      "id": 781,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198340421,
+        198340420,
+        198340424
+      ],
+      "top_parent_docs": [
+        24338780
+      ]
+    },
+    {
+      "id": 783,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198321609,
+        198340420,
+        198350081
+      ],
+      "top_parent_docs": [
+        8246922,
+        24338780,
+        39084565
+      ]
+    },
+    {
+      "id": 784,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198312709,
+        198312705,
+        198312706
+      ],
+      "top_parent_docs": [
+        2356950
+      ]
+    },
+    {
+      "id": 785,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198309150,
+        198309144,
+        198309152
+      ],
+      "top_parent_docs": [
+        54440
+      ]
+    },
+    {
+      "id": 793,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198339167,
+        198339169,
+        198322052
+      ],
+      "top_parent_docs": [
+        8551160,
+        23403754
+      ]
+    },
+    {
+      "id": 800,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198316727,
+        198322952,
+        198318506
+      ],
+      "top_parent_docs": [
+        4679264,
+        6040392,
+        9291668
+      ]
+    },
+    {
+      "id": 805,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198337798,
+        198337795,
+        198337794
+      ],
+      "top_parent_docs": [
+        22180793
+      ]
+    },
+    {
+      "id": 808,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198348836,
+        198348838,
+        198325818
+      ],
+      "top_parent_docs": [
+        11728637,
+        36606083
+      ]
+    },
+    {
+      "id": 811,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198334984,
+        198334991,
+        198334987
+      ],
+      "top_parent_docs": [
+        19799455
+      ]
+    },
+    {
+      "id": 814,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198347117,
+        198347115,
+        198347111
+      ],
+      "top_parent_docs": [
+        33387953
+      ]
+    },
+    {
+      "id": 820,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198310581,
+        198315387,
+        198333620
+      ],
+      "top_parent_docs": [
+        950306,
+        4313478,
+        18111172
+      ]
+    },
+    {
+      "id": 821,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198310581,
+        198312657,
+        198310679
+      ],
+      "top_parent_docs": [
+        950306,
+        1006165,
+        2319305
+      ]
+    },
+    {
+      "id": 823,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198330800,
+        198330810,
+        198330803
+      ],
+      "top_parent_docs": [
+        15319019
+      ]
+    },
+    {
+      "id": 830,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198310290,
+        198319051,
+        198310291
+      ],
+      "top_parent_docs": [
+        735130,
+        6333347
+      ]
+    },
+    {
+      "id": 831,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198329144,
+        198315928,
+        198320978
+      ],
+      "top_parent_docs": [
+        4411760,
+        7688110,
+        13936152
+      ]
+    },
+    {
+      "id": 832,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198345769,
+        198345768,
+        198345772
+      ],
+      "top_parent_docs": [
+        30303335
+      ]
+    },
+    {
+      "id": 834,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198338751,
+        198338757,
+        198338749
+      ],
+      "top_parent_docs": [
+        23100962
+      ]
+    },
+    {
+      "id": 837,
+      "gold": "SUPPORT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198311805,
+        198311815,
+        198311803
+      ],
+      "top_parent_docs": [
+        1780819
+      ]
+    },
+    {
+      "id": 839,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198311381,
+        198311380,
+        198311383
+      ],
+      "top_parent_docs": [
+        1469751
+      ]
+    },
+    {
+      "id": 845,
+      "gold": "SUPPORT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198323689,
+        198351999,
+        198312531
+      ],
+      "top_parent_docs": [
+        2236768,
+        9878167,
+        43054703
+      ]
+    },
+    {
+      "id": 847,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198332370,
+        198332369,
+        198332366
+      ],
+      "top_parent_docs": [
+        16787954
+      ]
+    },
+    {
+      "id": 852,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198321553,
+        198321555,
+        198321552
+      ],
+      "top_parent_docs": [
+        8190282
+      ]
+    },
+    {
+      "id": 859,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198312146,
+        198312145,
+        198312147
+      ],
+      "top_parent_docs": [
+        1982286
+      ]
+    },
+    {
+      "id": 870,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198325736,
+        198352048,
+        198325730
+      ],
+      "top_parent_docs": [
+        11630388,
+        43220289
+      ]
+    },
+    {
+      "id": 873,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198345571,
+        198345106,
+        198327800
+      ],
+      "top_parent_docs": [
+        13083189,
+        29025270,
+        29947146
+      ]
+    },
+    {
+      "id": 879,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198321836,
+        198321834,
+        198321835
+      ],
+      "top_parent_docs": [
+        8426046
+      ]
+    },
+    {
+      "id": 880,
+      "gold": "SUPPORT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198321836,
+        198336054,
+        198341965
+      ],
+      "top_parent_docs": [
+        8426046,
+        20725212,
+        25373397
+      ]
+    },
+    {
+      "id": 882,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198330341,
+        198330342,
+        198330340
+      ],
+      "top_parent_docs": [
+        14803797
+      ]
+    },
+    {
+      "id": 887,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198315366,
+        198317907,
+        198329329
+      ],
+      "top_parent_docs": [
+        4311206,
+        5567223,
+        14060030
+      ]
+    },
+    {
+      "id": 903,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198324622,
+        198324621,
+        198324623
+      ],
+      "top_parent_docs": [
+        10648422
+      ]
+    },
+    {
+      "id": 904,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198320450,
+        198320448,
+        198320445
+      ],
+      "top_parent_docs": [
+        7370282
+      ]
+    },
+    {
+      "id": 907,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198319897,
+        198319898,
+        198319896
+      ],
+      "top_parent_docs": [
+        6923961
+      ]
+    },
+    {
+      "id": 911,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325324,
+        198325320,
+        198325319
+      ],
+      "top_parent_docs": [
+        11254556
+      ]
+    },
+    {
+      "id": 913,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198353571,
+        198340095,
+        198353568
+      ],
+      "top_parent_docs": [
+        24150328,
+        56486733
+      ]
+    },
+    {
+      "id": 914,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198353571,
+        198353565,
+        198353566
+      ],
+      "top_parent_docs": [
+        56486733
+      ]
+    },
+    {
+      "id": 921,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198311633,
+        198311622,
+        198311623
+      ],
+      "top_parent_docs": [
+        1642727
+      ]
+    },
+    {
+      "id": 922,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198332623,
+        198332619,
+        198332614
+      ],
+      "top_parent_docs": [
+        17077004
+      ]
+    },
+    {
+      "id": 936,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198317782,
+        198317783,
+        198333835
+      ],
+      "top_parent_docs": [
+        5483793,
+        18348376
+      ]
+    },
+    {
+      "id": 956,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327592,
+        198327590,
+        198327588
+      ],
+      "top_parent_docs": [
+        12956194
+      ]
+    },
+    {
+      "id": 957,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198309271,
+        198329234,
+        198350910
+      ],
+      "top_parent_docs": [
+        123859,
+        13963620,
+        40667577
+      ]
+    },
+    {
+      "id": 960,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198322378,
+        198322383,
+        198322380
+      ],
+      "top_parent_docs": [
+        8780599
+      ]
+    },
+    {
+      "id": 967,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198322568,
+        198322566,
+        198322567
+      ],
+      "top_parent_docs": [
+        8997410
+      ]
+    },
+    {
+      "id": 971,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198344226,
+        198323554,
+        198334465
+      ],
+      "top_parent_docs": [
+        9764256,
+        19140422,
+        27446873
+      ]
+    },
+    {
+      "id": 975,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198324201,
+        198324200,
+        198324199
+      ],
+      "top_parent_docs": [
+        10359591
+      ]
+    },
+    {
+      "id": 982,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198313656,
+        198313652,
+        198313651
+      ],
+      "top_parent_docs": [
+        2988714
+      ]
+    },
+    {
+      "id": 985,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198319815,
+        198319814,
+        198319816
+      ],
+      "top_parent_docs": [
+        6828370
+      ]
+    },
+    {
+      "id": 993,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198332042,
+        198343327,
+        198343326
+      ],
+      "top_parent_docs": [
+        16472469,
+        26118532
+      ]
+    },
+    {
+      "id": 1012,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198323509,
+        198323513,
+        198323501
+      ],
+      "top_parent_docs": [
+        9745001
+      ]
+    },
+    {
+      "id": 1014,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198318951,
+        198318949,
+        198318950
+      ],
+      "top_parent_docs": [
+        6277638
+      ]
+    },
+    {
+      "id": 1019,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325673,
+        198354999,
+        198325677
+      ],
+      "top_parent_docs": [
+        11603066,
+        196664003
+      ]
+    },
+    {
+      "id": 1020,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198323076,
+        198324471,
+        198324475
+      ],
+      "top_parent_docs": [
+        9433958,
+        10559501
+      ]
+    },
+    {
+      "id": 1021,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198323076,
+        198324471,
+        198324475
+      ],
+      "top_parent_docs": [
+        9433958,
+        10559501
+      ]
+    },
+    {
+      "id": 1024,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198317606,
+        198343664,
+        198343661
+      ],
+      "top_parent_docs": [
+        5373138,
+        26672703
+      ]
+    },
+    {
+      "id": 1029,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198326006,
+        198326012,
+        198326011
+      ],
+      "top_parent_docs": [
+        11899391
+      ]
+    },
+    {
+      "id": 1041,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198331363,
+        198331367,
+        198331369
+      ],
+      "top_parent_docs": [
+        15778034
+      ]
+    },
+    {
+      "id": 1049,
+      "gold": "CONTRADICT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198322516,
+        198341099,
+        198319526
+      ],
+      "top_parent_docs": [
+        6670101,
+        8925851,
+        24737389
+      ]
+    },
+    {
+      "id": 1062,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198335636,
+        198335629,
+        198335627
+      ],
+      "top_parent_docs": [
+        20381484
+      ]
+    },
+    {
+      "id": 1086,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198350163,
+        198350161,
+        198350155
+      ],
+      "top_parent_docs": [
+        39281140
+      ]
+    },
+    {
+      "id": 1088,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198347239,
+        198349322,
+        198347237
+      ],
+      "top_parent_docs": [
+        33638477,
+        37549932
+      ]
+    },
+    {
+      "id": 1089,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198333117,
+        198333113,
+        198333114
+      ],
+      "top_parent_docs": [
+        17628888
+      ]
+    },
+    {
+      "id": 1099,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198338016,
+        198320568,
+        198337118
+      ],
+      "top_parent_docs": [
+        7454794,
+        21557614,
+        22420524
+      ]
+    },
+    {
+      "id": 1100,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198337118,
+        198337121,
+        198346087
+      ],
+      "top_parent_docs": [
+        21557614,
+        30981192
+      ]
+    },
+    {
+      "id": 1104,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198315064,
+        198315065,
+        198315061
+      ],
+      "top_parent_docs": [
+        3898784
+      ]
+    },
+    {
+      "id": 1107,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198335812,
+        198330471,
+        198345300
+      ],
+      "top_parent_docs": [
+        14865329,
+        20532591,
+        29381091
+      ]
+    },
+    {
+      "id": 1110,
+      "gold": "CONTRADICT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198352473,
+        198323251,
+        198353168
+      ],
+      "top_parent_docs": [
+        9555784,
+        44624045,
+        49429882
+      ]
+    },
+    {
+      "id": 1121,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198334815,
+        198323863,
+        198316314
+      ],
+      "top_parent_docs": [
+        4456756,
+        10009203,
+        19571273
+      ]
+    },
+    {
+      "id": 1130,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198333484,
+        198333483,
+        198333481
+      ],
+      "top_parent_docs": [
+        17997584
+      ]
+    },
+    {
+      "id": 1132,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198331580,
+        198319903,
+        198334187
+      ],
+      "top_parent_docs": [
+        6936141,
+        15972906,
+        18758057
+      ]
+    },
+    {
+      "id": 1137,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198309128,
+        198309130,
+        198309135
+      ],
+      "top_parent_docs": [
+        33370
+      ]
+    },
+    {
+      "id": 1140,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198326170,
+        198326173,
+        198326176
+      ],
+      "top_parent_docs": [
+        12009265
+      ]
+    },
+    {
+      "id": 1144,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198323930,
+        198323928,
+        198323923
+      ],
+      "top_parent_docs": [
+        10071552
+      ]
+    },
+    {
+      "id": 1146,
+      "gold": "SUPPORT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198328994,
+        198328983,
+        198328985
+      ],
+      "top_parent_docs": [
+        13906581
+      ]
+    },
+    {
+      "id": 1150,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325479,
+        198325475,
+        198325478
+      ],
+      "top_parent_docs": [
+        11369420
+      ]
+    },
+    {
+      "id": 1163,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198330790,
+        198330793,
+        198330794
+      ],
+      "top_parent_docs": [
+        15305881
+      ]
+    },
+    {
+      "id": 1175,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198331703,
+        198332870,
+        198348206
+      ],
+      "top_parent_docs": [
+        16058322,
+        17402386,
+        35684881
+      ]
+    },
+    {
+      "id": 1179,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198324593,
+        198324594,
+        198330900
+      ],
+      "top_parent_docs": [
+        10627801,
+        15419873
+      ]
+    },
+    {
+      "id": 1180,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198346187,
+        198313093,
+        198352350
+      ],
+      "top_parent_docs": [
+        2566674,
+        31272411,
+        44366096
+      ]
+    },
+    {
+      "id": 1185,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198332340,
+        198351479,
+        198332339
+      ],
+      "top_parent_docs": [
+        16737210,
+        41774099
+      ]
+    },
+    {
+      "id": 1187,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198353397,
+        198327304,
+        198327302
+      ],
+      "top_parent_docs": [
+        12737132,
+        52873726
+      ]
+    },
+    {
+      "id": 1191,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198324175,
+        198324180,
+        198324176
+      ],
+      "top_parent_docs": [
+        10335603
+      ]
+    },
+    {
+      "id": 1194,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325524,
+        198325522,
+        198325525
+      ],
+      "top_parent_docs": [
+        11419230
+      ]
+    },
+    {
+      "id": 1196,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198354872,
+        198346109,
+        198354879
+      ],
+      "top_parent_docs": [
+        31019903,
+        154243324
+      ]
+    },
+    {
+      "id": 1197,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198354872,
+        198347072,
+        198346109
+      ],
+      "top_parent_docs": [
+        31019903,
+        33135135,
+        154243324
+      ]
+    },
+    {
+      "id": 1199,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198320567,
+        198320571,
+        198337119
+      ],
+      "top_parent_docs": [
+        7454794,
+        21557614
+      ]
+    },
+    {
+      "id": 1200,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198336471,
+        198340364,
+        198340370
+      ],
+      "top_parent_docs": [
+        21114100,
+        24311787
+      ]
+    },
+    {
+      "id": 1202,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198314288,
+        198347810,
+        198347815
+      ],
+      "top_parent_docs": [
+        3475317,
+        34615397
+      ]
+    },
+    {
+      "id": 1204,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198346127,
+        198346126,
+        198346128
+      ],
+      "top_parent_docs": [
+        31141365
+      ]
+    },
+    {
+      "id": 1207,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198334301,
+        198334300,
+        198334304
+      ],
+      "top_parent_docs": [
+        18909530
+      ]
+    },
+    {
+      "id": 1213,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198329962,
+        198337045,
+        198337050
+      ],
+      "top_parent_docs": [
+        14492339,
+        21498497
+      ]
+    },
+    {
+      "id": 1216,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198340060,
+        198340057,
+        198340059
+      ],
+      "top_parent_docs": [
+        24142891
+      ]
+    },
+    {
+      "id": 1221,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198315465,
+        198337015,
+        198315468
+      ],
+      "top_parent_docs": [
+        4325398,
+        21479575
+      ]
+    },
+    {
+      "id": 1225,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198323416,
+        198323415,
+        198323413
+      ],
+      "top_parent_docs": [
+        9650982
+      ]
+    },
+    {
+      "id": 1226,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198326126,
+        198326118,
+        198326127
+      ],
+      "top_parent_docs": [
+        11951999
+      ]
+    },
+    {
+      "id": 1232,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198328980,
+        198328981,
+        198328982
+      ],
+      "top_parent_docs": [
+        13905670
+      ]
+    },
+    {
+      "id": 1241,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198316159,
+        198316161,
+        198316160
+      ],
+      "top_parent_docs": [
+        4427392
+      ]
+    },
+    {
+      "id": 1245,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198320953,
+        198353164,
+        198354928
+      ],
+      "top_parent_docs": [
+        7662395,
+        49429882,
+        167944455
+      ]
+    },
+    {
+      "id": 1259,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327738,
+        198340425,
+        198340435
+      ],
+      "top_parent_docs": [
+        13069283,
+        24341590
+      ]
+    },
+    {
+      "id": 1262,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198352324,
+        198318148,
+        198352325
+      ],
+      "top_parent_docs": [
+        5765455,
+        44172171
+      ]
+    },
+    {
+      "id": 1266,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198349312,
+        198349311,
+        198349303
+      ],
+      "top_parent_docs": [
+        37480103
+      ]
+    },
+    {
+      "id": 1270,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198328934,
+        198328933,
+        198328935
+      ],
+      "top_parent_docs": [
+        13900610
+      ]
+    },
+    {
+      "id": 1271,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198328635,
+        198328628,
+        198328633
+      ],
+      "top_parent_docs": [
+        13768432
+      ]
+    },
+    {
+      "id": 1272,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198341121,
+        198328592,
+        198315484
+      ],
+      "top_parent_docs": [
+        4335423,
+        13757347,
+        24760136
+      ]
+    },
+    {
+      "id": 1273,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325114,
+        198325113,
+        198325115
+      ],
+      "top_parent_docs": [
+        11041152
+      ]
+    },
+    {
+      "id": 1274,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198338298,
+        198320201,
+        198344430
+      ],
+      "top_parent_docs": [
+        7145763,
+        22632303,
+        27731651
+      ]
+    },
+    {
+      "id": 1278,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198338309,
+        198325405,
+        198325401
+      ],
+      "top_parent_docs": [
+        11335781,
+        22635278
+      ]
+    },
+    {
+      "id": 1279,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198338309,
+        198336363,
+        198325401
+      ],
+      "top_parent_docs": [
+        11335781,
+        21009874,
+        22635278
+      ]
+    },
+    {
+      "id": 1280,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198345212,
+        198345215,
+        198345216
+      ],
+      "top_parent_docs": [
+        29214508
+      ]
+    },
+    {
+      "id": 1281,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198345214,
+        198345216,
+        198345217
+      ],
+      "top_parent_docs": [
+        29214508
+      ]
+    },
+    {
+      "id": 1282,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198339468,
+        198339474,
+        198339461
+      ],
+      "top_parent_docs": [
+        23649163
+      ]
+    },
+    {
+      "id": 1290,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198316747,
+        198316751,
+        198316749
+      ],
+      "top_parent_docs": [
+        4687948
+      ]
+    },
+    {
+      "id": 1292,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198353586,
+        198353585,
+        198353588
+      ],
+      "top_parent_docs": [
+        56893404
+      ]
+    },
+    {
+      "id": 1298,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325788,
+        198325800,
+        198325798
+      ],
+      "top_parent_docs": [
+        11718220
+      ]
+    },
+    {
+      "id": 1303,
+      "gold": "CONTRADICT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198327175,
+        198327172,
+        198327171
+      ],
+      "top_parent_docs": [
+        12631697
+      ]
+    },
+    {
+      "id": 1316,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198341247,
+        198310643,
+        198349218
+      ],
+      "top_parent_docs": [
+        991137,
+        24879055,
+        37311371
+      ]
+    },
+    {
+      "id": 1319,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198312842,
+        198331911,
+        198312841
+      ],
+      "top_parent_docs": [
+        2437807,
+        16284655
+      ]
+    },
+    {
+      "id": 1320,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198331909,
+        198331911,
+        198331910
+      ],
+      "top_parent_docs": [
+        16284655
+      ]
+    },
+    {
+      "id": 1332,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198350133,
+        198327282,
+        198348719
+      ],
+      "top_parent_docs": [
+        12705056,
+        36386637,
+        39264456
+      ]
+    },
+    {
+      "id": 1335,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198344069,
+        198344068,
+        198344067
+      ],
+      "top_parent_docs": [
+        27243019
+      ]
+    },
+    {
+      "id": 1336,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198344068,
+        198344067,
+        198344069
+      ],
+      "top_parent_docs": [
+        27243019
+      ]
+    },
+    {
+      "id": 1337,
+      "gold": "SUPPORT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198335433,
+        198321129,
+        198321126
+      ],
+      "top_parent_docs": [
+        7820043,
+        20231138
+      ]
+    },
+    {
+      "id": 1339,
+      "gold": "CONTRADICT",
+      "pred": "CONTRADICT",
+      "raw": "CONTRADICT",
+      "top_docs": [
+        198330994,
+        198330995,
+        198330985
+      ],
+      "top_parent_docs": [
+        15482274
+      ]
+    },
+    {
+      "id": 1344,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198319860,
+        198319858,
+        198323262
+      ],
+      "top_parent_docs": [
+        6896063,
+        9559146
+      ]
+    },
+    {
+      "id": 1352,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198327487,
+        198327489,
+        198327485
+      ],
+      "top_parent_docs": [
+        12885341
+      ]
+    },
+    {
+      "id": 1359,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198325690,
+        198325689,
+        198325688
+      ],
+      "top_parent_docs": [
+        11614737
+      ]
+    },
+    {
+      "id": 1362,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198339277,
+        198327086,
+        198347707
+      ],
+      "top_parent_docs": [
+        12549585,
+        23513718,
+        34439544
+      ]
+    },
+    {
+      "id": 1363,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198339277,
+        198318981,
+        198310802
+      ],
+      "top_parent_docs": [
+        1122279,
+        6308416,
+        23513718
+      ]
+    },
+    {
+      "id": 1368,
+      "gold": "SUPPORT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198312825,
+        198347301,
+        198323235
+      ],
+      "top_parent_docs": [
+        2425364,
+        9555784,
+        33740844
+      ]
+    },
+    {
+      "id": 1370,
+      "gold": "CONTRADICT",
+      "pred": "NOT_ENOUGH_INFO",
+      "raw": "NOT_ENOUGH_INFO",
+      "top_docs": [
+        198312824,
+        198312826,
+        198312825
+      ],
+      "top_parent_docs": [
+        2425364
+      ]
+    },
+    {
+      "id": 1379,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198343944,
+        198349311,
+        198332957
+      ],
+      "top_parent_docs": [
+        17450673,
+        27123743,
+        37480103
+      ]
+    },
+    {
+      "id": 1382,
+      "gold": "CONTRADICT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198333253,
+        198338534,
+        198338536
+      ],
+      "top_parent_docs": [
+        17755060,
+        22914228
+      ]
+    },
+    {
+      "id": 1385,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198309523,
+        198309524,
+        198322907
+      ],
+      "top_parent_docs": [
+        306006,
+        9283422
+      ]
+    },
+    {
+      "id": 1389,
+      "gold": "SUPPORT",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198339772,
+        198339773,
+        198339771
+      ],
+      "top_parent_docs": [
+        23895668
+      ]
+    },
+    {
+      "id": 1395,
+      "gold": "NOT_ENOUGH_INFO",
+      "pred": "SUPPORT",
+      "raw": "SUPPORT",
+      "top_docs": [
+        198334597,
+        198334604,
+        198334606
+      ],
+      "top_parent_docs": [
+        19343151
+      ]
+    }
+  ]
+}
