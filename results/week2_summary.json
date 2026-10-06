@@ -32,7 +32,14 @@
     "bm25_recall@1": 0.594,
     "bm25_recall@3": 0.7704,
     "bm25_recall@5": 0.8174,
-    "bm25_recall@10": 0.8825
+    "bm25_recall@10": 0.8825,
+    "dense_bge_small_recall@1": 0.6893,
+    "dense_bge_small_recall@3": 0.857,
+    "dense_bge_small_recall@5": 0.8984,
+    "dense_bge_small_recall@10": 0.9569,
+    "accuracy": 0.5433,
+    "macro_f1": 0.4853,
+    "gold_doc_in_context_rate": 0.8723
   },
   {
     "run": "duplicate_r0.25_gold_s0",
