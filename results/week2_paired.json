@@ -1,0 +1,101 @@
+{
+  "baseline": "clean_rerun",
+  "runs": [
+    {
+      "run": "chunk_1",
+      "predictions_changed": 68,
+      "right_to_wrong": 22,
+      "wrong_to_right": 30,
+      "mcnemar_p": 0.332
+    },
+    {
+      "run": "chunk_3",
+      "predictions_changed": 66,
+      "right_to_wrong": 22,
+      "wrong_to_right": 27,
+      "mcnemar_p": 0.568
+    },
+    {
+      "run": "chunk_5",
+      "predictions_changed": 53,
+      "right_to_wrong": 23,
+      "wrong_to_right": 19,
+      "mcnemar_p": 0.644
+    },
+    {
+      "run": "duplicate_r0.1_gold_s0",
+      "predictions_changed": 4,
+      "right_to_wrong": 4,
+      "wrong_to_right": 0,
+      "mcnemar_p": 0.125,
+      "claims_with_copy_in_context": 18,
+      "of_which_prediction_changed": 2
+    },
+    {
+      "run": "duplicate_r0.25_gold_s0",
+      "predictions_changed": 5,
+      "right_to_wrong": 3,
+      "wrong_to_right": 0,
+      "mcnemar_p": 0.25,
+      "claims_with_copy_in_context": 48,
+      "of_which_prediction_changed": 3
+    },
+    {
+      "run": "duplicate_r0.5_gold_s0",
+      "predictions_changed": 8,
+      "right_to_wrong": 4,
+      "wrong_to_right": 4,
+      "mcnemar_p": 1.0,
+      "claims_with_copy_in_context": 91,
+      "of_which_prediction_changed": 8
+    },
+    {
+      "run": "parse_r0.1_gold_s0",
+      "predictions_changed": 2,
+      "right_to_wrong": 2,
+      "wrong_to_right": 0,
+      "mcnemar_p": 0.5
+    },
+    {
+      "run": "parse_r0.25_gold_s0",
+      "predictions_changed": 3,
+      "right_to_wrong": 3,
+      "wrong_to_right": 0,
+      "mcnemar_p": 0.25
+    },
+    {
+      "run": "parse_r0.5_gold_s0",
+      "predictions_changed": 8,
+      "right_to_wrong": 8,
+      "wrong_to_right": 0,
+      "mcnemar_p": 0.008
+    },
+    {
+      "run": "stale_r0.1_gold_s0",
+      "predictions_changed": 1,
+      "right_to_wrong": 1,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "claims_with_copy_in_context": 19,
+      "of_which_prediction_changed": 1
+    },
+    {
+      "run": "stale_r0.25_gold_s0",
+      "predictions_changed": 6,
+      "right_to_wrong": 3,
+      "wrong_to_right": 1,
+      "mcnemar_p": 0.625,
+      "claims_with_copy_in_context": 47,
+      "of_which_prediction_changed": 4
+    },
+    {
+      "run": "stale_r0.5_gold_s0",
+      "predictions_changed": 9,
+      "right_to_wrong": 3,
+      "wrong_to_right": 4,
+      "mcnemar_p": 1.0,
+      "claims_with_copy_in_context": 95,
+      "of_which_prediction_changed": 9
+    }
+  ]
+}

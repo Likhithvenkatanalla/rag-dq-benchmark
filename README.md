@@ -48,7 +48,7 @@ transformers 5.17.0, sentence-transformers 6.1.0, faiss-cpu 1.15.1, scikit-learn
 The LLM runs in bfloat16 on CPU (float16 on GPU). Decoding is greedy, so results are deterministic
 up to numerical differences across hardware. Runtime: dense encoding about 11 min, verification about 21 min.
 
-## Week 2: corrupted corpora (in progress: BM25 done; dense retrieval and verification pending)
+## Week 2: corrupted corpora (complete)
 
 `corrupt_corpus.py` writes a corrupted copy of the corpus to `data/corrupted/<name>/`, with a
 `manifest.json` listing every changed document. Claims and gold labels are never changed.
@@ -83,38 +83,69 @@ sentences) and write `results/week2_summary.json`:
 ```bash
 python run_week2.py                 # retrieve + verify + analyze everything (GPU advised)
 python run_week2.py --sparse-only   # BM25 retrieval only: no model downloads, ~2 min on CPU
+python compare_week2.py             # paired claim-level comparison with the clean re-run
 ```
 
-### BM25 retrieval under corruption (seed 0; dense retrieval and verification not yet run)
+### Results (seed 0; all 13 runs)
 
-Recall over the 188 dev claims with gold evidence. Defects target gold-evidence documents.
+All runs used the Week 1 models, prompt, decoding and library versions, on GitHub Actions CPU
+runners (`.github/workflows/week2.yml`). `clean_rerun` re-ran the clean corpus there and matched
+Week 1 exactly (every retrieval score, accuracy and confusion-matrix cell), so the differences
+below come from the corpus, not the machine.
 
-| Corpus | R@1 | R@3 | R@5 | R@10 |
-|---|---|---|---|---|
-| clean (Week 1) | 0.615 | 0.770 | 0.819 | 0.883 |
-| duplicate 10% | 0.594 | 0.770 | 0.817 | 0.883 |
-| duplicate 25% | 0.541 | 0.765 | 0.811 | 0.883 |
-| duplicate 50% | 0.463 | 0.747 | 0.809 | 0.883 |
-| stale 10% | 0.583 | 0.770 | 0.817 | 0.883 |
-| stale 25% | 0.530 | 0.754 | 0.812 | 0.883 |
-| stale 50% | 0.466 | 0.753 | 0.804 | 0.883 |
-| parse 10% | 0.615 | 0.770 | 0.819 | 0.883 |
-| parse 25% | 0.599 | 0.754 | 0.792 | 0.861 |
-| parse 50% | 0.578 | 0.711 | 0.768 | 0.845 |
-| chunk, 1 sentence | 0.520 | 0.668 | 0.704 | 0.773 |
-| chunk, 3 sentences | 0.590 | 0.728 | 0.785 | 0.827 |
-| chunk, 5 sentences | 0.583 | 0.754 | 0.801 | 0.851 |
+Retrieval recall over the 188 dev claims with gold evidence; verification over all 300 claims.
 
-Early reading (BM25 only):
-- Duplicates and stale copies mostly hurt R@1: a copy often outranks the gold abstract
-  (R@1 drops from 0.615 to about 0.46 at 50%), but pushes it down only one place, so R@10 does not move.
-  For verification this matters most for `stale`, since the top-ranked copy says the opposite.
-- Broken parsing loses documents outright (R@10 falls to 0.845 at 50%). At 10% no score changed:
-  4 of the 18 affected documents were only scrambled, which BM25 cannot see (it ignores word order),
-  and the other 14 did not cross a rank cutoff.
-- Chunking hurts at every size tested, and smaller chunks hurt more (R@10 0.773 for single sentences).
+| Corpus | BM25 R@1 | BM25 R@10 | Dense R@1 | Dense R@3 | Dense R@10 | Accuracy | Macro-F1 |
+|---|---|---|---|---|---|---|---|
+| clean (Week 1 = re-run) | 0.615 | 0.883 | 0.744 | 0.859 | 0.957 | 0.557 | 0.502 |
+| duplicate 10% | 0.594 | 0.883 | 0.689 | 0.857 | 0.957 | 0.543 | 0.485 |
+| duplicate 25% | 0.541 | 0.883 | 0.668 | 0.853 | 0.957 | 0.547 | 0.492 |
+| duplicate 50% | 0.463 | 0.883 | 0.604 | 0.846 | 0.957 | 0.557 | 0.496 |
+| stale 10% | 0.583 | 0.883 | 0.691 | 0.857 | 0.957 | 0.553 | 0.500 |
+| stale 25% | 0.530 | 0.883 | 0.622 | 0.854 | 0.957 | 0.550 | 0.494 |
+| stale 50% | 0.466 | 0.883 | 0.551 | 0.846 | 0.957 | 0.560 | 0.503 |
+| parse 10% | 0.615 | 0.883 | 0.744 | 0.857 | 0.957 | 0.550 | 0.493 |
+| parse 25% | 0.599 | 0.861 | 0.734 | 0.846 | 0.957 | 0.547 | 0.491 |
+| parse 50% | 0.578 | 0.845 | 0.739 | 0.847 | 0.941 | 0.530 | 0.476 |
+| chunk, 1 sentence | 0.520 | 0.773 | 0.762 | 0.882 | 0.963 | 0.583 | 0.538 |
+| chunk, 3 sentences | 0.590 | 0.827 | 0.742 | 0.879 | 0.963 | 0.573 | 0.531 |
+| chunk, 5 sentences | 0.583 | 0.851 | 0.749 | 0.882 | 0.960 | 0.543 | 0.494 |
 
-Per-run files: `results/<run>/retrieval.json`; all runs: `results/week2_summary.json`.
+Accuracy differences of 1-2 points over 300 claims are within noise, so `compare_week2.py`
+compares each run with `clean_rerun` claim by claim (exact McNemar test on the claims whose
+correctness changed):
+
+| Corpus | Predictions changed | Right to wrong | Wrong to right | McNemar p | Claims with a copy in the LLM context | ... of which prediction changed |
+|---|---|---|---|---|---|---|
+| duplicate 10% / 25% / 50% | 4 / 5 / 8 | 4 / 3 / 4 | 0 / 0 / 4 | 0.13 / 0.25 / 1.0 | 18 / 48 / 91 | 2 / 3 / 8 |
+| stale 10% / 25% / 50% | 1 / 6 / 9 | 1 / 3 / 3 | 0 / 1 / 4 | 1.0 / 0.63 / 1.0 | 19 / 47 / 95 | 1 / 4 / 9 |
+| parse 10% / 25% / 50% | 2 / 3 / 8 | 2 / 3 / 8 | 0 / 0 / 0 | 0.50 / 0.25 / **0.008** | | |
+| chunk 1 / 3 / 5 sentences | 68 / 66 / 53 | 22 / 22 / 23 | 30 / 27 / 19 | 0.33 / 0.57 / 0.64 | | |
+
+What this shows (one seed, 300 claims; treat as a first pass):
+- **Copies displace the gold abstract at the top, for both retrievers.** At 50%, dense R@1 falls
+  from 0.744 to 0.604 (duplicates) and 0.551 (stale), BM25 R@1 from 0.615 to about 0.46. The copy
+  pushes the gold abstract down only one place, so R@10 does not change.
+- **The verifier barely reacts to conflicting evidence.** At stale 50%, a copy with flipped
+  findings sat in the LLM's top-3 context for 95 claims, yet only 9 predictions changed and only
+  1 moved to CONTRADICT; accuracy is unchanged. This fits the Week 1 finding that the 1.5B model
+  answers SUPPORT for two thirds of claims: it does not appear to weigh the contradiction. (Caveat:
+  about 1 in 5 stale copies had no rule-based edit, see below.)
+- **Broken parsing is the one defect with a consistent cost to verification.** Dense retrieval
+  shrugs it off (R@10 0.941 at 50%), but every changed answer went from right to wrong: 8 of 8 at
+  50% (p = 0.008), 3 of 3 at 25%, 2 of 2 at 10%.
+- **Chunking hurts BM25 but not dense retrieval**, which gains slightly at the top (R@1 0.762 with
+  single sentences). It changes many verification answers (53-68) in both directions with no
+  significant net effect; the higher accuracy with 1-sentence chunks (0.583) is not significant
+  (p = 0.33).
+
+Per-run files: `results/<run>/` (retrieval, rankings, every prediction, analysis, corruption
+manifest); all runs: `results/week2_summary.json`; paired comparison: `results/week2_paired.json`.
+
+Reproducing on GitHub Actions: CPU runners without native bfloat16 (AVX512-BF16 or AMX; for
+example the Xeon 8370C) run the bfloat16 LLM about 50x slower (~150 s per claim instead of ~3 s).
+The workflow therefore stops such jobs after a CPU check; re-run the failed jobs until each lands
+on a suitable runner. Settings with committed results are skipped.
 
 Known limitation: the `stale` flips are rule-based. At rate 0.5 with seed 0, 17 of 91 stale
 copies had no matching words and are identical to the original (reported as
