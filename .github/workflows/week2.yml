@@ -2,7 +2,11 @@ name: Week 2 grid
 
 # Runs dense retrieval + LLM verification for every Week 2 setting in parallel (CPU, same
 # library versions as Week 1), plus a re-run of the clean corpus to check reproducibility,
-# then commits all results to main.
+# then commits all results to main. Settings that already have results in the repo are skipped.
+#
+# The LLM runs in bfloat16 as in Week 1. Runners whose CPU lacks native bfloat16 (AVX512-BF16 or
+# AMX) emulate it ~50x slower (~150 s per claim instead of ~3 s), so such jobs stop early;
+# re-run the failed jobs until each lands on a suitable runner.
 on:
   workflow_dispatch:
   push:
@@ -26,22 +30,39 @@ jobs:
               chunk_1, chunk_3, chunk_5]
     steps:
       - uses: actions/checkout@v4
+      - name: Skip if results already exist
+        id: done
+        run: |
+          if [ -f "results/${{ matrix.run }}/analysis.json" ]; then echo "skip=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Check CPU has native bfloat16
+        if: steps.done.outputs.skip != 'true'
+        run: |
+          grep -m1 "model name" /proc/cpuinfo
+          if grep -qwE "avx512_bf16|amx_bf16" /proc/cpuinfo; then echo "native bfloat16: yes"
+          else echo "::error::No native bfloat16 on this runner (LLM would be ~50x slower); re-run this job."; exit 1; fi
       - uses: actions/setup-python@v5
+        if: steps.done.outputs.skip != 'true'
         with:
           python-version: "3.11"
       - name: Install (CPU torch, versions pinned in requirements.txt)
+        if: steps.done.outputs.skip != 'true'
         run: |
           pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
       - uses: actions/cache@v4
+        if: steps.done.outputs.skip != 'true'
         with:
           path: ~/.cache/huggingface
           key: hf-bge-small-qwen2.5-1.5b
       - name: Download SciFact
+        if: steps.done.outputs.skip != 'true'
         run: python week1_baseline.py --step download
       - name: Run ${{ matrix.run }}
+        if: steps.done.outputs.skip != 'true'
+        timeout-minutes: 120
         run: python run_week2.py --only ${{ matrix.run }}
       - uses: actions/upload-artifact@v4
+        if: steps.done.outputs.skip != 'true'
         with:
           name: ${{ matrix.run }}
           path: results/${{ matrix.run }}/
