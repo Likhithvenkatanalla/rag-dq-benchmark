@@ -5,6 +5,7 @@ Usage:
     python run_week2.py --sparse-only   # BM25 retrieval only: no model downloads, a few minutes on CPU
     python run_week2.py --summary-only  # rebuild the summary from existing results
 Writes results/week2_summary.json and prints a Markdown table.
+Settings that already have results are skipped, so an interrupted run can simply be restarted.
 """
 import argparse
 import json
@@ -84,6 +85,10 @@ def main():
     args = parser.parse_args()
     if not args.summary_only:
         for name, corrupt_args in settings():
+            done = "retrieval.json" if args.sparse_only else "analysis.json"
+            if os.path.exists(os.path.join(RESULTS_DIR, name, done)):
+                print(f"skip {name}: results/{name}/{done} exists", flush=True)
+                continue
             run(["corrupt_corpus.py"] + corrupt_args)
             corpus = os.path.join("data", "corrupted", name, "corpus.jsonl")
             if args.sparse_only:

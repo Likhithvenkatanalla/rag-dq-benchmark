@@ -172,7 +172,10 @@ def verify(corpus_path=CLEAN_CORPUS, out=None, n_docs=3):
     from sklearn.metrics import accuracy_score, f1_score
     from tqdm import tqdm
     from transformers import pipeline
+    from transformers.utils import logging as hf_logging
 
+    # Silence the per-claim max_new_tokens/max_length warning (it floods notebook output).
+    hf_logging.set_verbosity_error()
     corpus, claims, _, _ = load(corpus_path)
     by_id = {d["doc_id"]: d for d in corpus}
     parent = parent_of(corpus)
