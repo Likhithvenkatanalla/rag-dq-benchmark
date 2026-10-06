@@ -4,12 +4,15 @@ Usage:
     python run_week2.py                 # retrieve + verify + analyze for every setting (GPU advised)
     python run_week2.py --sparse-only   # BM25 retrieval only: no model downloads, a few minutes on CPU
     python run_week2.py --summary-only  # rebuild the summary from existing results
+    python run_week2.py --only stale_r0.25_gold_s0   # one setting (used by the GitHub Actions workflow)
+    python run_week2.py --only clean_rerun           # re-run the clean corpus into results/clean_rerun/
 Writes results/week2_summary.json and prints a Markdown table.
 Settings that already have results are skipped, so an interrupted run can simply be restarted.
 """
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 
@@ -51,7 +54,7 @@ def summarise():
               week1_verification and week1_verification["summary"])]
             + [(name, load_json(os.path.join(RESULTS_DIR, name, "retrieval.json")),
                 (load_json(os.path.join(RESULTS_DIR, name, "verification.json")) or {}).get("summary"))
-               for name, _ in settings()]):
+               for name in ["clean_rerun"] + [n for n, _ in settings()]]):
         if retrieval is None:
             continue
         row = {"run": name}
@@ -61,7 +64,7 @@ def summarise():
         if verification:
             row.update({"accuracy": verification["accuracy"], "macro_f1": verification["macro_f1"],
                         "gold_doc_in_context_rate": verification["gold_doc_in_context_rate"]})
-        manifest = load_json(os.path.join("data", "corrupted", name, "manifest.json"))
+        manifest = load_json(os.path.join(RESULTS_DIR, name, "manifest.json"))
         if manifest and "stale_copies_without_edits" in manifest:
             row["stale_copies_without_edits"] = manifest["stale_copies_without_edits"]
         rows.append(row)
@@ -82,15 +85,32 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--sparse-only", action="store_true", help="BM25 retrieval only")
     parser.add_argument("--summary-only", action="store_true")
+    parser.add_argument("--only", help="run a single setting by name, or clean_rerun")
     args = parser.parse_args()
+    grid = settings()
+    if args.only == "clean_rerun":
+        grid = []
+        if not args.summary_only:
+            run(["week1_baseline.py", "--step", "retrieve", "--out", "clean_rerun"])
+            run(["week1_baseline.py", "--step", "verify", "--out", "clean_rerun"])
+            run(["analyze_week1.py", "--run", "clean_rerun"])
+    elif args.only:
+        grid = [g for g in grid if g[0] == args.only]
+        if not grid:
+            parser.error(f"unknown setting {args.only}; choose from clean_rerun, "
+                         + ", ".join(n for n, _ in settings()))
     if not args.summary_only:
-        for name, corrupt_args in settings():
+        for name, corrupt_args in grid:
             done = "retrieval.json" if args.sparse_only else "analysis.json"
             if os.path.exists(os.path.join(RESULTS_DIR, name, done)):
                 print(f"skip {name}: results/{name}/{done} exists", flush=True)
                 continue
             run(["corrupt_corpus.py"] + corrupt_args)
             corpus = os.path.join("data", "corrupted", name, "corpus.jsonl")
+            # Keep the manifest next to the results (data/ is not committed).
+            os.makedirs(os.path.join(RESULTS_DIR, name), exist_ok=True)
+            shutil.copy(os.path.join("data", "corrupted", name, "manifest.json"),
+                        os.path.join(RESULTS_DIR, name, "manifest.json"))
             if args.sparse_only:
                 run(["week1_baseline.py", "--step", "retrieve", "--corpus", corpus, "--sparse-only"])
                 continue

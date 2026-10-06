@@ -1,0 +1,70 @@
+name: Week 2 grid
+
+# Runs dense retrieval + LLM verification for every Week 2 setting in parallel (CPU, same
+# library versions as Week 1), plus a re-run of the clean corpus to check reproducibility,
+# then commits all results to main.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/week2.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        run: [clean_rerun,
+              duplicate_r0.1_gold_s0, duplicate_r0.25_gold_s0, duplicate_r0.5_gold_s0,
+              parse_r0.1_gold_s0, parse_r0.25_gold_s0, parse_r0.5_gold_s0,
+              stale_r0.1_gold_s0, stale_r0.25_gold_s0, stale_r0.5_gold_s0,
+              chunk_1, chunk_3, chunk_5]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install (CPU torch, versions pinned in requirements.txt)
+        run: |
+          pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-bge-small-qwen2.5-1.5b
+      - name: Download SciFact
+        run: python week1_baseline.py --step download
+      - name: Run ${{ matrix.run }}
+        run: python run_week2.py --only ${{ matrix.run }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.run }}
+          path: results/${{ matrix.run }}/
+
+  commit:
+    needs: run
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/download-artifact@v4
+        with:
+          path: results/
+      - name: Summarise and commit
+        run: |
+          python run_week2.py --summary-only
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/
+          git diff --cached --quiet && { echo "No new results"; exit 0; }
+          git commit -m "Week 2: dense retrieval and verification results (GitHub Actions run ${{ github.run_id }})"
+          git pull --rebase origin main
+          git push origin HEAD:main
