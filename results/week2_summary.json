@@ -102,7 +102,15 @@
     "bm25_recall@1": 0.5833,
     "bm25_recall@3": 0.7704,
     "bm25_recall@5": 0.8174,
-    "bm25_recall@10": 0.8825
+    "bm25_recall@10": 0.8825,
+    "dense_bge_small_recall@1": 0.691,
+    "dense_bge_small_recall@3": 0.857,
+    "dense_bge_small_recall@5": 0.8984,
+    "dense_bge_small_recall@10": 0.9569,
+    "accuracy": 0.5533,
+    "macro_f1": 0.4996,
+    "gold_doc_in_context_rate": 0.8723,
+    "stale_copies_without_edits": 5
   },
   {
     "run": "stale_r0.25_gold_s0",

@@ -1,0 +1,106 @@
+{
+  "args": {
+    "defect": "stale",
+    "rate": 0.1,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": null,
+    "seed": 0,
+    "name": null
+  },
+  "clean_docs": 5183,
+  "corrupted_docs": 5201,
+  "changes": [
+    {
+      "doc_id": 198309075,
+      "derived_from": 1642727,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 198309076,
+      "derived_from": 4381486,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 198309077,
+      "derived_from": 5476778,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 198309078,
+      "derived_from": 9650982,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 198309079,
+      "derived_from": 10984005,
+      "n_edits": 5
+    },
+    {
+      "doc_id": 198309080,
+      "derived_from": 11254556,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 198309081,
+      "derived_from": 11899391,
+      "n_edits": 5
+    },
+    {
+      "doc_id": 198309082,
+      "derived_from": 12670680,
+      "n_edits": 5
+    },
+    {
+      "doc_id": 198309083,
+      "derived_from": 13900610,
+      "n_edits": 8
+    },
+    {
+      "doc_id": 198309084,
+      "derived_from": 14376683,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 198309085,
+      "derived_from": 15305881,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 198309086,
+      "derived_from": 15928989,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 198309087,
+      "derived_from": 17755060,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 198309088,
+      "derived_from": 17997584,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 198309089,
+      "derived_from": 19005293,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 198309090,
+      "derived_from": 19307912,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 198309091,
+      "derived_from": 24338780,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 198309092,
+      "derived_from": 27873158,
+      "n_edits": 6
+    }
+  ],
+  "stale_copies_without_edits": 5
+}
