@@ -9,3 +9,6 @@ accelerate
 rank-bm25
 numpy
 tqdm
+# Week 3 (DeBERTa-v3 tokenizer)
+sentencepiece
+protobuf
