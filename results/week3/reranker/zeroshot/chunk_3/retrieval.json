@@ -1,0 +1,11 @@
+{
+  "reranker": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "dense": {
+    "recall@1": 0.7416,
+    "recall@3": 0.879
+  },
+  "reranked": {
+    "recall@1": 0.7759,
+    "recall@3": 0.8991
+  }
+}

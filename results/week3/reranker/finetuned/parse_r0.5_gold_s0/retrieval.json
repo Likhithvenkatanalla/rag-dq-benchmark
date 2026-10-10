@@ -1,0 +1,11 @@
+{
+  "reranker": "models/reranker_finetuned",
+  "dense": {
+    "recall@1": 0.7389,
+    "recall@3": 0.8468
+  },
+  "reranked": {
+    "recall@1": 0.7575,
+    "recall@3": 0.8778
+  }
+}

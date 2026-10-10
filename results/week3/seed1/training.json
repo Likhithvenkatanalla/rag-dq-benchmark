@@ -1,0 +1,42 @@
+{
+  "base_model": "cross-encoder/nli-deberta-v3-xsmall",
+  "seed": 1,
+  "n_pairs": {
+    "train": 1123,
+    "val": 276
+  },
+  "label_counts": {
+    "train": {
+      "SUPPORT": 304,
+      "CONTRADICT": 149,
+      "NOT_ENOUGH_INFO": 670
+    },
+    "val": {
+      "SUPPORT": 66,
+      "CONTRADICT": 45,
+      "NOT_ENOUGH_INFO": 165
+    }
+  },
+  "threshold_context": "dense BGE-small top-3",
+  "epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.9754,
+      "val_pair_accuracy": 0.6196
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.6671,
+      "val_pair_accuracy": 0.7319
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.5204,
+      "val_pair_accuracy": 0.7355
+    }
+  ],
+  "threshold": {
+    "threshold": 0.3,
+    "val_claim_macro_f1": 0.694
+  }
+}

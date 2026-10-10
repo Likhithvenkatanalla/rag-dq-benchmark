@@ -1,0 +1,5 @@
+{
+  "model": "cross-encoder/nli-deberta-v3-xsmall",
+  "threshold": 0.05,
+  "val_claim_macro_f1": 0.4391
+}
