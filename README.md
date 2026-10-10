@@ -151,78 +151,111 @@ Known limitation: the `stale` flips are rule-based. At rate 0.5 with seed 0, 17 
 copies had no matching words and are identical to the original (reported as
 `stale_copies_without_edits` in the manifest).
 
-## Week 3: a fine-tuned verifier (complete)
+## Week 3: a fine-tuned verifier and reranker (complete)
 
-`week3_verifier.py` replaces the zero-shot LLM with an NLI cross-encoder
+**Verifier.** `week3_verifier.py` replaces the zero-shot LLM with an NLI cross-encoder
 (`cross-encoder/nli-deberta-v3-xsmall`) that scores each (claim, abstract) pair as SUPPORT /
 CONTRADICT / NOT_ENOUGH_INFO. A claim takes the strongest SUPPORT or CONTRADICT score over its
-top-3 retrieved records, or NOT_ENOUGH_INFO if neither reaches a threshold. Three verifiers see the
-same dense top-3 context as Weeks 1-2:
+top-3 retrieved records, or NOT_ENOUGH_INFO if neither reaches a threshold. Verifiers compared,
+all on the same dense top-3 context as Weeks 1-2:
 
 - **Qwen**: the Week 1-2 zero-shot LLM.
-- **NLI zero-shot**: the cross-encoder as released (trained on general NLI data, no SciFact).
-- **NLI fine-tuned**: the same model fine-tuned for 3 epochs on SciFact train (809 claims,
-  disjoint from dev): gold abstracts with their labels, cited abstracts of claims without
-  evidence as NOT_ENOUGH_INFO, and the top non-gold BM25 abstract as a hard NOT_ENOUGH_INFO
-  negative (1,123 training pairs).
+- **NLI zero-shot**: the cross-encoder as released (general NLI training, no SciFact).
+- **NLI fine-tuned**: the same model fine-tuned for 3 epochs on SciFact train (809 claims, disjoint
+  from dev): gold abstracts with their labels, cited abstracts of claims without evidence as
+  NOT_ENOUGH_INFO, and the top non-gold BM25 abstract as a hard NOT_ENOUGH_INFO negative
+  (1,123 pairs). Trained three times (seeds 0, 1, 2; same data, different order and dropout).
 
-Thresholds were tuned for macro-F1 on 20% of the train claims held out from training (with BM25
-top-3 context), never on dev. Fine-tuning took held-out pair accuracy from 0.656 after epoch 1 to
-0.746 after epoch 3 (`results/week3/training.json`).
+Thresholds are tuned for macro-F1 on 20% of the train claims held out from training (a fixed split),
+using the same dense BGE top-3 context that dev claims get; never on dev. Tuned thresholds: 0.15,
+0.30 and 0.35 for seeds 0-2; 0.05 for the zero-shot model (`results/week3/seed*/training.json`).
+
+**Reranker.** `week3_reranker.py` reorders each run's dense top-10 with a cross-encoder
+(`cross-encoder/ms-marco-MiniLM-L-6-v2`), either as released (web-search training) or fine-tuned for
+2 epochs on SciFact train (gold abstracts relevant; the top 4 non-gold BM25 abstracts not). The seed-0
+verifier then labels each claim from the reranked top-3.
 
 ```bash
-python week3_verifier.py all     # train, evaluate on clean_rerun + 12 Week 2 corpora, summarise
+python week3_verifier.py all --seed 0     # also 1, 2; seed 0 also evaluates the zero-shot model
+python week3_reranker.py train && python week3_reranker.py rerank && python week3_reranker.py verify
+python week3_verifier.py summary          # results/week3/summary.json
 ```
-(Run on CPU via `.github/workflows/week3.yml`; about 1.5 hours.)
+(Run on CPU via `.github/workflows/week3.yml`: three seeds and the reranker in parallel, about 3 hours.)
 
-### Results (dev, 300 claims)
+### Verification accuracy (dev, 300 claims)
 
-| Corpus | Qwen acc | Qwen F1 | NLI zero-shot acc | F1 | **NLI fine-tuned acc** | **F1** |
-|---|---|---|---|---|---|---|
-| clean | 0.557 | 0.502 | 0.377 | 0.354 | **0.650** | **0.631** |
-| duplicate 10% / 25% / 50% | 0.543 / 0.547 / 0.557 | 0.485 / 0.492 / 0.496 | 0.387 / 0.380 / 0.377 | 0.368 / 0.361 / 0.355 | 0.653 / 0.660 / 0.663 | 0.634 / 0.641 / 0.650 |
-| stale 10% / 25% / 50% | 0.553 / 0.550 / 0.560 | 0.500 / 0.494 / 0.503 | 0.377 / 0.383 / 0.377 | 0.355 / 0.362 / 0.354 | 0.657 / 0.650 / 0.647 | 0.637 / 0.632 / 0.634 |
-| parse 10% / 25% / 50% | 0.550 / 0.547 / 0.530 | 0.493 / 0.491 / 0.476 | 0.377 / 0.383 / 0.393 | 0.353 / 0.361 / 0.373 | 0.650 / 0.647 / 0.630 | 0.629 / 0.626 / 0.610 |
-| chunk 1 / 3 / 5 sentences | 0.583 / 0.573 / 0.543 | 0.538 / 0.531 / 0.494 | 0.347 / 0.393 / 0.400 | 0.333 / 0.374 / 0.387 | 0.583 / 0.650 / 0.667 | 0.578 / 0.641 / 0.658 |
+Fine-tuned: mean (standard deviation) over the three seeds.
 
-Each verifier against its own clean result, claim by claim (right to wrong / wrong to right,
-exact McNemar p), from `results/week3/summary.json`:
+| Corpus | Qwen | NLI zero-shot | **NLI fine-tuned** | Reranked (fine-tuned) + verifier seed 0 |
+|---|---|---|---|---|
+| clean | 0.557 | 0.353 | **0.666 (0.015)** | 0.657 |
+| duplicate 10% / 25% / 50% | 0.543 / 0.547 / 0.557 | 0.360 / 0.367 / 0.353 | 0.670 / 0.670 / 0.677 | 0.657 / 0.667 / 0.670 |
+| stale 10% / 25% / 50% | 0.553 / 0.550 / 0.560 | 0.353 / 0.357 / 0.347 | 0.672 / 0.661 / 0.656 | 0.657 / 0.657 / 0.660 |
+| parse 10% / 25% / 50% | 0.550 / 0.547 / 0.530 | 0.357 / 0.347 / 0.340 | 0.664 / 0.658 / 0.647 | 0.657 / 0.650 / 0.637 |
+| chunk 1 / 3 / 5 sentences | 0.583 / 0.573 / 0.543 | 0.333 / 0.353 / 0.390 | 0.573 / 0.631 / 0.667 | 0.587 / 0.657 / 0.690 |
 
-| Corpus | Qwen | NLI fine-tuned |
-|---|---|---|
-| parse 50% | 8 / 0, p = 0.008 | 10 / 4, p = 0.18 |
-| stale 50% | 3 / 4, p = 1.0 | 7 / 6, p = 1.0 |
-| chunk 1 sentence | 22 / 30, p = 0.33 | 58 / 38, p = 0.052 |
+Per-seed values, macro-F1 and paired tests are in `results/week3/summary.json`. Macro-F1 of the
+fine-tuned verifier on the clean corpus: 0.631 / 0.655 / 0.647 for seeds 0-2 (Qwen 0.502).
 
-What this shows (one seed, 300 claims):
-- **Fine-tuning helps a lot, and the off-the-shelf NLI model does not.** On the clean corpus the
-  fine-tuned verifier reaches 0.650 accuracy / 0.631 macro-F1 against Qwen's 0.557 / 0.502
-  (it fixes 60 of Qwen's errors and introduces 32; p = 0.005). It also loses Qwen's SUPPORT bias:
-  it predicts 144 SUPPORT / 58 CONTRADICT / 98 NOT_ENOUGH_INFO against gold 124 / 64 / 112.
-  The untuned NLI model scores only 0.377 (it calls most claims CONTRADICT or NOT_ENOUGH_INFO), so
-  general NLI training does not transfer to scientific claims on its own.
-- **It stays ahead of Qwen on every corrupted corpus**, at 0.63-0.67 accuracy except one case.
-- **It is the first verifier that reacts to stale, conflicting copies.** At stale 50%, a flipped
-  copy was in context for 95 claims; 13 predictions changed, 11 of them towards CONTRADICT
-  (Qwen: 9 changed, 1 towards CONTRADICT). For gold-SUPPORT claims with a copy in context,
-  CONTRADICT answers rose from 5 to 12. Net accuracy is unchanged (7 lost, 6 gained), but this is
-  the failure the stale defect was designed to provoke: a verifier that reads evidence closely can
-  be misled by an outdated version, and a weaker one simply ignores it.
-- **Single-sentence chunks are its weak spot.** Trained on whole abstracts, it falls to 0.583 with
-  1-sentence chunks (58 lost, 38 gained; p = 0.052), while 3- and 5-sentence chunks are as good as
-  or better than whole abstracts.
-- **Broken parsing still costs most among the rate-based defects** (0.630 at 50%, 10 lost and 4
-  gained), but the loss is no longer significant.
+Each fine-tuned seed against its own clean result, claim by claim (right to wrong / wrong to
+right, exact McNemar p), where something moved:
 
-Not done this week: a fine-tuned reranker (the roadmap listed "reranker/verifier"); the verifier
-was the larger problem in Week 2. The fine-tuned model is kept as a GitHub Actions artifact, not
-in the repository.
+| Corpus | Seed 0 | Seed 1 | Seed 2 |
+|---|---|---|---|
+| parse 50% | 10 / 4, p = 0.18 | 9 / 4, p = 0.27 | 8 / 2, p = 0.11 |
+| stale 50% | 7 / 6, p = 1.0 | 10 / 8, p = 0.82 | 11 / 5, p = 0.21 |
+| chunk 1 sentence | 58 / 38, p = 0.052 | 65 / 32, p = 0.001 | 64 / 34, p = 0.003 |
+| chunk 3 sentences | 28 / 28, p = 1.0 | 42 / 27, p = 0.091 | 46 / 30, p = 0.085 |
+
+### Reranking: retrieval (recall over the 188 claims with gold evidence)
+
+"Dense" is the committed dense top-10 in its original order; reranking only reorders those 10
+records, so recall@10 is unchanged. (For chunked corpora this dense top-10 holds fewer distinct
+abstracts than Week 2's deeper ranking, so its recall@3 is slightly below the Week 2 table.)
+
+| Corpus | Dense R@1 / R@3 | Reranked, zero-shot | **Reranked, fine-tuned** |
+|---|---|---|---|
+| clean | 0.744 / 0.859 | 0.760 / 0.894 | **0.805 / 0.906** |
+| duplicate 50% | 0.604 / 0.846 | 0.594 / 0.887 | 0.644 / 0.903 |
+| stale 50% | 0.551 / 0.846 | 0.558 / 0.891 | 0.571 / 0.903 |
+| parse 50% | 0.739 / 0.847 | 0.739 / 0.866 | 0.758 / 0.878 |
+| chunk 1 sentence | 0.762 / 0.872 | 0.784 / 0.885 | 0.784 / 0.883 |
+
+All 13 runs: `results/week3/reranker/<variant>/<run>/retrieval.json`. On held-out train claims the
+fine-tuned reranker lifts recall@1 of the BM25 top-10 from 0.638 to 0.743 (0.683 untuned).
+
+### What this shows (300 claims, one corruption seed)
+
+- **Fine-tuning a small verifier beats the zero-shot LLM, and the result holds across training
+  seeds.** Accuracy 0.650 / 0.680 / 0.667 on the clean corpus (mean 0.666) against Qwen's 0.557;
+  every seed is significantly better than Qwen (p = 0.005, 0.001, 0.001). The off-the-shelf NLI model
+  is far worse (0.353): general NLI training does not transfer to scientific claims by itself.
+- **The fine-tuned verifier stays ahead of Qwen on every corrupted corpus except single-sentence
+  chunks.** Its one consistent weakness is 1-sentence chunks: all three seeds lose accuracy there
+  (0.573 mean; p = 0.052, 0.001, 0.003), and 3-sentence chunks lean the same way. It was trained on
+  whole abstracts.
+- **Broken parsing and stale copies cost it a little, in the same direction for every seed, but
+  not significantly for any one.** At parse 50%, all three seeds lost more claims than they gained
+  (10/4, 9/4, 8/2). At stale 50%, more lost than gained in all three (7/6, 10/8, 11/5); this is the
+  verifier that reacts to conflicting copies (see the first Week 3 analysis: 11 of 13 changed
+  answers moved to CONTRADICT for seed 0).
+- **The fine-tuned reranker clearly improves the ranking but barely changes the answers.** It puts
+  the gold abstract first for 80.5% of clean claims (dense 74.4%) and recovers part of the duplicate
+  loss (0.604 to 0.644), but hardly any of the stale loss (0.551 to 0.571): a flipped copy is as
+  relevant to the claim as the original, so relevance ranking cannot tell them apart. Verification
+  from the reranked top-3 moves by 0 to +2.3 points and no single run changes significantly
+  (largest: 5-sentence chunks, 5 lost / 12 gained, p = 0.14). The gold abstract is usually already
+  in the dense top-3, so better ordering inside it matters little to this verifier.
+
+Fine-tuned models are kept as GitHub Actions artifacts (run 38033246055), not in the repository.
+An earlier Week 3 run tuned thresholds on BM25 context with one seed; its seed-0 threshold and
+results were identical to this run's seed 0.
 
 ## Roadmap
 
-- Week 2: inject controlled corpus defects (near-duplicates, truncated/garbled parsing, stale
+- Week 2 (done): inject controlled corpus defects (near-duplicates, truncated/garbled parsing, stale
   conflicting versions, chunk sizes) and measure the drop in retrieval and verification.
-- Week 3: fine-tune a reranker/verifier in PyTorch (Hugging Face) on SciFact train; measure recovery.
+- Week 3 (done): fine-tune a reranker/verifier in PyTorch (Hugging Face) on SciFact train; measure recovery.
 - Week 4: calibration analysis (ECE, Brier), ablations, figures.
 - Week 5: technical report and release (Zenodo DOI).
 
