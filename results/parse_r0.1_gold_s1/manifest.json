@@ -1,0 +1,87 @@
+{
+  "args": {
+    "defect": "parse",
+    "rate": 0.1,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": null,
+    "seed": 1,
+    "name": null
+  },
+  "clean_docs": 5183,
+  "corrupted_docs": 5183,
+  "changes": [
+    {
+      "doc_id": 33370,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1180972,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2425364,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4381486,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4687948,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 5373138,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 9433958,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 11041152,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 14241418,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 14437255,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 16284655,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 16787954,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 17628888,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 17997584,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 18340282,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 23895668,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 27123743,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 32159283,
+      "mode": "truncate"
+    }
+  ]
+}
