@@ -1,0 +1,199 @@
+{
+  "args": {
+    "defect": "duplicate",
+    "rate": 0.25,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": null,
+    "seed": 3,
+    "name": null
+  },
+  "clean_docs": 5183,
+  "corrupted_docs": 5229,
+  "changes": [
+    {
+      "doc_id": 198309075,
+      "derived_from": 464511
+    },
+    {
+      "doc_id": 198309076,
+      "derived_from": 1180972
+    },
+    {
+      "doc_id": 198309077,
+      "derived_from": 1568684
+    },
+    {
+      "doc_id": 198309078,
+      "derived_from": 1642727
+    },
+    {
+      "doc_id": 198309079,
+      "derived_from": 2425364
+    },
+    {
+      "doc_id": 198309080,
+      "derived_from": 4381486
+    },
+    {
+      "doc_id": 198309081,
+      "derived_from": 4961038
+    },
+    {
+      "doc_id": 198309082,
+      "derived_from": 5373138
+    },
+    {
+      "doc_id": 198309083,
+      "derived_from": 5884524
+    },
+    {
+      "doc_id": 198309084,
+      "derived_from": 5953485
+    },
+    {
+      "doc_id": 198309085,
+      "derived_from": 8551160
+    },
+    {
+      "doc_id": 198309086,
+      "derived_from": 10071552
+    },
+    {
+      "doc_id": 198309087,
+      "derived_from": 10165258
+    },
+    {
+      "doc_id": 198309088,
+      "derived_from": 11254556
+    },
+    {
+      "doc_id": 198309089,
+      "derived_from": 11603066
+    },
+    {
+      "doc_id": 198309090,
+      "derived_from": 12670680
+    },
+    {
+      "doc_id": 198309091,
+      "derived_from": 13906581
+    },
+    {
+      "doc_id": 198309092,
+      "derived_from": 13923140
+    },
+    {
+      "doc_id": 198309093,
+      "derived_from": 14437255
+    },
+    {
+      "doc_id": 198309094,
+      "derived_from": 14717500
+    },
+    {
+      "doc_id": 198309095,
+      "derived_from": 16280642
+    },
+    {
+      "doc_id": 198309096,
+      "derived_from": 16495649
+    },
+    {
+      "doc_id": 198309097,
+      "derived_from": 17628888
+    },
+    {
+      "doc_id": 198309098,
+      "derived_from": 17741440
+    },
+    {
+      "doc_id": 198309099,
+      "derived_from": 18340282
+    },
+    {
+      "doc_id": 198309100,
+      "derived_from": 19799455
+    },
+    {
+      "doc_id": 198309101,
+      "derived_from": 20888849
+    },
+    {
+      "doc_id": 198309102,
+      "derived_from": 21366394
+    },
+    {
+      "doc_id": 198309103,
+      "derived_from": 22038539
+    },
+    {
+      "doc_id": 198309104,
+      "derived_from": 22180793
+    },
+    {
+      "doc_id": 198309105,
+      "derived_from": 24294572
+    },
+    {
+      "doc_id": 198309106,
+      "derived_from": 25254425
+    },
+    {
+      "doc_id": 198309107,
+      "derived_from": 26851674
+    },
+    {
+      "doc_id": 198309108,
+      "derived_from": 27123743
+    },
+    {
+      "doc_id": 198309109,
+      "derived_from": 27910499
+    },
+    {
+      "doc_id": 198309110,
+      "derived_from": 28617573
+    },
+    {
+      "doc_id": 198309111,
+      "derived_from": 28937856
+    },
+    {
+      "doc_id": 198309112,
+      "derived_from": 32159283
+    },
+    {
+      "doc_id": 198309113,
+      "derived_from": 33499189
+    },
+    {
+      "doc_id": 198309114,
+      "derived_from": 34873974
+    },
+    {
+      "doc_id": 198309115,
+      "derived_from": 36355784
+    },
+    {
+      "doc_id": 198309116,
+      "derived_from": 36444198
+    },
+    {
+      "doc_id": 198309117,
+      "derived_from": 36606083
+    },
+    {
+      "doc_id": 198309118,
+      "derived_from": 37549932
+    },
+    {
+      "doc_id": 198309119,
+      "derived_from": 39281140
+    },
+    {
+      "doc_id": 198309120,
+      "derived_from": 49556906
+    }
+  ]
+}

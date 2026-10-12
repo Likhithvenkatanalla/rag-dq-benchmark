@@ -1,0 +1,856 @@
+{
+  "args": {
+    "defect": "stale",
+    "rate": 0.1,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": null,
+    "seed": 0,
+    "name": null
+  },
+  "clean_docs": 5240,
+  "corrupted_docs": 5408,
+  "changes": [
+    {
+      "doc_id": 5240,
+      "derived_from": 5,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5241,
+      "derived_from": 50,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5242,
+      "derived_from": 67,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 5243,
+      "derived_from": 141,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5244,
+      "derived_from": 173,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 5245,
+      "derived_from": 180,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5246,
+      "derived_from": 204,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5247,
+      "derived_from": 260,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5248,
+      "derived_from": 261,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5249,
+      "derived_from": 297,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5250,
+      "derived_from": 330,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5251,
+      "derived_from": 356,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5252,
+      "derived_from": 365,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5253,
+      "derived_from": 401,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5254,
+      "derived_from": 404,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5255,
+      "derived_from": 416,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5256,
+      "derived_from": 429,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5257,
+      "derived_from": 435,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5258,
+      "derived_from": 450,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5259,
+      "derived_from": 466,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5260,
+      "derived_from": 514,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5261,
+      "derived_from": 546,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5262,
+      "derived_from": 552,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5263,
+      "derived_from": 595,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 5264,
+      "derived_from": 625,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5265,
+      "derived_from": 673,
+      "n_edits": 11
+    },
+    {
+      "doc_id": 5266,
+      "derived_from": 675,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5267,
+      "derived_from": 690,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5268,
+      "derived_from": 730,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5269,
+      "derived_from": 732,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5270,
+      "derived_from": 743,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5271,
+      "derived_from": 877,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5272,
+      "derived_from": 978,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5273,
+      "derived_from": 1009,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5274,
+      "derived_from": 1021,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5275,
+      "derived_from": 1024,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5276,
+      "derived_from": 1038,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5277,
+      "derived_from": 1097,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5278,
+      "derived_from": 1112,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5279,
+      "derived_from": 1184,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5280,
+      "derived_from": 1202,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5281,
+      "derived_from": 1212,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5282,
+      "derived_from": 1224,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5283,
+      "derived_from": 1230,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 5284,
+      "derived_from": 1323,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5285,
+      "derived_from": 1341,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5286,
+      "derived_from": 1366,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5287,
+      "derived_from": 1371,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5288,
+      "derived_from": 1379,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5289,
+      "derived_from": 1438,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5290,
+      "derived_from": 1506,
+      "n_edits": 5
+    },
+    {
+      "doc_id": 5291,
+      "derived_from": 1509,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5292,
+      "derived_from": 1510,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5293,
+      "derived_from": 1563,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5294,
+      "derived_from": 1578,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5295,
+      "derived_from": 1579,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5296,
+      "derived_from": 1619,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5297,
+      "derived_from": 1652,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 5298,
+      "derived_from": 1676,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5299,
+      "derived_from": 1690,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5300,
+      "derived_from": 1747,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5301,
+      "derived_from": 1751,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5302,
+      "derived_from": 1798,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5303,
+      "derived_from": 1838,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5304,
+      "derived_from": 1855,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5305,
+      "derived_from": 1866,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5306,
+      "derived_from": 1887,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5307,
+      "derived_from": 1891,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5308,
+      "derived_from": 1914,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5309,
+      "derived_from": 1959,
+      "n_edits": 5
+    },
+    {
+      "doc_id": 5310,
+      "derived_from": 1960,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5311,
+      "derived_from": 1966,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5312,
+      "derived_from": 2051,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5313,
+      "derived_from": 2064,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5314,
+      "derived_from": 2073,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5315,
+      "derived_from": 2148,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5316,
+      "derived_from": 2237,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5317,
+      "derived_from": 2290,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5318,
+      "derived_from": 2313,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5319,
+      "derived_from": 2337,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5320,
+      "derived_from": 2458,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5321,
+      "derived_from": 2467,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5322,
+      "derived_from": 2511,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5323,
+      "derived_from": 2617,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5324,
+      "derived_from": 2683,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5325,
+      "derived_from": 2691,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5326,
+      "derived_from": 2706,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5327,
+      "derived_from": 2722,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5328,
+      "derived_from": 2816,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5329,
+      "derived_from": 2840,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5330,
+      "derived_from": 2841,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5331,
+      "derived_from": 2903,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5332,
+      "derived_from": 2904,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5333,
+      "derived_from": 2913,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5334,
+      "derived_from": 2934,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5335,
+      "derived_from": 2937,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5336,
+      "derived_from": 2988,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5337,
+      "derived_from": 3004,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5338,
+      "derived_from": 3024,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5339,
+      "derived_from": 3065,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5340,
+      "derived_from": 3069,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5341,
+      "derived_from": 3086,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5342,
+      "derived_from": 3117,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5343,
+      "derived_from": 3157,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5344,
+      "derived_from": 3159,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5345,
+      "derived_from": 3172,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5346,
+      "derived_from": 3185,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5347,
+      "derived_from": 3186,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5348,
+      "derived_from": 3192,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5349,
+      "derived_from": 3200,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5350,
+      "derived_from": 3206,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5351,
+      "derived_from": 3252,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5352,
+      "derived_from": 3298,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5353,
+      "derived_from": 3353,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5354,
+      "derived_from": 3360,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5355,
+      "derived_from": 3413,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5356,
+      "derived_from": 3438,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5357,
+      "derived_from": 3458,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 5358,
+      "derived_from": 3459,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5359,
+      "derived_from": 3499,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5360,
+      "derived_from": 3570,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5361,
+      "derived_from": 3637,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5362,
+      "derived_from": 3650,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5363,
+      "derived_from": 3762,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5364,
+      "derived_from": 3765,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5365,
+      "derived_from": 3770,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5366,
+      "derived_from": 3795,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5367,
+      "derived_from": 3845,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5368,
+      "derived_from": 3879,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5369,
+      "derived_from": 3913,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5370,
+      "derived_from": 3934,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5371,
+      "derived_from": 3944,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5372,
+      "derived_from": 4043,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5373,
+      "derived_from": 4061,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5374,
+      "derived_from": 4103,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5375,
+      "derived_from": 4200,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5376,
+      "derived_from": 4201,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5377,
+      "derived_from": 4218,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5378,
+      "derived_from": 4220,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5379,
+      "derived_from": 4280,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5380,
+      "derived_from": 4292,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5381,
+      "derived_from": 4301,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5382,
+      "derived_from": 4335,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5383,
+      "derived_from": 4340,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5384,
+      "derived_from": 4352,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5385,
+      "derived_from": 4385,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5386,
+      "derived_from": 4428,
+      "n_edits": 3
+    },
+    {
+      "doc_id": 5387,
+      "derived_from": 4488,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5388,
+      "derived_from": 4497,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5389,
+      "derived_from": 4511,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5390,
+      "derived_from": 4670,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5391,
+      "derived_from": 4695,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5392,
+      "derived_from": 4703,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5393,
+      "derived_from": 4889,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5394,
+      "derived_from": 4891,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5395,
+      "derived_from": 4895,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5396,
+      "derived_from": 4942,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5397,
+      "derived_from": 4945,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5398,
+      "derived_from": 4961,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5399,
+      "derived_from": 4986,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5400,
+      "derived_from": 5042,
+      "n_edits": 2
+    },
+    {
+      "doc_id": 5401,
+      "derived_from": 5045,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5402,
+      "derived_from": 5048,
+      "n_edits": 1
+    },
+    {
+      "doc_id": 5403,
+      "derived_from": 5124,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 5404,
+      "derived_from": 5138,
+      "n_edits": 4
+    },
+    {
+      "doc_id": 5405,
+      "derived_from": 5177,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5406,
+      "derived_from": 5179,
+      "n_edits": 0
+    },
+    {
+      "doc_id": 5407,
+      "derived_from": 5215,
+      "n_edits": 3
+    }
+  ],
+  "stale_copies_without_edits": 53
+}

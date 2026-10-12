@@ -1,0 +1,87 @@
+{
+  "args": {
+    "defect": "parse",
+    "rate": 0.1,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": null,
+    "seed": 4,
+    "name": null
+  },
+  "clean_docs": 5183,
+  "corrupted_docs": 5183,
+  "changes": [
+    {
+      "doc_id": 1084345,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2356950,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2831620,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4347374,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4406819,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 5912283,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 9745001,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 10165258,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 11718220,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 12486491,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 12670680,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 13905670,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 14717500,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 14803797,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 17755060,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 19799455,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 20532591,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 22038539,
+      "mode": "scramble"
+    }
+  ]
+}

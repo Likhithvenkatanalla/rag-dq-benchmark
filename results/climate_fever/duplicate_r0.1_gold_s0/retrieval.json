@@ -1,0 +1,14 @@
+{
+  "bm25": {
+    "recall@1": 0.0914,
+    "recall@3": 0.1647,
+    "recall@5": 0.2149,
+    "recall@10": 0.2804
+  },
+  "dense_bge_small": {
+    "recall@1": 0.1412,
+    "recall@3": 0.3005,
+    "recall@5": 0.3987,
+    "recall@10": 0.5148
+  }
+}

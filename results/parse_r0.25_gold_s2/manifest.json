@@ -1,0 +1,199 @@
+{
+  "args": {
+    "defect": "parse",
+    "rate": 0.25,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": null,
+    "seed": 2,
+    "name": null
+  },
+  "clean_docs": 5183,
+  "corrupted_docs": 5183,
+  "changes": [
+    {
+      "doc_id": 1122279,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1180972,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1568684,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2095573,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3475317,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4347374,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 5373138,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 5953485,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 6157837,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 6309659,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 6372244,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 6828370,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 7370282,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 9638032,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 10071552,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 10165258,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 10984005,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 11603066,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 12779444,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 12885341,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 13230773,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 13905670,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 13906581,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 13940200,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 14241418,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 14637235,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 16056514,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 16284655,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 16495649,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 17587795,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 18872233,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 19307912,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 19675911,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 20231138,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 21366394,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 22038539,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 23460562,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 24294572,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 27123743,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 29564505,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 30303335,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 34873974,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 36355784,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 36444198,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 37480103,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 45638119,
+      "mode": "scramble"
+    }
+  ]
+}

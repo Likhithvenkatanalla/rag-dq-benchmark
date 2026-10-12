@@ -1,0 +1,71 @@
+{
+  "gold_distribution": {
+    "SUPPORT": 654,
+    "CONTRADICT": 253,
+    "NOT_ENOUGH_INFO": 474
+  },
+  "pred_distribution": {
+    "SUPPORT": 857,
+    "CONTRADICT": 436,
+    "NOT_ENOUGH_INFO": 88
+  },
+  "majority_baseline": {
+    "label": "SUPPORT",
+    "accuracy": 0.4736,
+    "macro_f1": 0.2143
+  },
+  "per_class": {
+    "SUPPORT": {
+      "precision": 0.6021,
+      "recall": 0.789,
+      "f1": 0.683,
+      "support": 654
+    },
+    "CONTRADICT": {
+      "precision": 0.3417,
+      "recall": 0.5889,
+      "f1": 0.4325,
+      "support": 253
+    },
+    "NOT_ENOUGH_INFO": {
+      "precision": 0.4432,
+      "recall": 0.0823,
+      "f1": 0.1388,
+      "support": 474
+    }
+  },
+  "confusion_matrix": {
+    "rows_gold_cols_pred": [
+      "SUPPORT",
+      "CONTRADICT",
+      "NOT_ENOUGH_INFO"
+    ],
+    "matrix": [
+      [
+        516,
+        115,
+        23
+      ],
+      [
+        78,
+        149,
+        26
+      ],
+      [
+        263,
+        172,
+        39
+      ]
+    ]
+  },
+  "evidence_claims_accuracy": {
+    "gold_doc_in_top3": {
+      "n": 482,
+      "accuracy": 0.7801
+    },
+    "gold_doc_not_in_top3": {
+      "n": 425,
+      "accuracy": 0.68
+    }
+  }
+}
