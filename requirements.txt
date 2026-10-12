@@ -1,16 +1,19 @@
-# Versions that produced the reported Week 1 numbers (see README, "Environment").
+# Direct dependencies, pinned. torch/transformers/sentence-transformers/faiss-cpu/scikit-learn are
+# the versions behind the Week 1 numbers; the rest were recorded from the GitHub Actions runners
+# (Week 4, run 38208377232), except matplotlib (figures, generated locally). Install CPU torch with:
+#   pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+# Every installed package and version: requirements-lock.txt.
 torch==2.14.0
 transformers==5.17.0
 sentence-transformers==6.1.0
 faiss-cpu==1.15.1
 scikit-learn==1.8.0
-# Versions of these were not recorded for the Week 1 run.
-accelerate
-rank-bm25
-numpy
-tqdm
+accelerate==1.15.0
+rank-bm25==0.2.2
+numpy==2.4.6
+tqdm==4.70.1
 # Week 3 (DeBERTa-v3 tokenizer)
-sentencepiece
-protobuf
+sentencepiece==0.2.2
+protobuf==7.36.2
 # Week 4 (figures)
-matplotlib
+matplotlib==3.11.2

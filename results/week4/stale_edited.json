@@ -1,0 +1,524 @@
+[
+  {
+    "run": "stale_r0.1_gold_s0",
+    "verifier": "qwen",
+    "copies_edited": 13,
+    "copies_unedited": 5,
+    "edited_copy_in_context": {
+      "n": 14,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0
+    },
+    "only_unedited_copy": {
+      "n": 5,
+      "predictions_changed": 1,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 1,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0
+    },
+    "no_copy": {
+      "n": 281,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0
+    }
+  },
+  {
+    "run": "stale_r0.1_gold_s0",
+    "verifier": "nli_finetuned_seed0",
+    "copies_edited": 13,
+    "copies_unedited": 5,
+    "edited_copy_in_context": {
+      "n": 14,
+      "predictions_changed": 2,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 2,
+      "mcnemar_p": 0.5,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "only_unedited_copy": {
+      "n": 5,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 0,
+      "confidently_wrong_stale": 0
+    },
+    "no_copy": {
+      "n": 281,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 33,
+      "confidently_wrong_stale": 33
+    }
+  },
+  {
+    "run": "stale_r0.1_gold_s0",
+    "verifier": "nli_finetuned_seed1",
+    "copies_edited": 13,
+    "copies_unedited": 5,
+    "edited_copy_in_context": {
+      "n": 14,
+      "predictions_changed": 3,
+      "moved_to_contradict": 1,
+      "right_to_wrong": 0,
+      "wrong_to_right": 2,
+      "mcnemar_p": 0.5,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "only_unedited_copy": {
+      "n": 5,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 0,
+      "confidently_wrong_stale": 0
+    },
+    "no_copy": {
+      "n": 281,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 22,
+      "confidently_wrong_stale": 22
+    }
+  },
+  {
+    "run": "stale_r0.1_gold_s0",
+    "verifier": "nli_finetuned_seed2",
+    "copies_edited": 13,
+    "copies_unedited": 5,
+    "edited_copy_in_context": {
+      "n": 14,
+      "predictions_changed": 2,
+      "moved_to_contradict": 1,
+      "right_to_wrong": 0,
+      "wrong_to_right": 2,
+      "mcnemar_p": 0.5,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "only_unedited_copy": {
+      "n": 5,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 0,
+      "confidently_wrong_stale": 0
+    },
+    "no_copy": {
+      "n": 281,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 23,
+      "confidently_wrong_stale": 23
+    }
+  },
+  {
+    "run": "stale_r0.25_gold_s0",
+    "verifier": "qwen",
+    "copies_edited": 33,
+    "copies_unedited": 13,
+    "edited_copy_in_context": {
+      "n": 34,
+      "predictions_changed": 2,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 1,
+      "mcnemar_p": 1.0
+    },
+    "only_unedited_copy": {
+      "n": 13,
+      "predictions_changed": 2,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 1,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0
+    },
+    "no_copy": {
+      "n": 253,
+      "predictions_changed": 2,
+      "moved_to_contradict": 2,
+      "right_to_wrong": 2,
+      "wrong_to_right": 0,
+      "mcnemar_p": 0.5
+    }
+  },
+  {
+    "run": "stale_r0.25_gold_s0",
+    "verifier": "nli_finetuned_seed0",
+    "copies_edited": 33,
+    "copies_unedited": 13,
+    "edited_copy_in_context": {
+      "n": 34,
+      "predictions_changed": 6,
+      "moved_to_contradict": 4,
+      "right_to_wrong": 3,
+      "wrong_to_right": 3,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 3,
+      "confidently_wrong_stale": 2
+    },
+    "only_unedited_copy": {
+      "n": 13,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "no_copy": {
+      "n": 253,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 30,
+      "confidently_wrong_stale": 30
+    }
+  },
+  {
+    "run": "stale_r0.25_gold_s0",
+    "verifier": "nli_finetuned_seed1",
+    "copies_edited": 33,
+    "copies_unedited": 13,
+    "edited_copy_in_context": {
+      "n": 34,
+      "predictions_changed": 10,
+      "moved_to_contradict": 7,
+      "right_to_wrong": 5,
+      "wrong_to_right": 4,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 2,
+      "confidently_wrong_stale": 5
+    },
+    "only_unedited_copy": {
+      "n": 13,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "no_copy": {
+      "n": 253,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 20,
+      "confidently_wrong_stale": 20
+    }
+  },
+  {
+    "run": "stale_r0.25_gold_s0",
+    "verifier": "nli_finetuned_seed2",
+    "copies_edited": 33,
+    "copies_unedited": 13,
+    "edited_copy_in_context": {
+      "n": 34,
+      "predictions_changed": 7,
+      "moved_to_contradict": 5,
+      "right_to_wrong": 5,
+      "wrong_to_right": 2,
+      "mcnemar_p": 0.453,
+      "confidently_wrong_clean": 2,
+      "confidently_wrong_stale": 5
+    },
+    "only_unedited_copy": {
+      "n": 13,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "no_copy": {
+      "n": 253,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 21,
+      "confidently_wrong_stale": 21
+    }
+  },
+  {
+    "run": "stale_r0.5_gold_s0",
+    "verifier": "qwen",
+    "copies_edited": 74,
+    "copies_unedited": 17,
+    "edited_copy_in_context": {
+      "n": 78,
+      "predictions_changed": 6,
+      "moved_to_contradict": 1,
+      "right_to_wrong": 1,
+      "wrong_to_right": 4,
+      "mcnemar_p": 0.375
+    },
+    "only_unedited_copy": {
+      "n": 17,
+      "predictions_changed": 3,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 2,
+      "wrong_to_right": 0,
+      "mcnemar_p": 0.5
+    },
+    "no_copy": {
+      "n": 205,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0
+    }
+  },
+  {
+    "run": "stale_r0.5_gold_s0",
+    "verifier": "nli_finetuned_seed0",
+    "copies_edited": 74,
+    "copies_unedited": 17,
+    "edited_copy_in_context": {
+      "n": 78,
+      "predictions_changed": 13,
+      "moved_to_contradict": 11,
+      "right_to_wrong": 7,
+      "wrong_to_right": 6,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 13,
+      "confidently_wrong_stale": 16
+    },
+    "only_unedited_copy": {
+      "n": 17,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "no_copy": {
+      "n": 205,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 20,
+      "confidently_wrong_stale": 20
+    }
+  },
+  {
+    "run": "stale_r0.5_gold_s0",
+    "verifier": "nli_finetuned_seed1",
+    "copies_edited": 74,
+    "copies_unedited": 17,
+    "edited_copy_in_context": {
+      "n": 78,
+      "predictions_changed": 19,
+      "moved_to_contradict": 15,
+      "right_to_wrong": 10,
+      "wrong_to_right": 8,
+      "mcnemar_p": 0.815,
+      "confidently_wrong_clean": 7,
+      "confidently_wrong_stale": 15
+    },
+    "only_unedited_copy": {
+      "n": 17,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "no_copy": {
+      "n": 205,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 15,
+      "confidently_wrong_stale": 15
+    }
+  },
+  {
+    "run": "stale_r0.5_gold_s0",
+    "verifier": "nli_finetuned_seed2",
+    "copies_edited": 74,
+    "copies_unedited": 17,
+    "edited_copy_in_context": {
+      "n": 78,
+      "predictions_changed": 16,
+      "moved_to_contradict": 12,
+      "right_to_wrong": 11,
+      "wrong_to_right": 5,
+      "mcnemar_p": 0.21,
+      "confidently_wrong_clean": 8,
+      "confidently_wrong_stale": 15
+    },
+    "only_unedited_copy": {
+      "n": 17,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 1
+    },
+    "no_copy": {
+      "n": 205,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 15,
+      "confidently_wrong_stale": 15
+    }
+  },
+  {
+    "run": "stale_r0.1_gold_s1",
+    "verifier": "nli_finetuned_seed0",
+    "copies_edited": 14,
+    "copies_unedited": 4,
+    "edited_copy_in_context": {
+      "n": 19,
+      "predictions_changed": 4,
+      "moved_to_contradict": 3,
+      "right_to_wrong": 4,
+      "wrong_to_right": 0,
+      "mcnemar_p": 0.125,
+      "confidently_wrong_clean": 1,
+      "confidently_wrong_stale": 2
+    },
+    "only_unedited_copy": {
+      "n": 4,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 0,
+      "confidently_wrong_stale": 0
+    },
+    "no_copy": {
+      "n": 277,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 33,
+      "confidently_wrong_stale": 33
+    }
+  },
+  {
+    "run": "stale_r0.25_gold_s1",
+    "verifier": "nli_finetuned_seed0",
+    "copies_edited": 37,
+    "copies_unedited": 9,
+    "edited_copy_in_context": {
+      "n": 37,
+      "predictions_changed": 7,
+      "moved_to_contradict": 5,
+      "right_to_wrong": 4,
+      "wrong_to_right": 3,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 4,
+      "confidently_wrong_stale": 4
+    },
+    "only_unedited_copy": {
+      "n": 9,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 0,
+      "confidently_wrong_stale": 0
+    },
+    "no_copy": {
+      "n": 254,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 30,
+      "confidently_wrong_stale": 30
+    }
+  },
+  {
+    "run": "stale_r0.5_gold_s1",
+    "verifier": "nli_finetuned_seed0",
+    "copies_edited": 72,
+    "copies_unedited": 19,
+    "edited_copy_in_context": {
+      "n": 76,
+      "predictions_changed": 9,
+      "moved_to_contradict": 6,
+      "right_to_wrong": 4,
+      "wrong_to_right": 4,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 10,
+      "confidently_wrong_stale": 9
+    },
+    "only_unedited_copy": {
+      "n": 20,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 2,
+      "confidently_wrong_stale": 2
+    },
+    "no_copy": {
+      "n": 204,
+      "predictions_changed": 0,
+      "moved_to_contradict": 0,
+      "right_to_wrong": 0,
+      "wrong_to_right": 0,
+      "mcnemar_p": 1.0,
+      "confidently_wrong_clean": 22,
+      "confidently_wrong_stale": 22
+    }
+  }
+]

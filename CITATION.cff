@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, please cite it as below."
+title: "RAG Data-Quality Benchmark: how corpus defects affect retrieval-augmented claim verification"
+type: software
+authors:
+  - alias: Likhithvenkatanalla
+repository-code: "https://github.com/Likhithvenkatanalla/rag-dq-benchmark"
+license: MIT
+date-released: "2026-10-12"
+keywords:
+  - retrieval-augmented generation
+  - data quality
+  - claim verification
+  - SciFact
+references:
+  - type: conference-paper
+    title: "Fact or Fiction: Verifying Scientific Claims"
+    authors:
+      - family-names: Wadden
+        given-names: David
+      - name: "et al."
+    collection-title: "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)"
+    year: 2020

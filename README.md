@@ -7,6 +7,33 @@ stale or conflicting versions, chunking choices) change the accuracy of retrieva
 labelled SUPPORT / CONTRADICT (or no evidence, treated as NOT_ENOUGH_INFO). The dev split
 (300 claims: 124 SUPPORT, 64 CONTRADICT, 112 NOT_ENOUGH_INFO) is used for evaluation.
 
+## Key findings
+
+Pipeline: BM25 or dense retrieval (BGE-small) over the abstracts, then a verifier labels each claim
+from the top-3 retrieved records. Defects were injected into the gold-evidence abstracts at 10-50%.
+The findings below held across both corruption seeds and, for the fine-tuned verifier, all three
+training seeds; details and caveats are in the weekly sections.
+
+1. **Duplicate and stale copies push the gold abstract out of first place.** Dense recall@1 falls
+   from 0.744 to about 0.57-0.60 (duplicates, 50%) and 0.49-0.55 (stale, 50%), yet the gold abstract
+   stays in the top 10. A fine-tuned reranker recovers part of the duplicate loss but little of the
+   stale loss: a flipped copy is as relevant to the claim as the original.
+2. **Broken parsing barely affects retrieval but costs verification.** In no parse setting did a
+   verifier gain more correct answers than it lost, and at 25-50% it lost clearly more: for Qwen
+   (corruption seed 0), for all three fine-tuned training seeds, and on both corruption seeds.
+3. **Single-sentence chunks make the fine-tuned verifier both less accurate and more confident.**
+   Accuracy drops from 0.65-0.68 to 0.57-0.58 and confidently wrong answers (confidence >= 0.9)
+   roughly double, to about 20% of claims.
+4. **How a verifier reacts to conflicting evidence depends on the verifier.** The zero-shot LLM
+   (Qwen2.5-1.5B) mostly ignores flipped copies; the fine-tuned NLI verifier moves towards
+   CONTRADICT when it sees one. Neither changes overall accuracy significantly.
+5. **A small verifier fine-tuned on SciFact beats the zero-shot LLM** (0.666 mean accuracy against
+   0.557 on the clean corpus) and stays ahead on every corrupted corpus except 1-sentence chunks.
+   This comparison is expected to favour the fine-tuned model, which saw in-domain training data;
+   the robustness findings above are the main result. It is overconfident even on clean data.
+
+Figures: `figures/` (shown in the Week 4 section).
+
 ## Week 1: clean baseline (complete)
 
 ```bash
@@ -236,9 +263,9 @@ fine-tuned reranker lifts recall@1 of the BM25 top-10 from 0.638 to 0.743 (0.683
   whole abstracts.
 - **Broken parsing and stale copies cost it a little, in the same direction for every seed, but
   not significantly for any one.** At parse 50%, all three seeds lost more claims than they gained
-  (10/4, 9/4, 8/2). At stale 50%, more lost than gained in all three (7/6, 10/8, 11/5); this is the
-  verifier that reacts to conflicting copies (see the first Week 3 analysis: 11 of 13 changed
-  answers moved to CONTRADICT for seed 0).
+  (10/4, 9/4, 8/2). At stale 50%, more lost than gained in all three (7/6, 10/8, 11/5). Unlike
+  Qwen, this verifier reacts to flipped copies: most of its changed answers move to CONTRADICT
+  (see Week 4, "Stale copies that were really flipped").
 - **The fine-tuned reranker clearly improves the ranking but barely changes the answers.** It puts
   the gold abstract first for 80.5% of clean claims (dense 74.4%) and recovers part of the duplicate
   loss (0.604 to 0.644), but hardly any of the stale loss (0.551 to 0.571): a flipped copy is as
@@ -298,29 +325,62 @@ is the seed-0 verifier on the second corruption seed, so compare it with its own
 
 ![Confidently wrong answers](figures/fig4_confident_wrong.png)
 
+### Stale copies that were really flipped
+
+About 1 in 5 stale copies had nothing to flip and are identical to their original (17 of 91 for
+corruption seed 0 at 50%, 19 of 91 for seed 1). `week4_stale.py` therefore splits the claims of each
+stale run by whether their top-3 context held an **edited** (truly conflicting) copy, and compares
+those claims with the same claims on the clean corpus (`results/week4/stale_edited.json`). Stale 50%:
+
+| Corruption seed | Verifier | Claims with an edited copy | Answers changed (to CONTRADICT) | Lost / gained | Confidently wrong, clean -> stale |
+|---|---|---|---|---|---|
+| 0 | Qwen | 78 | 6 (1) | 1 / 4 | n/a |
+| 0 | NLI fine-tuned, seeds 0 / 1 / 2 | 78 | 13 (11) / 19 (15) / 16 (12) | 7/6, 10/8, 11/5 | 13 -> 16, 7 -> 15, 8 -> 15 |
+| 1 | NLI fine-tuned, seed 0 | 76 | 9 (6) | 4 / 4 | 10 -> 9 |
+
+Claims whose context held only unedited copies changed answer in no case for the NLI verifier.
+So the fine-tuned verifier does react to flipped evidence, and in the expected direction (towards
+CONTRADICT) for both corruption seeds, while Qwen does not; but net accuracy does not change
+significantly, and the rise in confidently wrong answers appears on corruption seed 0 only.
+
 ### What Weeks 2-4 show together (300 dev claims; treat effects of a few claims with care)
 
 - **Holds under both corruption seeds: copies displace the gold abstract in retrieval.** Dense
   R@1 falls from 0.744 to 0.604 / 0.569 (duplicates 50%) and 0.551 / 0.494 (stale 50%); R@10 does not
   move. A fine-tuned reranker recovers part of the duplicate loss but little of the stale loss.
-- **Holds under both corruption seeds: broken parsing costs verification.** Every parse setting, for
-  both seeds, lost more correct answers than it gained (seeds combined: 6/1 at 10%, 8/2 at 25%, 17/6
-  at 50%); for Qwen too (Week 2, 8/0 at 50%). Retrieval barely notices it.
+- **Holds under both corruption seeds: broken parsing costs verification.** The seed-0 verifier never
+  gained more correct answers than it lost in a parse setting (corruption seeds combined, lost /
+  gained: 6/1 at 10%, 8/2 at 25%, 17/6 at 50%); the other training seeds and Qwen show the same
+  (Qwen, Week 2: 8/0 at 50%). Retrieval barely notices it.
 - **Holds for all training seeds: single-sentence chunks hurt the fine-tuned verifier and make it
   confidently wrong.** Accuracy 0.57-0.58 (from 0.65-0.68) while mean confidence rises, ECE about
   doubles (0.14-0.18 to 0.31-0.32) and confidently wrong answers go from 8-11% to 18-22% of claims.
 - **The verifier is overconfident even on clean data**: mean confidence 0.75-0.80 against accuracy
   0.65-0.68; its most confident answers (confidence 0.8-1.0) are right about 70% of the time
   (seed 0, Figure 3).
-- **Not established: an effect of stale copies on verification.** On corruption seed 0, claims with a
-  flipped copy in context were more often confidently wrong (on the same 95 claims: 15%, 8%, 10% clean
-  to 18%, 17%, 17% stale, for training seeds 0-2), but on corruption seed 1 the seed-0 verifier showed
-  no such rise (11.5% with a copy in context), and accuracy changes are within a few claims.
+- **Holds under both corruption seeds: the fine-tuned verifier reacts to flipped copies, Qwen does
+  not.** Most of the fine-tuned verifier's changed answers move to CONTRADICT when an edited stale
+  copy is in context (11 of 13, 15 of 19, 12 of 16 for training seeds 0-2; 6 of 9 on corruption
+  seed 1); Qwen moved 1 of 6. Net accuracy does not change significantly for either.
+- **Not established: stale copies making the verifier confidently wrong.** On corruption seed 0,
+  claims with a flipped copy in context were more often confidently wrong (on the same 95 claims:
+  15%, 8%, 10% clean to 18%, 17%, 17% stale, for training seeds 0-2), but not on corruption seed 1
+  (11.5% with a copy in context, the same as clean overall).
 - **Fine-tuning a small verifier beats the zero-shot LLM** on every corpus except 1-sentence chunks
-  (Week 3; mean 0.666 against 0.557 on clean, all training seeds significant).
+  (Week 3; mean 0.666 against 0.557 on clean, all training seeds significant). This is expected:
+  the fine-tuned model saw in-domain SciFact training data and the LLM saw none. It is reported as
+  context for the robustness results, not as a contest between the two.
+
+**Reading the statistics.** The p-values in this README are exact McNemar tests on paired,
+claim-level outcomes, one per comparison, with **no correction for multiple comparisons**: there are
+several dozen such tests, so a few will fall below 0.05 by chance. The findings above therefore rest
+on a pattern repeating across corruption seeds and training seeds, not on any single p-value. All
+runs share the same 300 claims, so they are not independent samples and their counts should not be
+pooled into one test.
 
 Limits: one dataset (SciFact dev, 300 claims), two corruption seeds, rule-based stale edits (about
-1 in 5 stale copies unchanged), Qwen evaluated only on corruption seed 0 and without confidences.
+1 in 5 stale copies unchanged; analysed separately above), Qwen evaluated only on corruption seed 0
+and without confidences.
 
 ## Roadmap
 
@@ -337,3 +397,10 @@ outputs are in `results/`.
 
 SciFact data are downloaded from the official release and are not redistributed here; see the
 SciFact repository for its licence.
+
+Fine-tuned models (three verifier seeds and the reranker) are published as assets of the GitHub
+release `models-week3` (built by `.github/workflows/release-models.yml`).
+
+Code is released under the MIT licence (`LICENSE`). To cite this work, see `CITATION.cff`.
+Exact package versions: `requirements.txt` (direct dependencies) and `requirements-lock.txt`
+(everything installed on the GitHub Actions runners).
