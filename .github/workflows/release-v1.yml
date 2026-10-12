@@ -1,0 +1,26 @@
+name: Release v1.0.0
+
+# Creates the v1.0.0 GitHub release (notes in .github/release-notes/v1.0.0.md). With the Zenodo
+# GitHub integration switched on, Zenodo archives the release and mints a DOI.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/release-v1.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release view v1.0.0 >/dev/null 2>&1 && { echo "v1.0.0 already exists"; exit 0; }
+          gh release create v1.0.0 --target "$GITHUB_SHA" --latest \
+            --title "v1.0.0: RAG data-quality benchmark" \
+            --notes-file .github/release-notes/v1.0.0.md
