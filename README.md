@@ -7,6 +7,9 @@ stale or conflicting versions, chunking choices) change the accuracy of retrieva
 labelled SUPPORT / CONTRADICT (or no evidence, treated as NOT_ENOUGH_INFO). The dev split
 (300 claims: 124 SUPPORT, 64 CONTRADICT, 112 NOT_ENOUGH_INFO) is used for evaluation.
 
+**Technical report:** [`report/REPORT.pdf`](report/REPORT.pdf) (source: [`report/REPORT.md`](report/REPORT.md);
+rebuild with `python report/build_pdf.py`).
+
 ## Key findings
 
 Pipeline: BM25 or dense retrieval (BGE-small) over the abstracts, then a verifier labels each claim
@@ -388,7 +391,7 @@ and without confidences.
   conflicting versions, chunk sizes) and measure the drop in retrieval and verification.
 - Week 3 (done): fine-tune a reranker/verifier in PyTorch (Hugging Face) on SciFact train; measure recovery.
 - Week 4 (done): calibration analysis (ECE, Brier), ablations, figures.
-- Week 5: technical report and release (Zenodo DOI).
+- Week 5: technical report (done: `report/`) and release with a Zenodo DOI.
 
 ## Notes
 
