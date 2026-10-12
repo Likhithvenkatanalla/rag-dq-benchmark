@@ -1272,6 +1272,148 @@
         }
       },
       {
+        "run": "duplicate_r0.25_gold_s0",
+        "retrieval": {
+          "bm25": {
+            "recall@1": 0.0841,
+            "recall@3": 0.1615,
+            "recall@5": 0.2082,
+            "recall@10": 0.2748
+          },
+          "dense_bge_small": {
+            "recall@1": 0.1321,
+            "recall@3": 0.2894,
+            "recall@5": 0.3859,
+            "recall@10": 0.4994
+          }
+        },
+        "qwen": {
+          "accuracy": 0.5199,
+          "macro_f1": 0.4265,
+          "gold_in_top3_rate": 0.5171,
+          "vs_clean": {
+            "right_to_wrong": 4,
+            "wrong_to_right": 21,
+            "mcnemar_p": 0.001
+          }
+        },
+        "nli_finetuned_seed0": {
+          "accuracy": 0.4656,
+          "macro_f1": 0.4599,
+          "vs_clean": {
+            "right_to_wrong": 13,
+            "wrong_to_right": 10,
+            "mcnemar_p": 0.678
+          },
+          "mean_confidence": 0.7722,
+          "ece": 0.3734,
+          "brier": 0.4104,
+          "confidently_wrong": 0.2882
+        },
+        "nli_finetuned_seed1": {
+          "accuracy": 0.4562,
+          "macro_f1": 0.446,
+          "vs_clean": {
+            "right_to_wrong": 13,
+            "wrong_to_right": 12,
+            "mcnemar_p": 1.0
+          },
+          "mean_confidence": 0.8417,
+          "ece": 0.3996,
+          "brier": 0.4264,
+          "confidently_wrong": 0.2839
+        },
+        "nli_finetuned_seed2": {
+          "accuracy": 0.4497,
+          "macro_f1": 0.4405,
+          "vs_clean": {
+            "right_to_wrong": 9,
+            "wrong_to_right": 9,
+            "mcnemar_p": 1.0
+          },
+          "mean_confidence": 0.8386,
+          "ece": 0.3928,
+          "brier": 0.4156,
+          "confidently_wrong": 0.2585
+        },
+        "nli_finetuned_accuracy": {
+          "mean": 0.4572,
+          "sd": 0.008,
+          "n": 3
+        }
+      },
+      {
+        "run": "duplicate_r0.5_gold_s0",
+        "retrieval": {
+          "bm25": {
+            "recall@1": 0.0689,
+            "recall@3": 0.1482,
+            "recall@5": 0.1936,
+            "recall@10": 0.264
+          },
+          "dense_bge_small": {
+            "recall@1": 0.1192,
+            "recall@3": 0.2682,
+            "recall@5": 0.3574,
+            "recall@10": 0.4855
+          }
+        },
+        "qwen": {
+          "accuracy": 0.5163,
+          "macro_f1": 0.4212,
+          "gold_in_top3_rate": 0.4939,
+          "vs_clean": {
+            "right_to_wrong": 21,
+            "wrong_to_right": 33,
+            "mcnemar_p": 0.134
+          }
+        },
+        "nli_finetuned_seed0": {
+          "accuracy": 0.4642,
+          "macro_f1": 0.4571,
+          "vs_clean": {
+            "right_to_wrong": 29,
+            "wrong_to_right": 24,
+            "mcnemar_p": 0.583
+          },
+          "mean_confidence": 0.7738,
+          "ece": 0.3698,
+          "brier": 0.4105,
+          "confidently_wrong": 0.2954
+        },
+        "nli_finetuned_seed1": {
+          "accuracy": 0.454,
+          "macro_f1": 0.4427,
+          "vs_clean": {
+            "right_to_wrong": 25,
+            "wrong_to_right": 21,
+            "mcnemar_p": 0.659
+          },
+          "mean_confidence": 0.8431,
+          "ece": 0.4,
+          "brier": 0.4286,
+          "confidently_wrong": 0.2875
+        },
+        "nli_finetuned_seed2": {
+          "accuracy": 0.4497,
+          "macro_f1": 0.4394,
+          "vs_clean": {
+            "right_to_wrong": 24,
+            "wrong_to_right": 24,
+            "mcnemar_p": 1.0
+          },
+          "mean_confidence": 0.839,
+          "ece": 0.3949,
+          "brier": 0.4173,
+          "confidently_wrong": 0.2643
+        },
+        "nli_finetuned_accuracy": {
+          "mean": 0.456,
+          "sd": 0.0074,
+          "n": 3
+        }
+      },
+      {
         "run": "parse_r0.1_gold_s0",
         "retrieval": {
           "bm25": {
@@ -1339,6 +1481,77 @@
         "nli_finetuned_accuracy": {
           "mean": 0.4569,
           "sd": 0.0091,
+          "n": 3
+        }
+      },
+      {
+        "run": "parse_r0.25_gold_s0",
+        "retrieval": {
+          "bm25": {
+            "recall@1": 0.0909,
+            "recall@3": 0.1655,
+            "recall@5": 0.2155,
+            "recall@10": 0.2757
+          },
+          "dense_bge_small": {
+            "recall@1": 0.1378,
+            "recall@3": 0.2921,
+            "recall@5": 0.384,
+            "recall@10": 0.4954
+          }
+        },
+        "qwen": {
+          "accuracy": 0.5112,
+          "macro_f1": 0.4202,
+          "gold_in_top3_rate": 0.5149,
+          "vs_clean": {
+            "right_to_wrong": 7,
+            "wrong_to_right": 12,
+            "mcnemar_p": 0.359
+          }
+        },
+        "nli_finetuned_seed0": {
+          "accuracy": 0.4627,
+          "macro_f1": 0.4562,
+          "vs_clean": {
+            "right_to_wrong": 24,
+            "wrong_to_right": 17,
+            "mcnemar_p": 0.349
+          },
+          "mean_confidence": 0.7703,
+          "ece": 0.3673,
+          "brier": 0.4072,
+          "confidently_wrong": 0.2817
+        },
+        "nli_finetuned_seed1": {
+          "accuracy": 0.4497,
+          "macro_f1": 0.4373,
+          "vs_clean": {
+            "right_to_wrong": 23,
+            "wrong_to_right": 13,
+            "mcnemar_p": 0.132
+          },
+          "mean_confidence": 0.838,
+          "ece": 0.397,
+          "brier": 0.4247,
+          "confidently_wrong": 0.2737
+        },
+        "nli_finetuned_seed2": {
+          "accuracy": 0.4432,
+          "macro_f1": 0.4324,
+          "vs_clean": {
+            "right_to_wrong": 24,
+            "wrong_to_right": 15,
+            "mcnemar_p": 0.2
+          },
+          "mean_confidence": 0.8343,
+          "ece": 0.3915,
+          "brier": 0.4155,
+          "confidently_wrong": 0.2556
+        },
+        "nli_finetuned_accuracy": {
+          "mean": 0.4519,
+          "sd": 0.0099,
           "n": 3
         }
       },
