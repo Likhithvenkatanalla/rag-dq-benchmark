@@ -29,6 +29,7 @@ e.g. duplicate_r0.25_gold_s0. Pass it on with
     python week1_baseline.py --step retrieve --corpus data/corrupted/<name>/corpus.jsonl
 """
 import argparse
+import functools
 import json
 import os
 import random
@@ -76,10 +77,21 @@ def match_case(word, template):
     return word
 
 
+@functools.lru_cache(maxsize=None)
+def extra_flips():
+    """Dataset-specific word pairs added to FLIPS, from an optional data/data/flips.json
+    (a list of [word, word] pairs). SciFact has none; Week 6 writes one for Climate-FEVER."""
+    path = os.path.join(DATA_DIR, "data", "flips.json")
+    if not os.path.exists(path):
+        return []
+    with open(path) as f:
+        return [tuple(pair) for pair in json.load(f)]
+
+
 def flip_findings(text):
     """Flip directional wording; returns (new_text, number_of_edits)."""
     table = {}
-    for a, b in FLIPS:
+    for a, b in FLIPS + extra_flips():
         table[a], table[b] = b, a
     pattern = re.compile(r"\b(" + "|".join(sorted(map(re.escape, table), key=len, reverse=True)) + r")\b",
                          re.IGNORECASE)

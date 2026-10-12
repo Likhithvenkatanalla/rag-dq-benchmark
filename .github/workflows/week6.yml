@@ -1,0 +1,184 @@
+name: Week 6 robustness checks
+
+# Three checks for the paper (see week6.py), run in parallel on CPU and committed to main:
+#   seeds    9 random corruptions x corruption seeds 2-4, fine-tuned NLI verifier (fp32, any runner)
+#   qwen3b   Qwen2.5-3B-Instruct as the zero-shot verifier on the clean corpus + 12 Week 2 settings
+#   climate  Climate-FEVER: clean + 9 seed-0 corruptions, retrieval + Qwen2.5-1.5B + 3 NLI verifiers
+# The LLM jobs run in bfloat16 and need CPUs with native bfloat16 (see week2.yml); re-run the failed
+# jobs until each lands on a suitable runner. Settings already committed are skipped.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/week6.yml]
+
+permissions:
+  contents: write
+
+env:
+  SETUP: |
+    pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+    pip install -r requirements.txt
+  BF16_CHECK: |
+    grep -m1 "model name" /proc/cpuinfo
+    if grep -qwE "avx512_bf16|amx_bf16" /proc/cpuinfo; then echo "native bfloat16: yes"
+    else echo "::error::No native bfloat16 on this runner (LLM would be ~50x slower); re-run this job."; exit 1; fi
+
+jobs:
+  seeds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        seed: [2, 3, 4]
+        defect: [duplicate, parse, stale]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install (CPU torch, versions pinned in requirements.txt)
+        run: eval "$SETUP"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-week4-bge
+      - name: Fine-tuned verifier (models-week3 release)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release download models-week3 -p model-nli-finetuned-seed0.zip -D /tmp/models
+          unzip -q /tmp/models/model-nli-finetuned-seed0.zip -d models/nli_finetuned_seed0
+      - name: Download SciFact
+        run: python week1_baseline.py --step download
+      - name: Run ${{ matrix.defect }}, corruption seed ${{ matrix.seed }}
+        run: |
+          for r in 0.1 0.25 0.5; do
+            name=${{ matrix.defect }}_r${r}_gold_s${{ matrix.seed }}
+            if [ -f "results/week3/seed0/nli_finetuned/$name/verification.json" ]; then echo "skip $name"; continue; fi
+            python week6.py seeds --only "$name"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seeds-${{ matrix.seed }}-${{ matrix.defect }}
+          path: |
+            results/${{ matrix.defect }}_r*_gold_s${{ matrix.seed }}/
+            results/week3/seed0/nli_finetuned/${{ matrix.defect }}_r*_gold_s${{ matrix.seed }}/
+
+  qwen3b:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        run: [clean_rerun,
+              duplicate_r0.1_gold_s0, duplicate_r0.25_gold_s0, duplicate_r0.5_gold_s0,
+              parse_r0.1_gold_s0, parse_r0.25_gold_s0, parse_r0.5_gold_s0,
+              stale_r0.1_gold_s0, stale_r0.25_gold_s0, stale_r0.5_gold_s0,
+              chunk_1, chunk_3, chunk_5]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Skip if results already exist
+        id: done
+        run: |
+          if [ -f "results/week6/qwen3b/${{ matrix.run }}/verification.json" ]; then echo "skip=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Check CPU has native bfloat16
+        if: steps.done.outputs.skip != 'true'
+        run: eval "$BF16_CHECK"
+      - uses: actions/setup-python@v5
+        if: steps.done.outputs.skip != 'true'
+        with:
+          python-version: "3.11"
+      - name: Install (CPU torch, versions pinned in requirements.txt)
+        if: steps.done.outputs.skip != 'true'
+        run: eval "$SETUP"
+      - name: Download SciFact
+        if: steps.done.outputs.skip != 'true'
+        run: python week1_baseline.py --step download
+      - name: Qwen2.5-3B on ${{ matrix.run }}
+        if: steps.done.outputs.skip != 'true'
+        timeout-minutes: 150
+        run: python week6.py qwen3b --only ${{ matrix.run }}
+      - uses: actions/upload-artifact@v4
+        if: steps.done.outputs.skip != 'true'
+        with:
+          name: qwen3b-${{ matrix.run }}
+          path: results/week6/qwen3b/
+
+  climate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        run: [clean_rerun,
+              duplicate_r0.1_gold_s0, duplicate_r0.25_gold_s0, duplicate_r0.5_gold_s0,
+              parse_r0.1_gold_s0, parse_r0.25_gold_s0, parse_r0.5_gold_s0,
+              stale_r0.1_gold_s0, stale_r0.25_gold_s0, stale_r0.5_gold_s0]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Skip if results already exist
+        id: done
+        run: |
+          if [ -f "results/climate_fever/${{ matrix.run }}/analysis.json" ]; then echo "skip=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Check CPU has native bfloat16
+        if: steps.done.outputs.skip != 'true'
+        run: eval "$BF16_CHECK"
+      - uses: actions/setup-python@v5
+        if: steps.done.outputs.skip != 'true'
+        with:
+          python-version: "3.11"
+      - name: Install (CPU torch, versions pinned in requirements.txt)
+        if: steps.done.outputs.skip != 'true'
+        run: eval "$SETUP"
+      - uses: actions/cache@v4
+        if: steps.done.outputs.skip != 'true'
+        with:
+          path: ~/.cache/huggingface
+          key: hf-bge-small-qwen2.5-1.5b
+      - name: Fine-tuned verifiers (models-week3 release)
+        if: steps.done.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release download models-week3 -p 'model-nli-finetuned-seed*.zip' -D /tmp/models
+          for s in 0 1 2; do unzip -q /tmp/models/model-nli-finetuned-seed$s.zip -d models/nli_finetuned_seed$s; done
+      - name: Climate-FEVER ${{ matrix.run }}
+        if: steps.done.outputs.skip != 'true'
+        timeout-minutes: 180
+        run: python week6.py climate --only ${{ matrix.run }}
+      - uses: actions/upload-artifact@v4
+        if: steps.done.outputs.skip != 'true'
+        with:
+          name: climate-${{ matrix.run }}
+          path: results/climate_fever/
+
+  commit:
+    needs: [seeds, qwen3b, climate]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: seeds-*
+          path: results/
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: qwen3b-*
+          path: results/week6/qwen3b/
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: climate-*
+          path: results/climate_fever/
+          merge-multiple: true
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A results/
+          git diff --cached --quiet && { echo "No new results"; exit 0; }
+          git commit -m "Week 6: robustness results (GitHub Actions run ${{ github.run_id }}, attempt ${{ github.run_attempt }})"
+          git pull --rebase origin main
+          git push origin HEAD:main

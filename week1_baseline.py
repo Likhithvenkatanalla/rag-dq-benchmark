@@ -13,6 +13,8 @@ Week 2+: run the same pipeline on a corrupted corpus from corrupt_corpus.py. Res
 results/<name>/ (name defaults to the corpus folder), leaving the Week 1 files untouched:
     python week1_baseline.py --step retrieve --corpus data/corrupted/<name>/corpus.jsonl
     python week1_baseline.py --step verify --corpus data/corrupted/<name>/corpus.jsonl
+
+Week 6: --llm swaps the verifier LLM; --verification-out writes its predictions elsewhere.
 """
 import argparse
 import json
@@ -167,7 +169,7 @@ def parse_label(text):
     return "NOT_ENOUGH_INFO"
 
 
-def verify(corpus_path=CLEAN_CORPUS, out=None, n_docs=3):
+def verify(corpus_path=CLEAN_CORPUS, out=None, n_docs=3, llm=LLM_MODEL, out_file=None):
     import torch
     from sklearn.metrics import accuracy_score, f1_score
     from tqdm import tqdm
@@ -185,10 +187,10 @@ def verify(corpus_path=CLEAN_CORPUS, out=None, n_docs=3):
 
     # float16 on GPU; bfloat16 on CPU (fits in ~3 GB RAM; float32 needs >7 GB)
     if torch.cuda.is_available():
-        generator = pipeline("text-generation", model=LLM_MODEL,
+        generator = pipeline("text-generation", model=llm,
                              dtype=torch.float16, device_map="auto")
     else:
-        generator = pipeline("text-generation", model=LLM_MODEL, dtype=torch.bfloat16, device="cpu")
+        generator = pipeline("text-generation", model=llm, dtype=torch.bfloat16, device="cpu")
 
     gold, pred, grounded, records = [], [], [], []
     for claim in tqdm(claims):
@@ -214,14 +216,16 @@ def verify(corpus_path=CLEAN_CORPUS, out=None, n_docs=3):
         records.append(record)
 
     results = {
-        "llm": LLM_MODEL,
+        "llm": llm,
         "n_claims": len(gold),
         "accuracy": round(accuracy_score(gold, pred), 4),
         "macro_f1": round(f1_score(gold, pred, labels=LABELS, average="macro"), 4),
         "gold_doc_in_context_rate": round(float(np.mean(grounded)), 4),
     }
     print(json.dumps(results, indent=2))
-    with open(paths["verification"], "w") as f:
+    out_file = out_file or paths["verification"]
+    os.makedirs(os.path.dirname(out_file), exist_ok=True)
+    with open(out_file, "w") as f:
         json.dump({"summary": results, "predictions": records}, f, indent=2)
 
 
@@ -232,10 +236,12 @@ if __name__ == "__main__":
     parser.add_argument("--out", help="results subfolder name (default: the corpus folder name)")
     parser.add_argument("--sparse-only", action="store_true",
                         help="retrieve: BM25 only (no model download; verify then has no rankings to use)")
+    parser.add_argument("--llm", default=LLM_MODEL, help="verify: Hugging Face id of the LLM verifier")
+    parser.add_argument("--verification-out", help="verify: write predictions here instead of the run folder")
     args = parser.parse_args()
     if args.step == "download":
         download()
     elif args.step == "retrieve":
         retrieve(args.corpus, args.out, sparse_only=args.sparse_only)
     else:
-        verify(args.corpus, args.out)
+        verify(args.corpus, args.out, llm=args.llm, out_file=args.verification_out)
