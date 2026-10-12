@@ -1,0 +1,41 @@
+name: Release fine-tuned models
+
+# Workflow artifacts expire; releases do not. This copies the Week 3 fine-tuned models (three NLI
+# verifier seeds and the reranker) from the Week 3 run's artifacts into a GitHub release.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/release-models.yml]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: model-*
+          path: models/
+          run-id: 38033246055
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Zip each model
+        run: |
+          cd models
+          for d in */; do (cd "$d" && zip -qr "../${d%/}.zip" .); done
+          ls -la
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create models-week3 models/*.zip \
+            --target "$GITHUB_SHA" \
+            --title "Week 3 fine-tuned models" \
+            --notes "Fine-tuned models from GitHub Actions run 38033246055 (Week 3):
+          - model-nli-finetuned-seed{0,1,2}.zip: cross-encoder/nli-deberta-v3-xsmall fine-tuned on SciFact train (verifier; thresholds in results/week3/seed*/training.json)
+          - model-reranker-finetuned.zip: cross-encoder/ms-marco-MiniLM-L-6-v2 fine-tuned on SciFact train
+          Load with transformers AutoModelForSequenceClassification / AutoTokenizer from the unzipped folder."
