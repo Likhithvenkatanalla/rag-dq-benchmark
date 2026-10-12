@@ -12,3 +12,5 @@ tqdm
 # Week 3 (DeBERTa-v3 tokenizer)
 sentencepiece
 protobuf
+# Week 4 (figures)
+matplotlib
