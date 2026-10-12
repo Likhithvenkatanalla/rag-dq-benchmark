@@ -251,12 +251,83 @@ Fine-tuned models are kept as GitHub Actions artifacts (run 38033246055), not in
 An earlier Week 3 run tuned thresholds on BM25 context with one seed; its seed-0 threshold and
 results were identical to this run's seed 0.
 
+## Week 4: calibration, a second corruption seed, figures (complete)
+
+### Calibration of the fine-tuned verifier
+
+`week4_calibration.py` gives each answer a confidence (for SUPPORT / CONTRADICT: the highest
+probability of that label over the top-3 records; for NOT_ENOUGH_INFO: one minus the highest
+SUPPORT or CONTRADICT probability) and compares it with correctness: ECE (10 equal-width bins),
+Brier score, and the share of claims answered **wrongly with confidence >= 0.9**
+(`results/week4/calibration.json`). Qwen answered with one word and no probabilities, so it is
+not included.
+
+| Corpus | Accuracy (seeds 0 / 1 / 2) | Mean confidence | ECE | Confidently wrong |
+|---|---|---|---|---|
+| clean | 0.650 / 0.680 / 0.667 | 0.75 / 0.79 / 0.80 | 0.18 / 0.17 / 0.14 | 11% / 8% / 8% |
+| duplicate 50% | 0.663 / 0.690 / 0.677 | 0.75 / 0.80 / 0.80 | 0.19 / 0.17 / 0.15 | 11% / 8% / 8% |
+| stale 50% | 0.647 / 0.673 / 0.647 | 0.76 / 0.80 / 0.81 | 0.20 / 0.19 / 0.17 | 12% / 10% / 10% |
+| parse 50% | 0.630 / 0.663 / 0.647 | 0.74 / 0.79 / 0.80 | 0.19 / 0.18 / 0.16 | 11% / 8% / 8% |
+| chunk, 3 sentences | 0.650 / 0.630 / 0.613 | 0.77 / 0.82 / 0.83 | 0.23 / 0.21 / 0.23 | 17% / 14% / 13% |
+| chunk, 1 sentence | 0.583 / 0.570 / 0.567 | 0.79 / 0.85 / 0.85 | 0.32 / 0.32 / 0.31 | 22% / 19% / 18% |
+
+### A second corruption seed
+
+`week4_seed.py` re-ran the 9 random corruptions (duplicate, parse, stale at 10/25/50%) with seed 1,
+so different documents are hit: retrieval and the fine-tuned verifier (seed-0 model, reused from the
+Week 3 run). Qwen was not re-run (it needs native-bfloat16 runners; see Week 2). Chunking has no
+randomness. Full table: `results/week4/seed_comparison.json`.
+
+| Setting | Dense R@1, seed 0 / seed 1 | Verifier accuracy, seed 0 / seed 1 | Lost / gained vs clean, seed 0 / seed 1 |
+|---|---|---|---|
+| duplicate 10% / 25% / 50% | 0.689 / 0.696, 0.668 / 0.649, 0.604 / 0.569 | 0.653 / 0.647, 0.660 / 0.657, 0.663 / 0.650 | 0/1 · 1/0, 1/4 · 1/3, 1/5 · 3/3 |
+| stale 10% / 25% / 50% | 0.691 / 0.696, 0.622 / 0.617, 0.551 / 0.494 | 0.657 / 0.637, 0.650 / 0.647, 0.647 / 0.650 | 0/2 · 4/0, 3/3 · 4/3, 7/6 · 4/4 |
+| parse 10% / 25% / 50% | 0.744 / 0.750, 0.734 / 0.734, 0.739 / 0.739 | 0.650 / 0.633, 0.647 / 0.633, 0.630 / 0.633 | 1/1 · 5/0, 2/1 · 6/1, 10/4 · 7/2 |
+
+(Clean dense R@1 0.744; clean accuracy of this verifier 0.650.)
+
+### Figures (`week4_figures.py`)
+
+![Verification accuracy under corruption](figures/fig1_verification.png)
+*Accuracy by corruption level. The orange band spans the three verifier training seeds; the green line
+is the seed-0 verifier on the second corruption seed, so compare it with its own clean point (0.650).*
+
+![Recall@1 under corruption](figures/fig2_retrieval.png)
+
+![Reliability diagram](figures/fig3_reliability.png)
+
+![Confidently wrong answers](figures/fig4_confident_wrong.png)
+
+### What Weeks 2-4 show together (300 dev claims; treat effects of a few claims with care)
+
+- **Holds under both corruption seeds: copies displace the gold abstract in retrieval.** Dense
+  R@1 falls from 0.744 to 0.604 / 0.569 (duplicates 50%) and 0.551 / 0.494 (stale 50%); R@10 does not
+  move. A fine-tuned reranker recovers part of the duplicate loss but little of the stale loss.
+- **Holds under both corruption seeds: broken parsing costs verification.** Every parse setting, for
+  both seeds, lost more correct answers than it gained (seeds combined: 6/1 at 10%, 8/2 at 25%, 17/6
+  at 50%); for Qwen too (Week 2, 8/0 at 50%). Retrieval barely notices it.
+- **Holds for all training seeds: single-sentence chunks hurt the fine-tuned verifier and make it
+  confidently wrong.** Accuracy 0.57-0.58 (from 0.65-0.68) while mean confidence rises, ECE about
+  doubles (0.14-0.18 to 0.31-0.32) and confidently wrong answers go from 8-11% to 18-22% of claims.
+- **The verifier is overconfident even on clean data**: mean confidence 0.75-0.80 against accuracy
+  0.65-0.68; its most confident answers (confidence 0.8-1.0) are right about 70% of the time
+  (seed 0, Figure 3).
+- **Not established: an effect of stale copies on verification.** On corruption seed 0, claims with a
+  flipped copy in context were more often confidently wrong (on the same 95 claims: 15%, 8%, 10% clean
+  to 18%, 17%, 17% stale, for training seeds 0-2), but on corruption seed 1 the seed-0 verifier showed
+  no such rise (11.5% with a copy in context), and accuracy changes are within a few claims.
+- **Fine-tuning a small verifier beats the zero-shot LLM** on every corpus except 1-sentence chunks
+  (Week 3; mean 0.666 against 0.557 on clean, all training seeds significant).
+
+Limits: one dataset (SciFact dev, 300 claims), two corruption seeds, rule-based stale edits (about
+1 in 5 stale copies unchanged), Qwen evaluated only on corruption seed 0 and without confidences.
+
 ## Roadmap
 
 - Week 2 (done): inject controlled corpus defects (near-duplicates, truncated/garbled parsing, stale
   conflicting versions, chunk sizes) and measure the drop in retrieval and verification.
 - Week 3 (done): fine-tune a reranker/verifier in PyTorch (Hugging Face) on SciFact train; measure recovery.
-- Week 4: calibration analysis (ECE, Brier), ablations, figures.
+- Week 4 (done): calibration analysis (ECE, Brier), ablations, figures.
 - Week 5: technical report and release (Zenodo DOI).
 
 ## Notes
