@@ -1,0 +1,1691 @@
+{
+  "args": {
+    "defect": "parse",
+    "rate": 0.25,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": null,
+    "seed": 0,
+    "name": null
+  },
+  "clean_docs": 5240,
+  "corrupted_docs": 5240,
+  "changes": [
+    {
+      "doc_id": 1,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 5,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 6,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 7,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 14,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 31,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 45,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 49,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 50,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 56,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 57,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 67,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 76,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 90,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 93,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 103,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 138,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 141,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 156,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 157,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 173,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 174,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 180,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 181,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 185,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 187,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 204,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 205,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 207,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 211,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 216,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 245,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 258,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 260,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 261,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 264,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 297,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 299,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 304,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 306,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 330,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 353,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 356,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 362,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 363,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 365,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 372,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 401,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 404,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 416,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 429,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 435,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 445,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 450,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 463,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 465,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 466,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 467,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 511,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 514,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 545,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 546,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 547,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 552,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 557,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 561,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 566,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 585,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 588,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 595,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 624,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 625,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 627,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 638,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 651,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 654,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 670,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 673,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 675,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 690,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 730,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 732,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 743,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 750,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 768,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 777,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 792,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 795,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 798,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 809,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 816,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 821,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 870,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 877,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 893,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 918,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 930,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 948,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 975,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 978,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 992,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1009,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1013,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1019,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1021,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1024,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1037,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1038,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1040,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1049,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1059,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1068,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1097,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1112,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1122,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1131,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1157,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1181,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1184,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1202,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1212,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1224,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1225,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1230,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1237,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1323,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1341,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1350,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1357,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1366,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1371,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1379,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1438,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1484,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1506,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1508,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1509,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1510,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1559,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1563,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1577,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1578,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1579,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1605,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1615,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1617,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1619,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1652,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1674,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1676,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1690,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1694,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1723,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1740,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1747,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1749,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1751,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1776,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1798,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1802,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1813,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1830,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1838,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1855,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1866,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1887,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1891,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1892,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1899,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1914,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1959,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1960,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1963,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1966,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1971,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 1974,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 1975,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1976,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 1999,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2002,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2025,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2044,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2048,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2051,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2064,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2073,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2088,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2090,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2100,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2120,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2122,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2130,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2148,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2149,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2171,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2180,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2237,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2261,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2267,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2290,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2300,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2308,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2313,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2329,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2330,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2333,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2337,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2388,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2420,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2421,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2426,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2453,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2456,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2458,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2467,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2503,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2511,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2514,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2617,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2628,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2631,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2682,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2683,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2691,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2692,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2701,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2706,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2722,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2740,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2764,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2771,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2794,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2812,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2815,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2816,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2829,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2839,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2840,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2841,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2866,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2872,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2882,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2883,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2903,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2904,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 2905,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2913,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2934,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2937,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 2939,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2953,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2984,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 2988,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3004,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3005,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3024,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3064,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3065,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3069,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3079,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3086,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3098,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3100,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3102,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3117,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3128,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3143,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3157,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3159,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3172,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3174,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3185,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3186,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3192,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3200,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3206,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3247,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3252,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3254,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3255,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3298,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3299,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3301,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3302,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3353,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3360,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3389,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3413,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3438,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3458,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3459,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3499,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3506,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3560,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3570,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3572,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3637,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3638,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3650,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3651,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3660,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3661,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3673,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3703,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3744,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3762,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3765,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3770,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3795,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3801,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3812,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3845,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3859,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3879,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3897,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3898,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3913,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3915,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 3926,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3934,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3944,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3954,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3963,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3980,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 3993,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 3998,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4009,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4041,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4043,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4046,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4061,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4070,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4094,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4103,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4122,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4149,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4160,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4182,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4185,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4200,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4201,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4203,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4206,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4209,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4218,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4220,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4224,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4227,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4252,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4254,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4279,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4280,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4292,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4296,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4301,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4335,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4337,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4340,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4347,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4352,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4385,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4417,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4423,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4428,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4450,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4457,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4459,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4463,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4467,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4482,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4488,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4497,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4511,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4526,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4563,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4570,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4588,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4589,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4600,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4630,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4670,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4674,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4695,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4703,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4705,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4711,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4716,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4737,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4738,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4783,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4788,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4838,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4840,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4842,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4848,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4853,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4864,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4877,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4879,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4891,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4895,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4907,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4912,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4916,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4935,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4942,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4944,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 4945,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 4970,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 4986,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 5009,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 5042,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 5047,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 5055,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 5070,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 5138,
+      "mode": "truncate"
+    },
+    {
+      "doc_id": 5146,
+      "mode": "scramble"
+    },
+    {
+      "doc_id": 5179,
+      "mode": "ocr"
+    },
+    {
+      "doc_id": 5235,
+      "mode": "scramble"
+    }
+  ]
+}

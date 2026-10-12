@@ -1,0 +1,1691 @@
+{
+  "args": {
+    "defect": "duplicate",
+    "rate": 0.25,
+    "target": "gold",
+    "copies": 1,
+    "chunk_size": null,
+    "seed": 0,
+    "name": null
+  },
+  "clean_docs": 5240,
+  "corrupted_docs": 5659,
+  "changes": [
+    {
+      "doc_id": 5240,
+      "derived_from": 1
+    },
+    {
+      "doc_id": 5241,
+      "derived_from": 5
+    },
+    {
+      "doc_id": 5242,
+      "derived_from": 6
+    },
+    {
+      "doc_id": 5243,
+      "derived_from": 7
+    },
+    {
+      "doc_id": 5244,
+      "derived_from": 14
+    },
+    {
+      "doc_id": 5245,
+      "derived_from": 31
+    },
+    {
+      "doc_id": 5246,
+      "derived_from": 45
+    },
+    {
+      "doc_id": 5247,
+      "derived_from": 49
+    },
+    {
+      "doc_id": 5248,
+      "derived_from": 50
+    },
+    {
+      "doc_id": 5249,
+      "derived_from": 56
+    },
+    {
+      "doc_id": 5250,
+      "derived_from": 57
+    },
+    {
+      "doc_id": 5251,
+      "derived_from": 67
+    },
+    {
+      "doc_id": 5252,
+      "derived_from": 76
+    },
+    {
+      "doc_id": 5253,
+      "derived_from": 90
+    },
+    {
+      "doc_id": 5254,
+      "derived_from": 93
+    },
+    {
+      "doc_id": 5255,
+      "derived_from": 103
+    },
+    {
+      "doc_id": 5256,
+      "derived_from": 138
+    },
+    {
+      "doc_id": 5257,
+      "derived_from": 141
+    },
+    {
+      "doc_id": 5258,
+      "derived_from": 156
+    },
+    {
+      "doc_id": 5259,
+      "derived_from": 157
+    },
+    {
+      "doc_id": 5260,
+      "derived_from": 173
+    },
+    {
+      "doc_id": 5261,
+      "derived_from": 174
+    },
+    {
+      "doc_id": 5262,
+      "derived_from": 180
+    },
+    {
+      "doc_id": 5263,
+      "derived_from": 181
+    },
+    {
+      "doc_id": 5264,
+      "derived_from": 185
+    },
+    {
+      "doc_id": 5265,
+      "derived_from": 187
+    },
+    {
+      "doc_id": 5266,
+      "derived_from": 204
+    },
+    {
+      "doc_id": 5267,
+      "derived_from": 205
+    },
+    {
+      "doc_id": 5268,
+      "derived_from": 207
+    },
+    {
+      "doc_id": 5269,
+      "derived_from": 211
+    },
+    {
+      "doc_id": 5270,
+      "derived_from": 216
+    },
+    {
+      "doc_id": 5271,
+      "derived_from": 245
+    },
+    {
+      "doc_id": 5272,
+      "derived_from": 258
+    },
+    {
+      "doc_id": 5273,
+      "derived_from": 260
+    },
+    {
+      "doc_id": 5274,
+      "derived_from": 261
+    },
+    {
+      "doc_id": 5275,
+      "derived_from": 264
+    },
+    {
+      "doc_id": 5276,
+      "derived_from": 297
+    },
+    {
+      "doc_id": 5277,
+      "derived_from": 299
+    },
+    {
+      "doc_id": 5278,
+      "derived_from": 304
+    },
+    {
+      "doc_id": 5279,
+      "derived_from": 306
+    },
+    {
+      "doc_id": 5280,
+      "derived_from": 330
+    },
+    {
+      "doc_id": 5281,
+      "derived_from": 353
+    },
+    {
+      "doc_id": 5282,
+      "derived_from": 356
+    },
+    {
+      "doc_id": 5283,
+      "derived_from": 362
+    },
+    {
+      "doc_id": 5284,
+      "derived_from": 363
+    },
+    {
+      "doc_id": 5285,
+      "derived_from": 365
+    },
+    {
+      "doc_id": 5286,
+      "derived_from": 372
+    },
+    {
+      "doc_id": 5287,
+      "derived_from": 401
+    },
+    {
+      "doc_id": 5288,
+      "derived_from": 404
+    },
+    {
+      "doc_id": 5289,
+      "derived_from": 416
+    },
+    {
+      "doc_id": 5290,
+      "derived_from": 429
+    },
+    {
+      "doc_id": 5291,
+      "derived_from": 435
+    },
+    {
+      "doc_id": 5292,
+      "derived_from": 445
+    },
+    {
+      "doc_id": 5293,
+      "derived_from": 450
+    },
+    {
+      "doc_id": 5294,
+      "derived_from": 463
+    },
+    {
+      "doc_id": 5295,
+      "derived_from": 465
+    },
+    {
+      "doc_id": 5296,
+      "derived_from": 466
+    },
+    {
+      "doc_id": 5297,
+      "derived_from": 467
+    },
+    {
+      "doc_id": 5298,
+      "derived_from": 511
+    },
+    {
+      "doc_id": 5299,
+      "derived_from": 514
+    },
+    {
+      "doc_id": 5300,
+      "derived_from": 545
+    },
+    {
+      "doc_id": 5301,
+      "derived_from": 546
+    },
+    {
+      "doc_id": 5302,
+      "derived_from": 547
+    },
+    {
+      "doc_id": 5303,
+      "derived_from": 552
+    },
+    {
+      "doc_id": 5304,
+      "derived_from": 557
+    },
+    {
+      "doc_id": 5305,
+      "derived_from": 561
+    },
+    {
+      "doc_id": 5306,
+      "derived_from": 566
+    },
+    {
+      "doc_id": 5307,
+      "derived_from": 585
+    },
+    {
+      "doc_id": 5308,
+      "derived_from": 588
+    },
+    {
+      "doc_id": 5309,
+      "derived_from": 595
+    },
+    {
+      "doc_id": 5310,
+      "derived_from": 624
+    },
+    {
+      "doc_id": 5311,
+      "derived_from": 625
+    },
+    {
+      "doc_id": 5312,
+      "derived_from": 627
+    },
+    {
+      "doc_id": 5313,
+      "derived_from": 638
+    },
+    {
+      "doc_id": 5314,
+      "derived_from": 651
+    },
+    {
+      "doc_id": 5315,
+      "derived_from": 654
+    },
+    {
+      "doc_id": 5316,
+      "derived_from": 670
+    },
+    {
+      "doc_id": 5317,
+      "derived_from": 673
+    },
+    {
+      "doc_id": 5318,
+      "derived_from": 675
+    },
+    {
+      "doc_id": 5319,
+      "derived_from": 690
+    },
+    {
+      "doc_id": 5320,
+      "derived_from": 730
+    },
+    {
+      "doc_id": 5321,
+      "derived_from": 732
+    },
+    {
+      "doc_id": 5322,
+      "derived_from": 743
+    },
+    {
+      "doc_id": 5323,
+      "derived_from": 750
+    },
+    {
+      "doc_id": 5324,
+      "derived_from": 768
+    },
+    {
+      "doc_id": 5325,
+      "derived_from": 777
+    },
+    {
+      "doc_id": 5326,
+      "derived_from": 792
+    },
+    {
+      "doc_id": 5327,
+      "derived_from": 795
+    },
+    {
+      "doc_id": 5328,
+      "derived_from": 798
+    },
+    {
+      "doc_id": 5329,
+      "derived_from": 809
+    },
+    {
+      "doc_id": 5330,
+      "derived_from": 816
+    },
+    {
+      "doc_id": 5331,
+      "derived_from": 821
+    },
+    {
+      "doc_id": 5332,
+      "derived_from": 870
+    },
+    {
+      "doc_id": 5333,
+      "derived_from": 877
+    },
+    {
+      "doc_id": 5334,
+      "derived_from": 893
+    },
+    {
+      "doc_id": 5335,
+      "derived_from": 918
+    },
+    {
+      "doc_id": 5336,
+      "derived_from": 930
+    },
+    {
+      "doc_id": 5337,
+      "derived_from": 948
+    },
+    {
+      "doc_id": 5338,
+      "derived_from": 975
+    },
+    {
+      "doc_id": 5339,
+      "derived_from": 978
+    },
+    {
+      "doc_id": 5340,
+      "derived_from": 992
+    },
+    {
+      "doc_id": 5341,
+      "derived_from": 1009
+    },
+    {
+      "doc_id": 5342,
+      "derived_from": 1013
+    },
+    {
+      "doc_id": 5343,
+      "derived_from": 1019
+    },
+    {
+      "doc_id": 5344,
+      "derived_from": 1021
+    },
+    {
+      "doc_id": 5345,
+      "derived_from": 1024
+    },
+    {
+      "doc_id": 5346,
+      "derived_from": 1037
+    },
+    {
+      "doc_id": 5347,
+      "derived_from": 1038
+    },
+    {
+      "doc_id": 5348,
+      "derived_from": 1040
+    },
+    {
+      "doc_id": 5349,
+      "derived_from": 1049
+    },
+    {
+      "doc_id": 5350,
+      "derived_from": 1059
+    },
+    {
+      "doc_id": 5351,
+      "derived_from": 1068
+    },
+    {
+      "doc_id": 5352,
+      "derived_from": 1097
+    },
+    {
+      "doc_id": 5353,
+      "derived_from": 1112
+    },
+    {
+      "doc_id": 5354,
+      "derived_from": 1122
+    },
+    {
+      "doc_id": 5355,
+      "derived_from": 1131
+    },
+    {
+      "doc_id": 5356,
+      "derived_from": 1157
+    },
+    {
+      "doc_id": 5357,
+      "derived_from": 1181
+    },
+    {
+      "doc_id": 5358,
+      "derived_from": 1184
+    },
+    {
+      "doc_id": 5359,
+      "derived_from": 1202
+    },
+    {
+      "doc_id": 5360,
+      "derived_from": 1212
+    },
+    {
+      "doc_id": 5361,
+      "derived_from": 1224
+    },
+    {
+      "doc_id": 5362,
+      "derived_from": 1225
+    },
+    {
+      "doc_id": 5363,
+      "derived_from": 1230
+    },
+    {
+      "doc_id": 5364,
+      "derived_from": 1237
+    },
+    {
+      "doc_id": 5365,
+      "derived_from": 1323
+    },
+    {
+      "doc_id": 5366,
+      "derived_from": 1341
+    },
+    {
+      "doc_id": 5367,
+      "derived_from": 1350
+    },
+    {
+      "doc_id": 5368,
+      "derived_from": 1357
+    },
+    {
+      "doc_id": 5369,
+      "derived_from": 1366
+    },
+    {
+      "doc_id": 5370,
+      "derived_from": 1371
+    },
+    {
+      "doc_id": 5371,
+      "derived_from": 1379
+    },
+    {
+      "doc_id": 5372,
+      "derived_from": 1438
+    },
+    {
+      "doc_id": 5373,
+      "derived_from": 1484
+    },
+    {
+      "doc_id": 5374,
+      "derived_from": 1506
+    },
+    {
+      "doc_id": 5375,
+      "derived_from": 1508
+    },
+    {
+      "doc_id": 5376,
+      "derived_from": 1509
+    },
+    {
+      "doc_id": 5377,
+      "derived_from": 1510
+    },
+    {
+      "doc_id": 5378,
+      "derived_from": 1559
+    },
+    {
+      "doc_id": 5379,
+      "derived_from": 1563
+    },
+    {
+      "doc_id": 5380,
+      "derived_from": 1577
+    },
+    {
+      "doc_id": 5381,
+      "derived_from": 1578
+    },
+    {
+      "doc_id": 5382,
+      "derived_from": 1579
+    },
+    {
+      "doc_id": 5383,
+      "derived_from": 1605
+    },
+    {
+      "doc_id": 5384,
+      "derived_from": 1615
+    },
+    {
+      "doc_id": 5385,
+      "derived_from": 1617
+    },
+    {
+      "doc_id": 5386,
+      "derived_from": 1619
+    },
+    {
+      "doc_id": 5387,
+      "derived_from": 1652
+    },
+    {
+      "doc_id": 5388,
+      "derived_from": 1674
+    },
+    {
+      "doc_id": 5389,
+      "derived_from": 1676
+    },
+    {
+      "doc_id": 5390,
+      "derived_from": 1690
+    },
+    {
+      "doc_id": 5391,
+      "derived_from": 1694
+    },
+    {
+      "doc_id": 5392,
+      "derived_from": 1723
+    },
+    {
+      "doc_id": 5393,
+      "derived_from": 1740
+    },
+    {
+      "doc_id": 5394,
+      "derived_from": 1747
+    },
+    {
+      "doc_id": 5395,
+      "derived_from": 1749
+    },
+    {
+      "doc_id": 5396,
+      "derived_from": 1751
+    },
+    {
+      "doc_id": 5397,
+      "derived_from": 1776
+    },
+    {
+      "doc_id": 5398,
+      "derived_from": 1798
+    },
+    {
+      "doc_id": 5399,
+      "derived_from": 1802
+    },
+    {
+      "doc_id": 5400,
+      "derived_from": 1813
+    },
+    {
+      "doc_id": 5401,
+      "derived_from": 1830
+    },
+    {
+      "doc_id": 5402,
+      "derived_from": 1838
+    },
+    {
+      "doc_id": 5403,
+      "derived_from": 1855
+    },
+    {
+      "doc_id": 5404,
+      "derived_from": 1866
+    },
+    {
+      "doc_id": 5405,
+      "derived_from": 1887
+    },
+    {
+      "doc_id": 5406,
+      "derived_from": 1891
+    },
+    {
+      "doc_id": 5407,
+      "derived_from": 1892
+    },
+    {
+      "doc_id": 5408,
+      "derived_from": 1899
+    },
+    {
+      "doc_id": 5409,
+      "derived_from": 1914
+    },
+    {
+      "doc_id": 5410,
+      "derived_from": 1959
+    },
+    {
+      "doc_id": 5411,
+      "derived_from": 1960
+    },
+    {
+      "doc_id": 5412,
+      "derived_from": 1963
+    },
+    {
+      "doc_id": 5413,
+      "derived_from": 1966
+    },
+    {
+      "doc_id": 5414,
+      "derived_from": 1971
+    },
+    {
+      "doc_id": 5415,
+      "derived_from": 1974
+    },
+    {
+      "doc_id": 5416,
+      "derived_from": 1975
+    },
+    {
+      "doc_id": 5417,
+      "derived_from": 1976
+    },
+    {
+      "doc_id": 5418,
+      "derived_from": 1999
+    },
+    {
+      "doc_id": 5419,
+      "derived_from": 2002
+    },
+    {
+      "doc_id": 5420,
+      "derived_from": 2025
+    },
+    {
+      "doc_id": 5421,
+      "derived_from": 2044
+    },
+    {
+      "doc_id": 5422,
+      "derived_from": 2048
+    },
+    {
+      "doc_id": 5423,
+      "derived_from": 2051
+    },
+    {
+      "doc_id": 5424,
+      "derived_from": 2064
+    },
+    {
+      "doc_id": 5425,
+      "derived_from": 2073
+    },
+    {
+      "doc_id": 5426,
+      "derived_from": 2088
+    },
+    {
+      "doc_id": 5427,
+      "derived_from": 2090
+    },
+    {
+      "doc_id": 5428,
+      "derived_from": 2100
+    },
+    {
+      "doc_id": 5429,
+      "derived_from": 2120
+    },
+    {
+      "doc_id": 5430,
+      "derived_from": 2122
+    },
+    {
+      "doc_id": 5431,
+      "derived_from": 2130
+    },
+    {
+      "doc_id": 5432,
+      "derived_from": 2148
+    },
+    {
+      "doc_id": 5433,
+      "derived_from": 2149
+    },
+    {
+      "doc_id": 5434,
+      "derived_from": 2171
+    },
+    {
+      "doc_id": 5435,
+      "derived_from": 2180
+    },
+    {
+      "doc_id": 5436,
+      "derived_from": 2237
+    },
+    {
+      "doc_id": 5437,
+      "derived_from": 2261
+    },
+    {
+      "doc_id": 5438,
+      "derived_from": 2267
+    },
+    {
+      "doc_id": 5439,
+      "derived_from": 2290
+    },
+    {
+      "doc_id": 5440,
+      "derived_from": 2300
+    },
+    {
+      "doc_id": 5441,
+      "derived_from": 2308
+    },
+    {
+      "doc_id": 5442,
+      "derived_from": 2313
+    },
+    {
+      "doc_id": 5443,
+      "derived_from": 2329
+    },
+    {
+      "doc_id": 5444,
+      "derived_from": 2330
+    },
+    {
+      "doc_id": 5445,
+      "derived_from": 2333
+    },
+    {
+      "doc_id": 5446,
+      "derived_from": 2337
+    },
+    {
+      "doc_id": 5447,
+      "derived_from": 2388
+    },
+    {
+      "doc_id": 5448,
+      "derived_from": 2420
+    },
+    {
+      "doc_id": 5449,
+      "derived_from": 2421
+    },
+    {
+      "doc_id": 5450,
+      "derived_from": 2426
+    },
+    {
+      "doc_id": 5451,
+      "derived_from": 2453
+    },
+    {
+      "doc_id": 5452,
+      "derived_from": 2456
+    },
+    {
+      "doc_id": 5453,
+      "derived_from": 2458
+    },
+    {
+      "doc_id": 5454,
+      "derived_from": 2467
+    },
+    {
+      "doc_id": 5455,
+      "derived_from": 2503
+    },
+    {
+      "doc_id": 5456,
+      "derived_from": 2511
+    },
+    {
+      "doc_id": 5457,
+      "derived_from": 2514
+    },
+    {
+      "doc_id": 5458,
+      "derived_from": 2617
+    },
+    {
+      "doc_id": 5459,
+      "derived_from": 2628
+    },
+    {
+      "doc_id": 5460,
+      "derived_from": 2631
+    },
+    {
+      "doc_id": 5461,
+      "derived_from": 2682
+    },
+    {
+      "doc_id": 5462,
+      "derived_from": 2683
+    },
+    {
+      "doc_id": 5463,
+      "derived_from": 2691
+    },
+    {
+      "doc_id": 5464,
+      "derived_from": 2692
+    },
+    {
+      "doc_id": 5465,
+      "derived_from": 2701
+    },
+    {
+      "doc_id": 5466,
+      "derived_from": 2706
+    },
+    {
+      "doc_id": 5467,
+      "derived_from": 2722
+    },
+    {
+      "doc_id": 5468,
+      "derived_from": 2740
+    },
+    {
+      "doc_id": 5469,
+      "derived_from": 2764
+    },
+    {
+      "doc_id": 5470,
+      "derived_from": 2771
+    },
+    {
+      "doc_id": 5471,
+      "derived_from": 2794
+    },
+    {
+      "doc_id": 5472,
+      "derived_from": 2812
+    },
+    {
+      "doc_id": 5473,
+      "derived_from": 2815
+    },
+    {
+      "doc_id": 5474,
+      "derived_from": 2816
+    },
+    {
+      "doc_id": 5475,
+      "derived_from": 2829
+    },
+    {
+      "doc_id": 5476,
+      "derived_from": 2839
+    },
+    {
+      "doc_id": 5477,
+      "derived_from": 2840
+    },
+    {
+      "doc_id": 5478,
+      "derived_from": 2841
+    },
+    {
+      "doc_id": 5479,
+      "derived_from": 2866
+    },
+    {
+      "doc_id": 5480,
+      "derived_from": 2872
+    },
+    {
+      "doc_id": 5481,
+      "derived_from": 2882
+    },
+    {
+      "doc_id": 5482,
+      "derived_from": 2883
+    },
+    {
+      "doc_id": 5483,
+      "derived_from": 2903
+    },
+    {
+      "doc_id": 5484,
+      "derived_from": 2904
+    },
+    {
+      "doc_id": 5485,
+      "derived_from": 2905
+    },
+    {
+      "doc_id": 5486,
+      "derived_from": 2913
+    },
+    {
+      "doc_id": 5487,
+      "derived_from": 2934
+    },
+    {
+      "doc_id": 5488,
+      "derived_from": 2937
+    },
+    {
+      "doc_id": 5489,
+      "derived_from": 2939
+    },
+    {
+      "doc_id": 5490,
+      "derived_from": 2953
+    },
+    {
+      "doc_id": 5491,
+      "derived_from": 2984
+    },
+    {
+      "doc_id": 5492,
+      "derived_from": 2988
+    },
+    {
+      "doc_id": 5493,
+      "derived_from": 3004
+    },
+    {
+      "doc_id": 5494,
+      "derived_from": 3005
+    },
+    {
+      "doc_id": 5495,
+      "derived_from": 3024
+    },
+    {
+      "doc_id": 5496,
+      "derived_from": 3064
+    },
+    {
+      "doc_id": 5497,
+      "derived_from": 3065
+    },
+    {
+      "doc_id": 5498,
+      "derived_from": 3069
+    },
+    {
+      "doc_id": 5499,
+      "derived_from": 3079
+    },
+    {
+      "doc_id": 5500,
+      "derived_from": 3086
+    },
+    {
+      "doc_id": 5501,
+      "derived_from": 3098
+    },
+    {
+      "doc_id": 5502,
+      "derived_from": 3100
+    },
+    {
+      "doc_id": 5503,
+      "derived_from": 3102
+    },
+    {
+      "doc_id": 5504,
+      "derived_from": 3117
+    },
+    {
+      "doc_id": 5505,
+      "derived_from": 3128
+    },
+    {
+      "doc_id": 5506,
+      "derived_from": 3143
+    },
+    {
+      "doc_id": 5507,
+      "derived_from": 3157
+    },
+    {
+      "doc_id": 5508,
+      "derived_from": 3159
+    },
+    {
+      "doc_id": 5509,
+      "derived_from": 3172
+    },
+    {
+      "doc_id": 5510,
+      "derived_from": 3174
+    },
+    {
+      "doc_id": 5511,
+      "derived_from": 3185
+    },
+    {
+      "doc_id": 5512,
+      "derived_from": 3186
+    },
+    {
+      "doc_id": 5513,
+      "derived_from": 3192
+    },
+    {
+      "doc_id": 5514,
+      "derived_from": 3200
+    },
+    {
+      "doc_id": 5515,
+      "derived_from": 3206
+    },
+    {
+      "doc_id": 5516,
+      "derived_from": 3247
+    },
+    {
+      "doc_id": 5517,
+      "derived_from": 3252
+    },
+    {
+      "doc_id": 5518,
+      "derived_from": 3254
+    },
+    {
+      "doc_id": 5519,
+      "derived_from": 3255
+    },
+    {
+      "doc_id": 5520,
+      "derived_from": 3298
+    },
+    {
+      "doc_id": 5521,
+      "derived_from": 3299
+    },
+    {
+      "doc_id": 5522,
+      "derived_from": 3301
+    },
+    {
+      "doc_id": 5523,
+      "derived_from": 3302
+    },
+    {
+      "doc_id": 5524,
+      "derived_from": 3353
+    },
+    {
+      "doc_id": 5525,
+      "derived_from": 3360
+    },
+    {
+      "doc_id": 5526,
+      "derived_from": 3389
+    },
+    {
+      "doc_id": 5527,
+      "derived_from": 3413
+    },
+    {
+      "doc_id": 5528,
+      "derived_from": 3438
+    },
+    {
+      "doc_id": 5529,
+      "derived_from": 3458
+    },
+    {
+      "doc_id": 5530,
+      "derived_from": 3459
+    },
+    {
+      "doc_id": 5531,
+      "derived_from": 3499
+    },
+    {
+      "doc_id": 5532,
+      "derived_from": 3506
+    },
+    {
+      "doc_id": 5533,
+      "derived_from": 3560
+    },
+    {
+      "doc_id": 5534,
+      "derived_from": 3570
+    },
+    {
+      "doc_id": 5535,
+      "derived_from": 3572
+    },
+    {
+      "doc_id": 5536,
+      "derived_from": 3637
+    },
+    {
+      "doc_id": 5537,
+      "derived_from": 3638
+    },
+    {
+      "doc_id": 5538,
+      "derived_from": 3650
+    },
+    {
+      "doc_id": 5539,
+      "derived_from": 3651
+    },
+    {
+      "doc_id": 5540,
+      "derived_from": 3660
+    },
+    {
+      "doc_id": 5541,
+      "derived_from": 3661
+    },
+    {
+      "doc_id": 5542,
+      "derived_from": 3673
+    },
+    {
+      "doc_id": 5543,
+      "derived_from": 3703
+    },
+    {
+      "doc_id": 5544,
+      "derived_from": 3744
+    },
+    {
+      "doc_id": 5545,
+      "derived_from": 3762
+    },
+    {
+      "doc_id": 5546,
+      "derived_from": 3765
+    },
+    {
+      "doc_id": 5547,
+      "derived_from": 3770
+    },
+    {
+      "doc_id": 5548,
+      "derived_from": 3795
+    },
+    {
+      "doc_id": 5549,
+      "derived_from": 3801
+    },
+    {
+      "doc_id": 5550,
+      "derived_from": 3812
+    },
+    {
+      "doc_id": 5551,
+      "derived_from": 3845
+    },
+    {
+      "doc_id": 5552,
+      "derived_from": 3859
+    },
+    {
+      "doc_id": 5553,
+      "derived_from": 3879
+    },
+    {
+      "doc_id": 5554,
+      "derived_from": 3897
+    },
+    {
+      "doc_id": 5555,
+      "derived_from": 3898
+    },
+    {
+      "doc_id": 5556,
+      "derived_from": 3913
+    },
+    {
+      "doc_id": 5557,
+      "derived_from": 3915
+    },
+    {
+      "doc_id": 5558,
+      "derived_from": 3926
+    },
+    {
+      "doc_id": 5559,
+      "derived_from": 3934
+    },
+    {
+      "doc_id": 5560,
+      "derived_from": 3944
+    },
+    {
+      "doc_id": 5561,
+      "derived_from": 3954
+    },
+    {
+      "doc_id": 5562,
+      "derived_from": 3963
+    },
+    {
+      "doc_id": 5563,
+      "derived_from": 3980
+    },
+    {
+      "doc_id": 5564,
+      "derived_from": 3993
+    },
+    {
+      "doc_id": 5565,
+      "derived_from": 3998
+    },
+    {
+      "doc_id": 5566,
+      "derived_from": 4009
+    },
+    {
+      "doc_id": 5567,
+      "derived_from": 4041
+    },
+    {
+      "doc_id": 5568,
+      "derived_from": 4043
+    },
+    {
+      "doc_id": 5569,
+      "derived_from": 4046
+    },
+    {
+      "doc_id": 5570,
+      "derived_from": 4061
+    },
+    {
+      "doc_id": 5571,
+      "derived_from": 4070
+    },
+    {
+      "doc_id": 5572,
+      "derived_from": 4094
+    },
+    {
+      "doc_id": 5573,
+      "derived_from": 4103
+    },
+    {
+      "doc_id": 5574,
+      "derived_from": 4122
+    },
+    {
+      "doc_id": 5575,
+      "derived_from": 4149
+    },
+    {
+      "doc_id": 5576,
+      "derived_from": 4160
+    },
+    {
+      "doc_id": 5577,
+      "derived_from": 4182
+    },
+    {
+      "doc_id": 5578,
+      "derived_from": 4185
+    },
+    {
+      "doc_id": 5579,
+      "derived_from": 4200
+    },
+    {
+      "doc_id": 5580,
+      "derived_from": 4201
+    },
+    {
+      "doc_id": 5581,
+      "derived_from": 4203
+    },
+    {
+      "doc_id": 5582,
+      "derived_from": 4206
+    },
+    {
+      "doc_id": 5583,
+      "derived_from": 4209
+    },
+    {
+      "doc_id": 5584,
+      "derived_from": 4218
+    },
+    {
+      "doc_id": 5585,
+      "derived_from": 4220
+    },
+    {
+      "doc_id": 5586,
+      "derived_from": 4224
+    },
+    {
+      "doc_id": 5587,
+      "derived_from": 4227
+    },
+    {
+      "doc_id": 5588,
+      "derived_from": 4252
+    },
+    {
+      "doc_id": 5589,
+      "derived_from": 4254
+    },
+    {
+      "doc_id": 5590,
+      "derived_from": 4279
+    },
+    {
+      "doc_id": 5591,
+      "derived_from": 4280
+    },
+    {
+      "doc_id": 5592,
+      "derived_from": 4292
+    },
+    {
+      "doc_id": 5593,
+      "derived_from": 4296
+    },
+    {
+      "doc_id": 5594,
+      "derived_from": 4301
+    },
+    {
+      "doc_id": 5595,
+      "derived_from": 4335
+    },
+    {
+      "doc_id": 5596,
+      "derived_from": 4337
+    },
+    {
+      "doc_id": 5597,
+      "derived_from": 4340
+    },
+    {
+      "doc_id": 5598,
+      "derived_from": 4347
+    },
+    {
+      "doc_id": 5599,
+      "derived_from": 4352
+    },
+    {
+      "doc_id": 5600,
+      "derived_from": 4385
+    },
+    {
+      "doc_id": 5601,
+      "derived_from": 4417
+    },
+    {
+      "doc_id": 5602,
+      "derived_from": 4423
+    },
+    {
+      "doc_id": 5603,
+      "derived_from": 4428
+    },
+    {
+      "doc_id": 5604,
+      "derived_from": 4450
+    },
+    {
+      "doc_id": 5605,
+      "derived_from": 4457
+    },
+    {
+      "doc_id": 5606,
+      "derived_from": 4459
+    },
+    {
+      "doc_id": 5607,
+      "derived_from": 4463
+    },
+    {
+      "doc_id": 5608,
+      "derived_from": 4467
+    },
+    {
+      "doc_id": 5609,
+      "derived_from": 4482
+    },
+    {
+      "doc_id": 5610,
+      "derived_from": 4488
+    },
+    {
+      "doc_id": 5611,
+      "derived_from": 4497
+    },
+    {
+      "doc_id": 5612,
+      "derived_from": 4511
+    },
+    {
+      "doc_id": 5613,
+      "derived_from": 4526
+    },
+    {
+      "doc_id": 5614,
+      "derived_from": 4563
+    },
+    {
+      "doc_id": 5615,
+      "derived_from": 4570
+    },
+    {
+      "doc_id": 5616,
+      "derived_from": 4588
+    },
+    {
+      "doc_id": 5617,
+      "derived_from": 4589
+    },
+    {
+      "doc_id": 5618,
+      "derived_from": 4600
+    },
+    {
+      "doc_id": 5619,
+      "derived_from": 4630
+    },
+    {
+      "doc_id": 5620,
+      "derived_from": 4670
+    },
+    {
+      "doc_id": 5621,
+      "derived_from": 4674
+    },
+    {
+      "doc_id": 5622,
+      "derived_from": 4695
+    },
+    {
+      "doc_id": 5623,
+      "derived_from": 4703
+    },
+    {
+      "doc_id": 5624,
+      "derived_from": 4705
+    },
+    {
+      "doc_id": 5625,
+      "derived_from": 4711
+    },
+    {
+      "doc_id": 5626,
+      "derived_from": 4716
+    },
+    {
+      "doc_id": 5627,
+      "derived_from": 4737
+    },
+    {
+      "doc_id": 5628,
+      "derived_from": 4738
+    },
+    {
+      "doc_id": 5629,
+      "derived_from": 4783
+    },
+    {
+      "doc_id": 5630,
+      "derived_from": 4788
+    },
+    {
+      "doc_id": 5631,
+      "derived_from": 4838
+    },
+    {
+      "doc_id": 5632,
+      "derived_from": 4840
+    },
+    {
+      "doc_id": 5633,
+      "derived_from": 4842
+    },
+    {
+      "doc_id": 5634,
+      "derived_from": 4848
+    },
+    {
+      "doc_id": 5635,
+      "derived_from": 4853
+    },
+    {
+      "doc_id": 5636,
+      "derived_from": 4864
+    },
+    {
+      "doc_id": 5637,
+      "derived_from": 4877
+    },
+    {
+      "doc_id": 5638,
+      "derived_from": 4879
+    },
+    {
+      "doc_id": 5639,
+      "derived_from": 4891
+    },
+    {
+      "doc_id": 5640,
+      "derived_from": 4895
+    },
+    {
+      "doc_id": 5641,
+      "derived_from": 4907
+    },
+    {
+      "doc_id": 5642,
+      "derived_from": 4912
+    },
+    {
+      "doc_id": 5643,
+      "derived_from": 4916
+    },
+    {
+      "doc_id": 5644,
+      "derived_from": 4935
+    },
+    {
+      "doc_id": 5645,
+      "derived_from": 4942
+    },
+    {
+      "doc_id": 5646,
+      "derived_from": 4944
+    },
+    {
+      "doc_id": 5647,
+      "derived_from": 4945
+    },
+    {
+      "doc_id": 5648,
+      "derived_from": 4970
+    },
+    {
+      "doc_id": 5649,
+      "derived_from": 4986
+    },
+    {
+      "doc_id": 5650,
+      "derived_from": 5009
+    },
+    {
+      "doc_id": 5651,
+      "derived_from": 5042
+    },
+    {
+      "doc_id": 5652,
+      "derived_from": 5047
+    },
+    {
+      "doc_id": 5653,
+      "derived_from": 5055
+    },
+    {
+      "doc_id": 5654,
+      "derived_from": 5070
+    },
+    {
+      "doc_id": 5655,
+      "derived_from": 5138
+    },
+    {
+      "doc_id": 5656,
+      "derived_from": 5146
+    },
+    {
+      "doc_id": 5657,
+      "derived_from": 5179
+    },
+    {
+      "doc_id": 5658,
+      "derived_from": 5235
+    }
+  ]
+}
