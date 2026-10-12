@@ -3,7 +3,8 @@
 **Likhith Venkata Sai Manikanta Nalla**
 
 Technical report, October 2026.<br>
-Code, results and figures: <https://github.com/Likhithvenkatanalla/rag-dq-benchmark>
+Code, results and figures: <https://github.com/Likhithvenkatanalla/rag-dq-benchmark><br>
+Archived release: <https://doi.org/10.5281/zenodo.23314458>
 
 ## Abstract
 
@@ -288,7 +289,8 @@ training format should not be trusted.
 ## 6. Availability
 
 Code, all per-claim predictions and corruption manifests, and the figures are at
-<https://github.com/Likhithvenkatanalla/rag-dq-benchmark> under the MIT licence. The fine-tuned
+<https://github.com/Likhithvenkatanalla/rag-dq-benchmark> under the MIT licence; release v1.0.0 is archived on
+Zenodo as <https://doi.org/10.5281/zenodo.23314458>. The fine-tuned
 models are assets of the release `models-week3`. Exact package versions are in `requirements.txt` and
 `requirements-lock.txt`; the GitHub Actions workflows in `.github/workflows/` re-run every experiment.
 SciFact is not redistributed and is downloaded from its official release.

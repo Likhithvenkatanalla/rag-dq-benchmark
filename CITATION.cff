@@ -6,6 +6,8 @@ authors:
   - given-names: "Likhith Venkata Sai Manikanta"
     family-names: "Nalla"
     alias: Likhithvenkatanalla
+doi: "10.5281/zenodo.23314458"
+version: "v1.0.0"
 repository-code: "https://github.com/Likhithvenkatanalla/rag-dq-benchmark"
 license: MIT
 date-released: "2026-10-12"

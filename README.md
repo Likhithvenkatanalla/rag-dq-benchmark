@@ -1,5 +1,7 @@
 # RAG Data-Quality Benchmark
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23314458.svg)](https://doi.org/10.5281/zenodo.23314458)
+
 **Question:** how do data-quality defects in a document collection (duplicates, broken parsing,
 stale or conflicting versions, chunking choices) change the accuracy of retrieval-augmented answers?
 
@@ -391,7 +393,7 @@ and without confidences.
   conflicting versions, chunk sizes) and measure the drop in retrieval and verification.
 - Week 3 (done): fine-tune a reranker/verifier in PyTorch (Hugging Face) on SciFact train; measure recovery.
 - Week 4 (done): calibration analysis (ECE, Brier), ablations, figures.
-- Week 5: technical report (done: `report/`) and release with a Zenodo DOI.
+- Week 5 (done): technical report (`report/`) and release v1.0.0, archived on Zenodo (DOI 10.5281/zenodo.23314458).
 
 ## Notes
 
@@ -404,6 +406,9 @@ SciFact repository for its licence.
 Fine-tuned models (three verifier seeds and the reranker) are published as assets of the GitHub
 release `models-week3` (built by `.github/workflows/release-models.yml`).
 
-Code is released under the MIT licence (`LICENSE`). To cite this work, see `CITATION.cff`.
+Code is released under the MIT licence (`LICENSE`). To cite this work (see also `CITATION.cff`):
+
+> Nalla, L. V. S. M. (2026). *RAG Data-Quality Benchmark: how corpus defects affect retrieval-augmented
+> claim verification* (Version v1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23314458
 Exact package versions: `requirements.txt` (direct dependencies) and `requirements-lock.txt`
 (everything installed on the GitHub Actions runners).
