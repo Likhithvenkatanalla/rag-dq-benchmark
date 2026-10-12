@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+\usepackage[final]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath}
+\graphicspath{{figures/}{../figures/}}
+
+\newcommand{\Sup}{\textsc{support}}
+\newcommand{\Con}{\textsc{contradict}}
+\newcommand{\Nei}{\textsc{nei}}
+
+\title{Copies, Conflicts and Broken Parses: How Corpus Defects Affect\\Retrieval-Augmented Claim Verification}
+
+\author{Likhith Venkata Sai Manikanta Nalla \\
+  Independent researcher \\
+  \texttt{likhith.nalla1@gmail.com}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+%ABSTRACT%
+\end{abstract}
+
+\section{Introduction}
+
+Retrieval-augmented generation \citep[RAG;][]{lewis2020rag} answers a question from documents
+retrieved out of a collection, so its answers can be no better than that collection. Real collections
+are imperfect: documents are duplicated across sources, older versions sit next to newer ones that
+contradict them, PDF parsing truncates or scrambles text, and chunking splits documents into pieces of
+varying size. Robustness studies of RAG usually vary what reaches the reader, for instance by adding
+irrelevant or counterfactual passages to its context \citep{cuconasu2024noise,chen2024rgb,xie2024chameleon},
+rather than the collection the retriever searches. Practitioners, however, control the collection,
+and need to know which of its defects are worth cleaning.
+
+We ask how much each of four common defects, on its own, changes retrieval and the final answer. We
+use claim verification because it has labels for both the answer (does the evidence support or
+contradict the claim?) and the evidence (which documents), so a defect's effect can be traced from
+retrieval to the verdict. Defects are injected under control, one type and rate at a time, into an
+otherwise unchanged corpus, with every model, prompt and threshold held fixed, so any change in the
+results comes from the corpus. Our contributions:
+
+\begin{itemize}
+\setlength\itemsep{0pt}
+\item A seeded corruption tool for four defect types (near-duplicates, stale copies with flipped
+  findings, broken parsing, chunking) that logs every change, and a pipeline that regenerates and
+  verifies each corrupted corpus from its seed.
+\item Paired, claim-level measurements on SciFact \citep{wadden2020scifact} for two retrievers, a
+  reranker and four verifiers, repeated over five corruption seeds and three verifier training seeds,
+  and replicated on Climate-FEVER \citep{diggelmann2020climatefever}.
+\item Evidence that retrieval metrics rank the defects in the wrong order of harm, that stale copies
+  matter only to verifiers that read their context closely, and that small chunks make a fine-tuned
+  verifier confidently wrong.
+\end{itemize}
+
+All code, per-claim predictions, corruption manifests and fine-tuned models are public.\footnote{%
+\url{https://github.com/Likhithvenkatanalla/rag-dq-benchmark}; archived at
+\url{https://doi.org/10.5281/zenodo.23314458}.}
+
+\section{Related Work}
+
+\paragraph{Robustness of retrieval-augmented models.}
+Language models are easily distracted by irrelevant context \citep{shi2023distracted}, use the middle
+of long contexts poorly \citep{liu2024lost}, and can be trained to ignore irrelevant passages
+\citep{yoran2024robust}. RGB \citep{chen2024rgb} tests noise robustness, negative rejection and
+counterfactual robustness of RAG readers, and \citet{cuconasu2024noise} find that random documents in
+the context can even help. These studies manipulate the reader's context directly; we manipulate the
+collection and let the retriever decide what reaches the reader.
+
+\paragraph{Knowledge conflicts.}
+\citet{longpre2021conflicts} substitute entities in passages to create conflicts with a model's
+parametric knowledge, and \citet{xie2024chameleon} show that LLMs readily accept coherent conflicting
+evidence. Our stale copies create conflicts \emph{within} the collection: the original and a flipped
+copy are both retrievable, as when outdated and current versions of a document coexist.
+
+\paragraph{Duplicates and data quality.}
+Near-duplicates are pervasive in web-scale text and deduplication improves language-model training
+\citep{lee2022dedup}. Retrieval benchmarks such as BEIR \citep{thakur2021beir} evaluate retrievers
+across clean collections; we hold the task fixed and vary the collection's quality.
+
+\paragraph{Claim verification.}
+FEVER \citep{thorne2018fever}, SciFact \citep{wadden2020scifact} and Climate-FEVER
+\citep{diggelmann2020climatefever} pair claims with evidence and a verdict, which makes the path from
+evidence to answer measurable.
+
+\section{Setup}
+
+\subsection{Data}
+\paragraph{SciFact} pairs expert-written scientific claims with 5,183 abstracts. We evaluate on the 300
+dev claims (124 \Sup, 64 \Con, 112 \Nei); 188 have gold evidence, among 184 distinct gold abstracts.
+The 809 train claims, disjoint from dev, are used only for training and threshold tuning.
+
+\paragraph{Climate-FEVER} pairs real-world climate claims with five Wikipedia sentences each, labelled by
+annotators. We build a closed corpus from all 5,240 distinct evidence sentences (each a record titled
+with its article), close in size to SciFact, and drop the 154 \textsc{disputed} claims, leaving 1,381
+claims (654 \Sup, 253 \Con, 474 \Nei). A claim's gold records are its evidence sentences labelled with
+the claim's own verdict (907 claims have at least one). No model is trained on Climate-FEVER.
+
+\subsection{Pipeline}
+\paragraph{Retrieval.} BM25 \citep{robertson2009bm25} over whitespace tokens, and dense retrieval with
+BGE-small-en-v1.5 \citep{xiao2023cpack} and exact cosine search \citep{johnson2019faiss}. Recall@$k$ is
+the share of a claim's gold records found in the top $k$, averaged over claims with evidence.
+
+\paragraph{Verification.} A verifier reads the claim with the top-3 dense-retrieved records and outputs
+\Sup, \Con\ or \Nei. \emph{Qwen-1.5B} and \emph{Qwen-3B} are Qwen2.5-1.5B/3B-Instruct
+\citep{qwen2024qwen25}, zero-shot with greedy decoding, instructed to answer with one word.
+\emph{NLI zero-shot} is the cross-encoder \texttt{nli-deberta-v3-xsmall} \citep{he2023debertav3} as
+released, and \emph{NLI fine-tuned} is the same model fine-tuned for 3 epochs on 1,123 SciFact train
+pairs (gold abstracts with their labels; cited abstracts of claims without evidence and the top
+non-gold BM25 abstract of each claim with evidence as \Nei), trained with three seeds. An NLI verifier
+scores each (claim, record) pair; the claim takes the higher of the maximum \Sup\ and \Con\
+probabilities over its three records, or \Nei\ if neither reaches a threshold tuned for macro-F1 on 20\%
+of the train claims held out from training (never on dev).
+
+\paragraph{Reranking.} A MiniLM cross-encoder \citep{nogueira2019rerank}, as released or fine-tuned on
+SciFact train, reorders the dense top-10 before verification.
+
+\subsection{Defects}
+Each defect is applied to a share (10, 25 or 50\%) of the gold-evidence records, so that it reaches the
+evaluated claims; claims and labels never change.
+\begin{itemize}
+\setlength\itemsep{0pt}
+\item \textbf{Duplicate} adds a near-copy of the record (one sentence dropped if there are more than two,
+  about 5\% of words deleted, one adjacent word pair swapped per sentence).
+\item \textbf{Stale} adds a copy whose directional findings are flipped by rule
+  (\emph{increased}$\leftrightarrow$\emph{decreased}, \emph{higher}$\leftrightarrow$\emph{lower},
+  ``is associated'' $\rightarrow$ ``is not associated'', \dots; for Climate-FEVER also
+  \emph{warming}$\leftrightarrow$\emph{cooling}, \emph{rise}$\leftrightarrow$\emph{fall}, \dots).
+  Copies with nothing to flip are identical to the original; we analyse flipped copies separately.
+\item \textbf{Parse} replaces the record with a broken parse: truncated at 30--60\% of its length,
+  sentences scrambled, or OCR-style character noise.
+\item \textbf{Chunk} splits every SciFact abstract into records of 1, 3 or 5 sentences (not applicable to
+  one-sentence Climate-FEVER records).
+\end{itemize}
+A copy is a different document: retrieving it does not count as retrieving the gold record. A chunk
+counts as its parent abstract.
+
+\subsection{Statistics}
+All runs on a dataset share the same claims, so comparisons are paired: for each claim we record
+whether the answer went from right to wrong (\emph{lost}) or wrong to right (\emph{gained}) relative to
+the clean corpus, and report both counts with an exact McNemar test \citep{mcnemar1947}. We run many
+such tests without correction, so we treat as findings only effects whose direction repeats across
+corruption seeds and, for the fine-tuned verifier, training seeds.
+
+\section{Results on SciFact}
+
+\subsection{Clean baseline}
+Dense retrieval beats BM25 at every cut-off (recall@1 0.744 vs.\ 0.615; recall@10 0.957 vs.\ 0.883).
+Qwen-1.5B reaches 0.557 accuracy and 0.502 macro-F1 (majority class: 0.413 and 0.195) but answers
+\Sup\ for 200 of 300 claims. The fine-tuned NLI verifier reaches 0.650 / 0.680 / 0.667 for its three
+training seeds, each significantly above Qwen-1.5B (lost/gained 32/60, 36/73, 35/68; $p \le 0.005$).
+Untuned, the NLI model reaches only 0.353. %QWEN3B_CLEAN%
+
+\subsection{Retrieval}
+
+\begin{table}[t]
+\centering\small
+\setlength\tabcolsep{4pt}
+\begin{tabular}{lccc}
+\toprule
+Corpus & BM25 & Dense & + rerank \\
+\midrule
+clean & 0.615 & 0.744 & 0.805 \\
+duplicate 10/25/50\% & .594/.541/.463 & .689/.668/.604 & .774/.751/.644 \\
+stale 10/25/50\% & .583/.530/.466 & .691/.622/.551 & .752/.657/.571 \\
+parse 10/25/50\% & .615/.599/.578 & .744/.734/.739 & .795/.799/.758 \\
+chunk 5/3/1 sent. & .583/.590/.520 & .749/.742/.762 & .803/.818/.784 \\
+\bottomrule
+\end{tabular}
+\caption{SciFact recall@1 (188 claims with evidence; corruption seed 0). Recall@10 is unchanged by
+copies (0.883 BM25, 0.957 dense).}
+\label{tab:retrieval}
+\end{table}
+
+Copies push the gold abstract out of first place in proportion to their rate
+(Table~\ref{tab:retrieval}, Figure~\ref{fig:retrieval}) while recall@10 does not change: a copy usually
+sits just above its original. %SEEDS_RETRIEVAL%
+The fine-tuned reranker lifts clean recall@1 to 0.805 and recovers part of the duplicate loss but little
+of the stale loss: a flipped copy is as relevant to the claim as its original, so a relevance model
+cannot tell them apart. Broken parsing removes documents from BM25's reach (recall@10 0.845 at 50\%) but
+barely affects dense retrieval, and chunking hurts BM25 but not dense retrieval.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig2_retrieval.png}
+\caption{SciFact recall@1 by corruption level for BM25, dense retrieval and dense retrieval with the
+fine-tuned reranker (corruption seed 0).}
+\label{fig:retrieval}
+\end{figure*}
+
+\subsection{Verification}
+
+\begin{table}[t]
+\centering\small
+\setlength\tabcolsep{3.5pt}
+\begin{tabular}{lccc}
+\toprule
+Corpus & Qwen-1.5B & NLI zero-shot & NLI fine-tuned \\
+\midrule
+clean & 0.557 & 0.353 & 0.666 (.015) \\
+dup.\ 10/25/50\% & .543/.547/.557 & .360/.367/.353 & .670/.670/.677 \\
+stale 10/25/50\% & .553/.550/.560 & .353/.357/.347 & .672/.661/.656 \\
+parse 10/25/50\% & .550/.547/.530 & .357/.347/.340 & .664/.658/.647 \\
+chunk 5/3/1 & .543/.573/.583 & .390/.353/.333 & .667/.631/.573 \\
+\bottomrule
+\end{tabular}
+\caption{SciFact verification accuracy (300 claims; corruption seed 0). Fine-tuned: mean over three
+training seeds (sd on clean).}
+\label{tab:verification}
+\end{table}
+
+Accuracy changes are small for most defects (Table~\ref{tab:verification}, Figure~\ref{fig:verification}),
+so we read them claim by claim.
+
+\paragraph{Broken parsing costs verification.} %PARSE_SEEDS%
+
+\paragraph{Single-sentence chunks hurt the fine-tuned verifier}, consistently across training seeds
+(0.573 mean accuracy; lost/gained 58/38, 65/32 and 64/34, $p=0.052$, $0.001$, $0.003$). It was trained
+on whole abstracts; 5-sentence chunks do not hurt it, and neither Qwen model is hurt by chunking.
+
+\paragraph{Duplicates do not change verification}, despite their effect on retrieval: the gold abstract
+is still in the top 3 for nearly as many claims (gold-in-context rate 0.872 clean, 0.867 at 50\%), and a
+near-copy carries the same evidence. %DUP_SEEDS%
+
+\paragraph{Reranking barely changes verification.} Verifying from the fine-tuned reranker's top-3 moves
+accuracy by 0 to +2.3 points across the 13 corpora, with no run changing significantly: the gold abstract
+is usually already within the dense top-3, and its position there matters little to the verifier.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig1_verification.png}
+\caption{SciFact verification accuracy by corruption level. The orange band spans the three fine-tuned
+training seeds; the green line is the seed-0 verifier on corruption seed 1 (its own clean value is 0.650).}
+\label{fig:verification}
+\end{figure*}
+
+\subsection{Conflicting evidence}
+
+%STALE%
+
+\subsection{Calibration}
+
+%CALIBRATION%
+
+\section{Replication on Climate-FEVER}
+
+%CLIMATE%
+
+\section{Discussion}
+
+%DISCUSSION%
+
+\section*{Limitations}
+
+%LIMITATIONS%
+
+\section*{Ethics and Reproducibility Statement}
+SciFact and Climate-FEVER are public research datasets; they are downloaded from their official
+releases and not redistributed. All experiments ran on free CPU runners of GitHub Actions; the
+workflows that produced every number are in the repository, and each corrupted corpus is regenerated
+from its seed and checked against the committed manifest. Code was developed with AI assistance
+(Claude); every reported number comes from runs whose outputs are in the repository.
+
+\bibliography{references}
+
+\end{document}
