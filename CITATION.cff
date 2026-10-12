@@ -3,7 +3,9 @@ message: "If you use this benchmark, please cite it as below."
 title: "RAG Data-Quality Benchmark: how corpus defects affect retrieval-augmented claim verification"
 type: software
 authors:
-  - alias: Likhithvenkatanalla
+  - given-names: "Likhith Venkata Sai Manikanta"
+    family-names: "Nalla"
+    alias: Likhithvenkatanalla
 repository-code: "https://github.com/Likhithvenkatanalla/rag-dq-benchmark"
 license: MIT
 date-released: "2026-10-12"
