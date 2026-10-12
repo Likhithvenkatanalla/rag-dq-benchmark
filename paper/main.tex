@@ -180,7 +180,8 @@ copies (0.883 BM25, 0.957 dense).}
 
 Copies push the gold abstract out of first place in proportion to their rate
 (Table~\ref{tab:retrieval}, Figure~\ref{fig:retrieval}) while recall@10 does not change: a copy usually
-sits just above its original. %SEEDS_RETRIEVAL%
+sits just above its original. Over five corruption seeds, dense recall@1 at 50\% falls to $0.584 \pm 0.019$
+(duplicates) and $0.528 \pm 0.031$ (stale), against 0.744 clean.
 The fine-tuned reranker lifts clean recall@1 to 0.805 and recovers part of the duplicate loss but little
 of the stale loss: a flipped copy is as relevant to the claim as its original, so a relevance model
 cannot tell them apart. Broken parsing removes documents from BM25's reach (recall@10 0.845 at 50\%) but
@@ -195,6 +196,30 @@ fine-tuned reranker (corruption seed 0).}
 \end{figure*}
 
 \subsection{Verification}
+
+\begin{table}[t]
+\centering\small
+\setlength\tabcolsep{4pt}
+\begin{tabular}{lccc}
+\toprule
+Setting & Dense R@1 & NLI acc. & Lost / gained \\
+\midrule
+clean & 0.744 & 0.650 & -- \\
+dup.\ 10\% & .704 (.015) & .649 (.003) & 3 / 1 \\
+dup.\ 25\% & .665 (.026) & .653 (.005) & 5 / 10 \\
+dup.\ 50\% & .584 (.019) & .657 (.009) & 7 / 18 \\
+stale 10\% & .696 (.004) & .647 (.009) & 8 / 3 \\
+stale 25\% & .624 (.011) & .646 (.010) & 16 / 10 \\
+stale 50\% & .528 (.031) & .649 (.005) & 23 / 22 \\
+parse 10\% & .744 (.004) & .643 (.007) & 11 / 1 \\
+parse 25\% & .736 (.008) & .641 (.006) & 18 / 4 \\
+parse 50\% & .733 (.010) & .631 (.006) & 41 / 13 \\
+\bottomrule
+\end{tabular}
+\caption{SciFact over five corruption seeds (mean, sd): dense recall@1, accuracy of the fine-tuned
+verifier (training seed 0), and claims lost / gained relative to clean, summed over the seeds.}
+\label{tab:seeds}
+\end{table}
 
 \begin{table}[t]
 \centering\small
@@ -218,7 +243,12 @@ training seeds (sd on clean).}
 Accuracy changes are small for most defects (Table~\ref{tab:verification}, Figure~\ref{fig:verification}),
 so we read them claim by claim.
 
-\paragraph{Broken parsing costs verification.} %PARSE_SEEDS%
+\paragraph{Broken parsing costs verification.} With five corruption seeds, the seed-0 fine-tuned verifier lost more
+correct answers than it gained in 14 of the 15 parse runs and gained more in none (Table~\ref{tab:seeds}):
+41 lost against 13 gained over the five 50\% corpora, 18 against 4 at 25\%. No single run is significant
+at $p<0.05$ (the largest has 12 lost, 4 gained), which is why repetition matters here: under no effect,
+a net loss on all five seeds has probability $1/32$ for each rate. Qwen-1.5B shows the same direction
+(8 lost, 0 gained at 50\%, $p=0.008$), as do all three training seeds on corruption seed 0. %QWEN3B_PARSE%
 
 \paragraph{Single-sentence chunks hurt the fine-tuned verifier}, consistently across training seeds
 (0.573 mean accuracy; lost/gained 58/38, 65/32 and 64/34, $p=0.052$, $0.001$, $0.003$). It was trained
@@ -226,7 +256,8 @@ on whole abstracts; 5-sentence chunks do not hurt it, and neither Qwen model is 
 
 \paragraph{Duplicates do not change verification}, despite their effect on retrieval: the gold abstract
 is still in the top 3 for nearly as many claims (gold-in-context rate 0.872 clean, 0.867 at 50\%), and a
-near-copy carries the same evidence. %DUP_SEEDS%
+near-copy carries the same evidence. Over five seeds the fine-tuned verifier gained slightly more answers
+than it lost at 25--50\% (12 lost, 28 gained in total), consistent with no harm.
 
 \paragraph{Reranking barely changes verification.} Verifying from the fine-tuned reranker's top-3 moves
 accuracy by 0 to +2.3 points across the 13 corpora, with no run changing significantly: the gold abstract
@@ -242,11 +273,37 @@ training seeds; the green line is the seed-0 verifier on corruption seed 1 (its 
 
 \subsection{Conflicting evidence}
 
-%STALE%
+To isolate genuinely conflicting evidence we keep only claims whose top-3
+context held a stale copy whose findings were actually flipped, and compare them with the same claims on
+the clean corpus. At 50\% on corruption seed 0, 78 claims qualify. The fine-tuned verifier changed its
+answer on 13, 19 and 16 of them (training seeds 0/1/2), and 11, 15 and 12 of those changes went to \Con;
+Qwen-1.5B changed 6 and moved 1 to \Con, consistent with its \Sup\ bias. %QWEN3B_STALE% Over five
+corruption seeds the pattern is stable: of 48 changed answers at 50\%, 35 moved to \Con. Claims whose
+context held only unflipped copies never changed answer for the NLI verifier. Yet no verifier's accuracy
+changes significantly: the fine-tuned verifier is misled on some claims and helped on others (23 lost,
+22 gained over five seeds at 50\%), and flipped copies do not make it more often confidently wrong
+(55 such answers on these claims clean, 56 with stale copies). The count rose on two corruption seeds
+and fell on three, so the increase we reported earlier for a single seed was not robust.
 
 \subsection{Calibration}
 
-%CALIBRATION%
+We give each NLI answer a confidence (for \Sup\ or \Con, the highest probability
+of that label over the three records; for \Nei, one minus the highest \Sup\ or \Con\ probability) and
+compare it with correctness; the Qwen models give no probabilities. The fine-tuned verifier is
+overconfident even on clean data: mean confidence 0.75--0.80 against accuracy 0.65--0.68, expected
+calibration error \citep[ECE;][]{guo2017calibration} 0.14--0.18, and 8--11\% of claims answered wrongly
+with confidence of at least 0.9 (\emph{confidently wrong}). Copies and broken parses barely change this.
+Small chunks do: with 1-sentence records confidence rises while accuracy falls, ECE roughly doubles
+(0.31--0.32 for all three training seeds) and 18--22\% of claims are confidently wrong
+(Figure~\ref{fig:confwrong}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig4_confident_wrong.png}
+\caption{SciFact: share of claims answered wrongly with confidence $\ge 0.9$ by the fine-tuned verifier
+(bar: mean of three training seeds; dots: seeds).}
+\label{fig:confwrong}
+\end{figure}
 
 \section{Replication on Climate-FEVER}
 
