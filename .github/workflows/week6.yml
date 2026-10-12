@@ -8,9 +8,10 @@ name: Week 6 robustness checks
 # jobs until each lands on a suitable runner. Settings already committed are skipped.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths: [.github/workflows/week6.yml]
+    inputs:
+      groups:
+        description: "job groups to run (any of seeds, qwen3b, climate)"
+        default: "seeds qwen3b climate"
 
 permissions:
   contents: write
@@ -19,6 +20,15 @@ env:
   SETUP: |
     pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
     pip install -r requirements.txt
+  MODELS: |
+    # Fine-tuned verifiers from the models-week3 release: models/nli_finetuned_seed<N>/
+    set -x
+    gh release download models-week3 --repo "$GITHUB_REPOSITORY" -p "model-nli-finetuned-seed*.zip" -D /tmp/models \
+      || { echo "::error::release download failed"; exit 1; }
+    echo "::notice::$(ls -l /tmp/models | tr '\n' ' ')"
+    python -c "import sys, zipfile; [zipfile.ZipFile(f'/tmp/models/model-nli-finetuned-seed{s}.zip').extractall(f'models/nli_finetuned_seed{s}') for s in (0, 1, 2)]" \
+      || { echo "::error::unzip failed"; exit 1; }
+    echo "::notice::$(ls models/nli_finetuned_seed0 | tr '\n' ' ')"
   BF16_CHECK: |
     grep -m1 "model name" /proc/cpuinfo
     if grep -qwE "avx512_bf16|amx_bf16" /proc/cpuinfo; then echo "native bfloat16: yes"
@@ -26,6 +36,7 @@ env:
 
 jobs:
   seeds:
+    if: contains(inputs.groups, 'seeds')
     runs-on: ubuntu-latest
     timeout-minutes: 120
     strategy:
@@ -44,12 +55,10 @@ jobs:
         with:
           path: ~/.cache/huggingface
           key: hf-week4-bge
-      - name: Fine-tuned verifier (models-week3 release)
+      - name: Fine-tuned verifiers (models-week3 release)
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release download models-week3 -p model-nli-finetuned-seed0.zip -D /tmp/models
-          unzip -q /tmp/models/model-nli-finetuned-seed0.zip -d models/nli_finetuned_seed0
+        run: eval "$MODELS"
       - name: Download SciFact
         run: python week1_baseline.py --step download
       - name: Run ${{ matrix.defect }}, corruption seed ${{ matrix.seed }}
@@ -67,6 +76,7 @@ jobs:
             results/week3/seed0/nli_finetuned/${{ matrix.defect }}_r*_gold_s${{ matrix.seed }}/
 
   qwen3b:
+    if: contains(inputs.groups, 'qwen3b')
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -106,6 +116,7 @@ jobs:
           path: results/week6/qwen3b/
 
   climate:
+    if: contains(inputs.groups, 'climate')
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -139,9 +150,7 @@ jobs:
         if: steps.done.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release download models-week3 -p 'model-nli-finetuned-seed*.zip' -D /tmp/models
-          for s in 0 1 2; do unzip -q /tmp/models/model-nli-finetuned-seed$s.zip -d models/nli_finetuned_seed$s; done
+        run: eval "$MODELS"
       - name: Climate-FEVER ${{ matrix.run }}
         if: steps.done.outputs.skip != 'true'
         timeout-minutes: 180
