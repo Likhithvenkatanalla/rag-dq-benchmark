@@ -1307,6 +1307,33 @@
         }
       },
       {
+        "run": "stale_r0.5_gold_s0",
+        "accuracy": 0.6667,
+        "macro_f1": 0.6554,
+        "qwen1.5b_accuracy": 0.56,
+        "qwen1.5b_macro_f1": 0.5027,
+        "vs_clean": {
+          "right_to_wrong": 4,
+          "wrong_to_right": 4,
+          "mcnemar_p": 1.0
+        },
+        "qwen1.5b_vs_clean": {
+          "right_to_wrong": 3,
+          "wrong_to_right": 4,
+          "mcnemar_p": 1.0
+        },
+        "edited_copy_in_context": {
+          "copies": 91,
+          "copies_edited": 74,
+          "n": 78,
+          "predictions_changed": 8,
+          "moved_to_contradict": 3,
+          "right_to_wrong": 4,
+          "wrong_to_right": 4,
+          "mcnemar_p": 1.0
+        }
+      },
+      {
         "run": "chunk_1",
         "accuracy": 0.6333,
         "macro_f1": 0.6255,

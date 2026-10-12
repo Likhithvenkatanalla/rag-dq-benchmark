@@ -12,12 +12,16 @@ labelled SUPPORT / CONTRADICT (or no evidence, treated as NOT_ENOUGH_INFO). The 
 **Technical report:** [`report/REPORT.pdf`](report/REPORT.pdf) (source: [`report/REPORT.md`](report/REPORT.md);
 rebuild with `python report/build_pdf.py`).
 
+**Paper (with Week 6 robustness checks):** [`paper/main.pdf`](paper/main.pdf) (LaTeX source in `paper/`,
+ACL format; rebuild with `cd paper && latexmk -pdf main.tex`).
+
 ## Key findings
 
 Pipeline: BM25 or dense retrieval (BGE-small) over the abstracts, then a verifier labels each claim
 from the top-3 retrieved records. Defects were injected into the gold-evidence abstracts at 10-50%.
-The findings below held across both corruption seeds and, for the fine-tuned verifier, all three
-training seeds; details and caveats are in the weekly sections.
+The findings below held across corruption seeds (five in Week 6) and, for the fine-tuned verifier,
+all three training seeds; details and caveats are in the weekly sections. Week 6 adds a twice-as-large
+LLM (Qwen2.5-3B) and a second dataset (Climate-FEVER).
 
 1. **Duplicate and stale copies push the gold abstract out of first place.** Dense recall@1 falls
    from 0.744 to about 0.57-0.60 (duplicates, 50%) and 0.49-0.55 (stale, 50%), yet the gold abstract
@@ -25,15 +29,19 @@ training seeds; details and caveats are in the weekly sections.
    stale loss: a flipped copy is as relevant to the claim as the original.
 2. **Broken parsing barely affects retrieval but costs verification.** In no parse setting did a
    verifier gain more correct answers than it lost, and at 25-50% it lost clearly more: for Qwen
-   (corruption seed 0), for all three fine-tuned training seeds, and on both corruption seeds.
+   1.5B and 3B, for all three fine-tuned training seeds, and on all five corruption seeds (Week 6).
 3. **Single-sentence chunks make the fine-tuned verifier both less accurate and more confident.**
    Accuracy drops from 0.65-0.68 to 0.57-0.58 and confidently wrong answers (confidence >= 0.9)
    roughly double, to about 20% of claims.
-4. **How a verifier reacts to conflicting evidence depends on the verifier.** The zero-shot LLM
-   (Qwen2.5-1.5B) mostly ignores flipped copies; the fine-tuned NLI verifier moves towards
-   CONTRADICT when it sees one. Neither changes overall accuracy significantly.
-5. **A small verifier fine-tuned on SciFact beats the zero-shot LLM** (0.666 mean accuracy against
-   0.557 on the clean corpus) and stays ahead on every corrupted corpus except 1-sentence chunks.
+4. **How a verifier reacts to conflicting evidence depends on the verifier.** The zero-shot LLMs
+   (Qwen2.5 1.5B and 3B) mostly ignore flipped copies; the fine-tuned NLI verifier moves towards
+   CONTRADICT when it sees one. On SciFact neither changes overall accuracy significantly; on
+   Climate-FEVER (one-sentence records) flipped copies cost the fine-tuned verifier many correct
+   answers (50% stale: 55 / 46 / 48 lost against 14 / 16 / 15 gained, all p < 0.001).
+5. **A small verifier fine-tuned on SciFact beats the zero-shot 1.5B LLM** (0.666 mean accuracy against
+   0.557 on the clean corpus) and stays ahead on every corrupted corpus except 1-sentence chunks;
+   Qwen2.5-3B matches it (0.667) without training, and on Climate-FEVER the SciFact-trained verifier
+   transfers poorly (0.458 against 0.508 for Qwen2.5-1.5B).
    This comparison is expected to favour the fine-tuned model, which saw in-domain training data;
    the robustness findings above are the main result. It is overconfident even on clean data.
 
@@ -387,6 +395,28 @@ Limits: one dataset (SciFact dev, 300 claims), two corruption seeds, rule-based 
 1 in 5 stale copies unchanged; analysed separately above), Qwen evaluated only on corruption seed 0
 and without confidences.
 
+## Week 6: robustness checks (more seeds, a larger LLM, a second dataset)
+
+`week6.py` (workflow `.github/workflows/week6.yml`; summary `results/week6/summary.json`, from
+`python week6.py summary`):
+
+- **Five corruption seeds** (seeds 2-4 added; fine-tuned verifier, training seed 0). Broken parsing:
+  the verifier lost more correct answers than it gained in 14 of 15 runs and gained more in none
+  (summed over seeds: 11/1 at 10%, 18/4 at 25%, 41/13 at 50%). Duplicates: no loss (12 lost, 28 gained
+  at 25-50%). Stale 50%: dense R@1 0.528 +- 0.031; of 48 changed answers on claims with a flipped copy,
+  35 moved to CONTRADICT; confidently wrong answers on those claims 55 clean, 56 stale, so the
+  seed-0 increase reported in Week 4 does **not** hold up.
+- **Qwen2.5-3B** (zero-shot, same prompt, `results/week6/qwen3b/`): 0.667 accuracy on clean (1.5B:
+  0.557; 34 lost, 67 gained, p = 0.001), level with the fine-tuned verifier, with answers spread
+  over the three labels. Broken parsing hurts it too (50%: 13 lost, 7 gained); flipped copies barely
+  move it (stale 50%: 8 of 78 answers changed, 3 to CONTRADICT, 4 lost / 4 gained).
+- **Climate-FEVER** (`results/climate_fever/`): closed corpus of its 5,240 evidence sentences, 1,381
+  claims (DISPUTED dropped), clean + 9 seed-0 corruptions, no training on it (SciFact thresholds).
+  Qwen2.5-1.5B 0.508 (majority 0.474), fine-tuned NLI 0.450-0.468. Stale copies (with extra
+  climate flip words, e.g. warming/cooling) cut the NLI verifier's accuracy at every rate for every
+  training seed and make it more often confidently wrong; Qwen is unaffected. Duplicates do not hurt;
+  parsing has no consistent effect on one-sentence records.
+
 ## Roadmap
 
 - Week 2 (done): inject controlled corpus defects (near-duplicates, truncated/garbled parsing, stale
@@ -394,6 +424,7 @@ and without confidences.
 - Week 3 (done): fine-tune a reranker/verifier in PyTorch (Hugging Face) on SciFact train; measure recovery.
 - Week 4 (done): calibration analysis (ECE, Brier), ablations, figures.
 - Week 5 (done): technical report (`report/`) and release v1.0.0, archived on Zenodo (DOI 10.5281/zenodo.23314458).
+- Week 6 (done): five corruption seeds, Qwen2.5-3B, Climate-FEVER; paper draft (`paper/`).
 
 ## Notes
 

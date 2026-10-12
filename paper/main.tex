@@ -301,7 +301,8 @@ context held a stale copy whose findings were actually flipped, and compare them
 the clean corpus. At 50\% on corruption seed 0, 78 claims qualify. The fine-tuned verifier changed its
 answer on 13, 19 and 16 of them (training seeds 0/1/2), and 11, 15 and 12 of those changes went to \Con;
 Qwen-1.5B changed 6 and moved 1 to \Con, consistent with its \Sup\ bias. Qwen-3B, despite matching the fine-tuned verifier's accuracy, behaves like the
-smaller LLM: %QWEN3B_STALE_NUMBERS% Over five
+smaller LLM: it changed 8 of the 78 answers and moved 3 to \Con\ (4 lost, 4 gained), so its
+insensitivity is not a side effect of the smaller model's \Sup\ bias. Over five
 corruption seeds the pattern is stable: of 48 changed answers at 50\%, 35 moved to \Con. Claims whose
 context held only unflipped copies never changed answer for the NLI verifier. Yet no verifier's accuracy
 changes significantly: the fine-tuned verifier is misled on some claims and helped on others (23 lost,
