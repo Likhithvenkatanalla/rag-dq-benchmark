@@ -1,0 +1,80 @@
+name: Week 4 second corruption seed
+
+# Re-runs the 9 random Week 2 corruptions (duplicate, parse, stale at 10/25/50%) with seed 1:
+# retrieval (BM25 + dense) and the Week 3 fine-tuned verifier (seed 0 model, downloaded from the
+# Week 3 run). Runs in fp32, so any CPU runner works. Results are committed to main.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/week4.yml]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        setting: [duplicate_r0.1_gold_s1, duplicate_r0.25_gold_s1, duplicate_r0.5_gold_s1,
+                  parse_r0.1_gold_s1, parse_r0.25_gold_s1, parse_r0.5_gold_s1,
+                  stale_r0.1_gold_s1, stale_r0.25_gold_s1, stale_r0.5_gold_s1]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install (CPU torch, versions pinned in requirements.txt)
+        run: |
+          pip install torch==2.14.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/huggingface
+          key: hf-week4-bge
+      - name: Fine-tuned verifier from the Week 3 run
+        uses: actions/download-artifact@v4
+        with:
+          name: model-nli-finetuned-seed0
+          path: models/nli_finetuned_seed0/
+          run-id: 38033246055
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download SciFact
+        run: python week1_baseline.py --step download
+      - name: Run ${{ matrix.setting }}
+        run: python week4_seed.py --only ${{ matrix.setting }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.setting }}
+          path: |
+            results/${{ matrix.setting }}/
+            results/week3/seed0/nli_finetuned/${{ matrix.setting }}/
+
+  commit:
+    needs: run
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install numpy scikit-learn
+      - uses: actions/download-artifact@v4
+        with:
+          path: results/
+          merge-multiple: true
+      - name: Summarise and commit
+        run: |
+          python week4_seed.py --summary
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A results/
+          git diff --cached --quiet && { echo "No new results"; exit 0; }
+          git commit -m "Week 4: second corruption seed results (GitHub Actions run ${{ github.run_id }})"
+          git pull --rebase origin main
+          git push origin HEAD:main

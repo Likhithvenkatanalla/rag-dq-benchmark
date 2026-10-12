@@ -31,6 +31,7 @@ import glob
 import json
 import os
 import random
+import re
 import subprocess
 import sys
 
@@ -221,19 +222,31 @@ def train(seed, epochs=3, lr=2e-5, batch_size=16):
 
 # ---------------------------------------------------------------- evaluation
 
+def corrupt_args(run):
+    """corrupt_corpus.py arguments for a run name, e.g. stale_r0.25_gold_s1 or chunk_3."""
+    known = dict(settings())
+    if run in known:
+        return known[run]
+    m = re.fullmatch(r"(duplicate|parse|stale)_r([0-9.]+)_(gold|all)_s(\d+)", run)
+    if not m:
+        raise ValueError(f"unknown run name {run}")
+    return ["--defect", m[1], "--rate", m[2], "--target", m[3], "--seed", m[4]]
+
+
 def corpus_for(run):
-    """The corpus a Week 2 run used; corrupted ones are regenerated (seeded) and checked."""
+    """The corpus a run used; corrupted ones are regenerated (seeded) and checked against the
+    manifest committed with the run's results."""
     if run == "clean_rerun":
         return read_jsonl(CLEAN_CORPUS)
     path = os.path.join(DATA_DIR, "corrupted", run, "corpus.jsonl")
     if not os.path.exists(path):
-        args = dict(settings())[run]
+        args = corrupt_args(run)
         subprocess.run([sys.executable, "corrupt_corpus.py"] + args, check=True, stdout=subprocess.DEVNULL)
     with open(os.path.join(DATA_DIR, "corrupted", run, "manifest.json")) as f:
         regenerated = json.load(f)["changes"]
     with open(os.path.join("results", run, "manifest.json")) as f:
         if json.load(f)["changes"] != regenerated:
-            raise RuntimeError(f"{run}: regenerated corpus differs from the Week 2 one")
+            raise RuntimeError(f"{run}: regenerated corpus differs from the committed one")
     return read_jsonl(path)
 
 
@@ -242,7 +255,7 @@ def dense_rankings(run):
         return json.load(f)
 
 
-def evaluate_verifier(tag, model_path, threshold, out_root, rankings_for=dense_rankings):
+def evaluate_verifier(tag, model_path, threshold, out_root, rankings_for=dense_rankings, runs=RUNS):
     """Verify every dev claim of every run from its top-3 records; one verification.json per run."""
     from sklearn.metrics import accuracy_score, f1_score
     from transformers import AutoModelForSequenceClassification, AutoTokenizer
@@ -250,7 +263,7 @@ def evaluate_verifier(tag, model_path, threshold, out_root, rankings_for=dense_r
     claims = read_jsonl(os.path.join(DATA_DIR, "data", "claims_dev.jsonl"))
     tokenizer = AutoTokenizer.from_pretrained(model_path)
     model = AutoModelForSequenceClassification.from_pretrained(model_path)
-    for run in RUNS:
+    for run in runs:
         by_id = {d["doc_id"]: d for d in corpus_for(run)}
         rankings = rankings_for(run)
         tops = [rankings[str(c["id"])][:3] for c in claims]
