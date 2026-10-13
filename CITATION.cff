@@ -7,7 +7,7 @@ authors:
     family-names: "Nalla"
     alias: Likhithvenkatanalla
 doi: "10.5281/zenodo.23333457"
-version: "v1.1.0"
+version: "v1.1.1"
 repository-code: "https://github.com/Likhithvenkatanalla/rag-dq-benchmark"
 license: MIT
 date-released: "2026-10-13"
