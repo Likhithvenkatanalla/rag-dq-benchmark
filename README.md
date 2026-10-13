@@ -12,7 +12,7 @@ labelled SUPPORT / CONTRADICT (or no evidence, treated as NOT_ENOUGH_INFO). The 
 **Technical report:** [`report/REPORT.pdf`](report/REPORT.pdf) (source: [`report/REPORT.md`](report/REPORT.md);
 rebuild with `python report/build_pdf.py`).
 
-**Paper (with Week 6 robustness checks):** [`paper/main.pdf`](paper/main.pdf) (LaTeX source in `paper/`,
+**Paper (with Week 6 robustness checks):** [`paper/Nalla_2026_corpus_defects_RAG.pdf`](paper/Nalla_2026_corpus_defects_RAG.pdf) (LaTeX source in `paper/`,
 ACL format; rebuild with `cd paper && latexmk -pdf main.tex`).
 
 ## Key findings
