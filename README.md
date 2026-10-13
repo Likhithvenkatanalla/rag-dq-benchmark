@@ -395,7 +395,26 @@ Limits: one dataset (SciFact dev, 300 claims), two corruption seeds, rule-based 
 1 in 5 stale copies unchanged; analysed separately above), Qwen evaluated only on corruption seed 0
 and without confidences.
 
-## Week 6: robustness checks (more seeds, a larger LLM, a second dataset)
+## Week 5: technical report and release (complete)
+
+Weeks 1-4 written up and published:
+
+- **Technical report:** [`report/REPORT.pdf`](report/REPORT.pdf) (8 pages; Markdown source
+  [`report/REPORT.md`](report/REPORT.md), built with `python report/build_pdf.py`). It covers the setup,
+  retrieval and verification under every defect, conflicting evidence, calibration, discussion and
+  limitations.
+- **Release v1.0.0** ([GitHub release](https://github.com/Likhithvenkatanalla/rag-dq-benchmark/releases/tag/v1.0.0),
+  created by `.github/workflows/release-v1.yml`), archived on Zenodo with DOI
+  [10.5281/zenodo.23314458](https://doi.org/10.5281/zenodo.23314458).
+- **Fine-tuned models:** the [`models-week3`](https://github.com/Likhithvenkatanalla/rag-dq-benchmark/releases/tag/models-week3)
+  release (three verifier seeds and the reranker).
+- **Licence and citation:** MIT ([`LICENSE`](LICENSE)) and [`CITATION.cff`](CITATION.cff), which GitHub shows
+  as "Cite this repository".
+
+Week 6 extends this work, and its paper ([`paper/`](paper/)) supersedes the report; release v1.1.0 is
+archived as [10.5281/zenodo.23333457](https://doi.org/10.5281/zenodo.23333457).
+
+## Week 6: robustness checks (more seeds, a larger LLM, a second dataset) (complete)
 
 `week6.py` (workflow `.github/workflows/week6.yml`; summary `results/week6/summary.json`, from
 `python week6.py summary`):
